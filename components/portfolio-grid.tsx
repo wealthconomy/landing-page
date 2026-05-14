@@ -1,0 +1,262 @@
+"use client";
+
+import { useEffect, useRef, useState } from "react";
+import Link from "next/link";
+import { Lock, Users, Target, Zap, Heart, Repeat, ArrowUpRight, Check, Pause, Play, type LucideIcon } from "lucide-react";
+import { cn } from "@/lib/utils";
+
+type Product = {
+  id: string;
+  icon: LucideIcon;
+  name: string;
+  tagline: string;
+  rate: string;
+  rateNum: number;
+  bestFor: string;
+  short: string;
+  how: string;
+  features: string[];
+  accent: string;
+};
+
+const products: Product[] = [
+  { id: "wealthfix", icon: Lock, name: "WealthFix", tagline: "The Discipline Vault", rate: "25%", rateNum: 25, bestFor: "The Impulsive Saver", short: "Lock funds. Block temptation. Outpace inflation.", how: "Lock a lump sum for 3, 6, or 12 months. Because it can't be touched until maturity, you earn our highest individual rate.", features: ["Fixed terms: 3 / 6 / 12 months", "Highest yield in the ecosystem", "Zero-temptation withdrawal lock"], accent: "rose" },
+  { id: "wealthgroup", icon: Users, name: "WealthGroup", tagline: "Digital Ajo / Esusu", rate: "30%", rateNum: 30, bestFor: "The Social Saver", short: "Culture meets automation — save with people you trust.", how: "Form a group with friends, family or colleagues. Choose Rotational (take turns receiving the pot) or Fixed (save together toward one goal).", features: ["Rotational & fixed contribution modes", "Transparent payout schedule", "Automatic dispute resolution"], accent: "sky" },
+  { id: "wealthgoal", icon: Target, name: "WealthGoal", tagline: "Target-Based Milestones", rate: "20%", rateNum: 20, bestFor: "The Big-Ticket Planner", short: "Rent, business, school, wedding — hit every milestone.", how: "Pick a category, set a target and a deadline. Track real-time progress with a visual bar that shows exactly how close you are to smashing it.", features: ["Purpose-tagged sub-accounts", "Visual progress milestones", "Smart deadline reminders"], accent: "violet" },
+  { id: "wealthflex", icon: Zap, name: "WealthFlex", tagline: "High-Yield Liquidity", rate: "5%", rateNum: 5, bestFor: "The Cautious Saver", short: "Emergency-ready cash that still earns interest.", how: "A high-interest wallet — earn while you wait. Withdraw up to 7 times a month, penalty-free, whenever life happens.", features: ["Instant withdrawals", "7 free withdrawals / month", "Interest accrues daily"], accent: "amber" },
+  { id: "wealthfam", icon: Heart, name: "WealthFam", tagline: "Family Foundation", rate: "14%", rateNum: 14, bestFor: "The Legacy Builder", short: "Build for the ones who matter most.", how: "A dedicated portfolio for family-centric needs — school fees, a spouse's venture, the family home. Separates Family Wealth from Personal Wealth.", features: ["Shared family vault", "Dedicated legacy planning", "Multi-beneficiary support"], accent: "pink" },
+  { id: "wealthflow", icon: Repeat, name: "WealthFlow", tagline: "Automated Cycle", rate: "17%", rateNum: 17, bestFor: "The Busy Professional", short: "Wealth on autopilot — pay yourself first, always.", how: "Set a rule like 'save ₦2,000 every day at 8 AM' and forget it. Money flows automatically from your bank into Wealthconomy, on your schedule.", features: ["Daily / weekly / monthly rules", "Pay-yourself-first logic", "Pause or adjust any time"], accent: "emerald" },
+];
+
+const accentMap: Record<string, { tint: string; iconBg: string; ring: string; dot: string; glow: string; chipActive: string }> = {
+  rose: { tint: "bg-rose-50", iconBg: "bg-rose-100 text-rose-600", ring: "ring-rose-300", dot: "bg-rose-500", glow: "bg-rose-200/60", chipActive: "border-rose-400 bg-rose-500 text-white" },
+  sky: { tint: "bg-sky-50", iconBg: "bg-sky-100 text-sky-600", ring: "ring-sky-300", dot: "bg-sky-500", glow: "bg-sky-200/60", chipActive: "border-sky-400 bg-sky-500 text-white" },
+  violet: { tint: "bg-violet-50", iconBg: "bg-violet-100 text-violet-600", ring: "ring-violet-300", dot: "bg-violet-500", glow: "bg-violet-200/60", chipActive: "border-violet-400 bg-violet-500 text-white" },
+  amber: { tint: "bg-amber-50", iconBg: "bg-amber-100 text-amber-700", ring: "ring-amber-300", dot: "bg-amber-500", glow: "bg-amber-200/60", chipActive: "border-amber-400 bg-amber-500 text-white" },
+  pink: { tint: "bg-pink-50", iconBg: "bg-pink-100 text-pink-600", ring: "ring-pink-300", dot: "bg-pink-500", glow: "bg-pink-200/60", chipActive: "border-pink-400 bg-pink-500 text-white" },
+  emerald: { tint: "bg-emerald-50", iconBg: "bg-emerald-100 text-emerald-700", ring: "ring-emerald-300", dot: "bg-emerald-500", glow: "bg-emerald-200/60", chipActive: "border-emerald-400 bg-emerald-500 text-white" },
+};
+
+const AUTOPLAY_MS = 5500;
+
+function useCountUp(target: number, deps: unknown[]) {
+  const [val, setVal] = useState(0);
+  useEffect(() => {
+    let raf = 0;
+    const start = performance.now();
+    const dur = 700;
+    const tick = (t: number) => {
+      const p = Math.min(1, (t - start) / dur);
+      const eased = 1 - Math.pow(1 - p, 3);
+      setVal(Math.round(eased * target));
+      if (p < 1) raf = requestAnimationFrame(tick);
+    };
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, deps);
+  return val;
+}
+
+export function PortfolioGrid() {
+  const [activeIdx, setActiveIdx] = useState(0);
+  const [paused, setPaused] = useState(false);
+  const [hovered, setHovered] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
+  const [inView, setInView] = useState(false);
+
+  const active = products[activeIdx];
+  const a = accentMap[active.accent];
+  const counted = useCountUp(active.rateNum, [activeIdx]);
+
+  useEffect(() => {
+    if (!sectionRef.current) return;
+    const obs = new IntersectionObserver(([e]) => setInView(e.isIntersecting), { threshold: 0.2 });
+    obs.observe(sectionRef.current);
+    return () => obs.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (paused || hovered || !inView) return;
+    const t = setTimeout(() => setActiveIdx((i) => (i + 1) % products.length), AUTOPLAY_MS);
+    return () => clearTimeout(t);
+  }, [activeIdx, paused, hovered, inView]);
+
+  const playing = !paused && !hovered && inView;
+
+  return (
+    <section
+      ref={sectionRef}
+      id="portfolio"
+      className="bg-background py-24 lg:py-32"
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+    >
+      <div className="mx-auto max-w-7xl px-6">
+        <div className="mx-auto max-w-2xl text-center">
+          <div className="text-sm font-medium uppercase tracking-widest text-primary">A Menu of Financial Habits</div>
+          <h2 className="mt-3 font-display text-4xl font-semibold tracking-tight md:text-5xl">
+            A Portfolio for Every Purpose.
+          </h2>
+          <p className="mt-4 text-lg text-muted-foreground">
+            Wealth isn't one-size-fits-all. Pick the structure that matches your habit — and let discipline do the rest.
+          </p>
+        </div>
+
+        {/* Chips */}
+        <div className="mt-12 flex flex-wrap justify-center gap-2">
+          {products.map((p, i) => {
+            const isActive = i === activeIdx;
+            const pa = accentMap[p.accent];
+            return (
+              <button
+                key={p.id}
+                onClick={() => setActiveIdx(i)}
+                className={cn(
+                  "group relative inline-flex items-center gap-2 overflow-hidden rounded-full border px-4 py-2 text-sm font-medium transition-all duration-300",
+                  isActive
+                    ? cn(pa.chipActive, "shadow-soft scale-105")
+                    : "border-border bg-background text-muted-foreground hover:border-primary/40 hover:text-foreground hover:scale-105",
+                )}
+              >
+                {isActive && <span className={cn("absolute inset-0 -z-0 portfolio-pulse-ring rounded-full", pa.dot, "opacity-30")} />}
+                <p.icon className={cn("h-3.5 w-3.5 transition-transform", isActive && "rotate-12")} />
+                <span className="relative z-10">{p.name}</span>
+              </button>
+            );
+          })}
+        </div>
+
+        {/* Auto-play progress */}
+        <div className="mx-auto mt-6 flex max-w-md items-center gap-3">
+          <button
+            onClick={() => setPaused((p) => !p)}
+            className="flex h-7 w-7 items-center justify-center rounded-full border border-border text-muted-foreground transition-colors hover:bg-muted"
+            aria-label={paused ? "Play" : "Pause"}
+          >
+            {paused ? <Play className="h-3 w-3" /> : <Pause className="h-3 w-3" />}
+          </button>
+          <div className="relative h-1 flex-1 overflow-hidden rounded-full bg-muted">
+            <div
+              key={`${activeIdx}-${playing}`}
+              className={cn("absolute inset-y-0 left-0 rounded-full", a.dot, playing && "portfolio-progress-bar")}
+              style={{ "--portfolio-duration": `${AUTOPLAY_MS}ms`, width: playing ? undefined : "0%" } as React.CSSProperties}
+            />
+          </div>
+          <div className="text-xs tabular-nums text-muted-foreground">
+            {String(activeIdx + 1).padStart(2, "0")} / {String(products.length).padStart(2, "0")}
+          </div>
+        </div>
+
+        {/* Showcase */}
+        <div className="mt-10 grid gap-6 lg:grid-cols-5">
+          {/* Detail */}
+          <div
+            key={active.id}
+            className={cn(
+              "portfolio-detail-enter relative overflow-hidden rounded-3xl border border-border p-8 md:p-10 lg:col-span-3",
+              a.tint,
+            )}
+          >
+            {/* animated blobs */}
+            <div className={cn("portfolio-blob absolute -right-20 -top-20 h-72 w-72 rounded-full blur-3xl", a.glow)} />
+            <div className={cn("portfolio-blob absolute -bottom-24 -left-16 h-64 w-64 rounded-full blur-3xl opacity-60", a.glow)} style={{ animationDelay: "-5s" }} />
+
+            <div className="relative flex flex-col gap-8">
+              <div className="flex items-start justify-between gap-4">
+                <div className={cn("portfolio-icon-pop flex h-14 w-14 items-center justify-center rounded-2xl", a.iconBg)}>
+                  <active.icon className="h-6 w-6" />
+                </div>
+                <div className="portfolio-shimmer relative flex items-center gap-2 overflow-hidden rounded-full bg-white/80 px-4 py-2 backdrop-blur">
+                  <span className="font-display text-2xl font-semibold leading-none text-gold tabular-nums">{counted}%</span>
+                  <span className="text-xs font-medium text-muted-foreground">p.a.</span>
+                </div>
+              </div>
+
+              <div className="portfolio-stagger" style={{ animationDelay: "0.05s" }}>
+                <div className="text-xs font-semibold uppercase tracking-widest text-primary/80">{active.tagline}</div>
+                <h3 className="mt-2 font-display text-3xl font-semibold tracking-tight md:text-4xl">{active.name}</h3>
+                <p className="mt-3 text-lg text-foreground/80">{active.short}</p>
+              </div>
+
+              <div className="portfolio-stagger rounded-2xl bg-white/70 p-5 backdrop-blur" style={{ animationDelay: "0.15s" }}>
+                <div className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">How it works</div>
+                <p className="mt-2 text-sm leading-relaxed text-foreground/85">{active.how}</p>
+              </div>
+
+              <div className="grid gap-2 sm:grid-cols-2">
+                {active.features.map((f, i) => (
+                  <div
+                    key={f}
+                    className="portfolio-stagger flex items-start gap-2 text-sm text-foreground/85"
+                    style={{ animationDelay: `${0.25 + i * 0.08}s` }}
+                  >
+                    <span className={cn("mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-white", a.dot)}>
+                      <Check className="h-3 w-3" strokeWidth={3} />
+                    </span>
+                    {f}
+                  </div>
+                ))}
+              </div>
+
+              <div className="portfolio-stagger flex items-center justify-between border-t border-foreground/10 pt-5" style={{ animationDelay: "0.5s" }}>
+                <div>
+                  <div className="text-xs uppercase tracking-widest text-muted-foreground">Best for</div>
+                  <div className="font-display text-base font-semibold">{active.bestFor}</div>
+                </div>
+                <Link
+                  href={`/portfolios#${active.id.replace("wealth", "")}`}
+                  className="group inline-flex items-center gap-1.5 rounded-full bg-foreground px-5 py-2.5 text-sm font-medium text-background transition-all hover:gap-2.5 hover:scale-105"
+                >
+                  Explore {active.name}
+                  <ArrowUpRight className="h-4 w-4 transition-transform group-hover:rotate-45" />
+                </Link>
+              </div>
+            </div>
+          </div>
+
+          {/* Side list */}
+          <div className="grid gap-3 lg:col-span-2">
+            {products.map((p, i) => {
+              const isActive = i === activeIdx;
+              const pa = accentMap[p.accent];
+              return (
+                <button
+                  key={p.id}
+                  onClick={() => setActiveIdx(i)}
+                  className={cn(
+                    "group relative flex items-center gap-4 overflow-hidden rounded-2xl border bg-background p-4 text-left transition-all duration-300",
+                    isActive
+                      ? cn("-translate-y-0.5 border-transparent shadow-soft ring-2", pa.ring)
+                      : "border-border hover:-translate-y-0.5 hover:border-primary/30 hover:shadow-soft",
+                  )}
+                >
+                  {isActive && (
+                    <span className={cn("absolute left-0 top-0 h-full w-1", pa.dot)} />
+                  )}
+                  <div className={cn("flex h-11 w-11 shrink-0 items-center justify-center rounded-xl transition-transform duration-500", pa.iconBg, isActive && "rotate-6 scale-110")}>
+                    <p.icon className="h-5 w-5" />
+                  </div>
+                  <div className="min-w-0 flex-1">
+                    <div className="flex items-center justify-between gap-2">
+                      <div className="font-display text-base font-semibold text-foreground">{p.name}</div>
+                      <div className="font-display text-sm font-semibold text-gold">{p.rate}</div>
+                    </div>
+                    <div className="truncate text-xs text-muted-foreground">{p.tagline} · {p.bestFor}</div>
+                  </div>
+                  <ArrowUpRight
+                    className={cn(
+                      "h-4 w-4 shrink-0 transition-all duration-300",
+                      isActive ? "translate-x-0 text-primary opacity-100" : "-translate-x-2 text-muted-foreground opacity-0 group-hover:translate-x-0 group-hover:opacity-100",
+                    )}
+                  />
+                </button>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+

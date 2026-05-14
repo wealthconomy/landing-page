@@ -1,0 +1,69 @@
+import { TrendingUp, Building2, Wheat, Banknote, ArrowUpRight } from "lucide-react";
+
+const opportunities = [
+  { icon: Building2, name: "Lagos Real Estate Notes", yield: "16.5% p.a.", term: "12 months", risk: "Low–Med", filled: 78 },
+  { icon: Wheat, name: "Northern Agri Co-op", yield: "21% p.a.", term: "9 months", risk: "Medium", filled: 54 },
+  { icon: Banknote, name: "Government T-Bills", yield: "12% p.a.", term: "3 months", risk: "Low", filled: 92 },
+];
+
+export function WealthUpHero() {
+  return (
+    <>
+      <section className="bg-background py-24 lg:py-32">
+        <div className="mx-auto max-w-7xl px-6">
+          <div className="mx-auto max-w-3xl text-center">
+            <div className="inline-flex items-center gap-2 rounded-full border border-border bg-background/60 px-3 py-1 text-xs font-medium uppercase tracking-widest text-primary">
+              <TrendingUp className="h-3.5 w-3.5" /> WealthUp
+            </div>
+            <h1 className="mt-5 font-display text-5xl font-semibold tracking-tight md:text-6xl">
+              When saving <span className="bg-gradient-to-r from-primary to-primary-glow bg-clip-text text-transparent">isn't enough</span>.
+            </h1>
+            <p className="mt-6 text-lg text-muted-foreground">
+              Curated, vetted investment opportunities — fixed income, real-estate notes, agri-funds, and treasury bills — packaged for everyday Nigerians.
+            </p>
+          </div>
+
+          <div className="mt-16 grid gap-5 md:grid-cols-3">
+            {opportunities.map((o, i) => (
+              <div
+                key={o.name}
+                className="group rounded-3xl border border-border bg-surface-soft/60 p-7 transition-all hover:-translate-y-1 hover:border-primary/40 hover:shadow-glow-teal"
+                style={{ animation: `portfolio-slide-up 0.5s ease ${i * 0.08}s both` }}
+              >
+                <div className="flex items-center justify-between">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-primary/10 text-primary">
+                    <o.icon className="h-5 w-5" />
+                  </div>
+                  <span className="rounded-full bg-emerald-500/10 px-2.5 py-1 text-[11px] font-semibold text-emerald-600">{o.yield}</span>
+                </div>
+                <h3 className="mt-6 font-display text-lg font-semibold">{o.name}</h3>
+                <div className="mt-4 grid grid-cols-2 gap-3 text-xs">
+                  <div>
+                    <div className="text-muted-foreground">Term</div>
+                    <div className="mt-1 font-semibold">{o.term}</div>
+                  </div>
+                  <div>
+                    <div className="text-muted-foreground">Risk</div>
+                    <div className="mt-1 font-semibold">{o.risk}</div>
+                  </div>
+                </div>
+                <div className="mt-5">
+                  <div className="flex items-center justify-between text-xs text-muted-foreground">
+                    <span>Filled</span>
+                    <span>{o.filled}%</span>
+                  </div>
+                  <div className="mt-2 h-1.5 overflow-hidden rounded-full bg-background">
+                    <div className="h-full rounded-full bg-gradient-to-r from-primary to-primary-glow" style={{ width: `${o.filled}%` }} />
+                  </div>
+                </div>
+                <button className="mt-6 inline-flex items-center gap-1 text-sm font-semibold text-primary">
+                  View deal <ArrowUpRight className="h-4 w-4" />
+                </button>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    </>
+  );
+}
