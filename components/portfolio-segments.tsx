@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Wallet, Lock, Target, Users, Heart, ShieldAlert, ArrowUpRight } from "lucide-react";
+import { Wallet, Lock, Target, Users, Heart, ShieldAlert, ArrowUpRight, Repeat } from "lucide-react";
 
 const segments = [
   { id: "flex", icon: Wallet, name: "WealthFlex", line: "Flexible savings you can top up or withdraw any time.", rate: "Up to 10% p.a." },
@@ -7,7 +7,7 @@ const segments = [
   { id: "goal", icon: Target, name: "WealthGoal", line: "Target-based savings tied to a milestone or date.", rate: "Goal-tracked" },
   { id: "group", icon: Users, name: "WealthGroup", line: "Digitised Ajo with automated, fair rotation.", rate: "Group-based" },
   { id: "fam", icon: Heart, name: "WealthFam", line: "Family pots for school fees, rent, or shared dreams.", rate: "Shared access" },
-  { id: "emergency", icon: ShieldAlert, name: "Emergency", line: "Instant-access reserve for the unexpected.", rate: "On-demand" },
+  { id: "flow", icon: Repeat, name: "WealthFlow", line: "Automated savings for continuous wealth flow.", rate: "Automated" },
 ];
 
 export function PortfolioSegments() {
@@ -19,7 +19,7 @@ export function PortfolioSegments() {
             Portfolios
           </div>
           <h2 className="mt-5 font-display text-4xl font-semibold tracking-tight md:text-5xl">
-            Six structured ways to <span className="bg-gradient-to-r from-primary to-primary-glow bg-clip-text text-transparent">build wealth</span>.
+            Six structured ways to <span className="bg-gradient-to-r from-primary via-primary-glow to-gold bg-clip-text text-transparent">build wealth</span>.
           </h2>
           <p className="mt-5 text-lg text-muted-foreground">
             Pick one, mix many. Each portfolio enforces a different rhythm of discipline so your money keeps moving forward.

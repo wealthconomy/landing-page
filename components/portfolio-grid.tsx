@@ -20,21 +20,63 @@ type Product = {
 };
 
 const products: Product[] = [
-  { id: "wealthfix", icon: Lock, name: "WealthFix", tagline: "The Discipline Vault", rate: "25%", rateNum: 25, bestFor: "The Impulsive Saver", short: "Lock funds. Block temptation. Outpace inflation.", how: "Lock a lump sum for 3, 6, or 12 months. Because it can't be touched until maturity, you earn our highest individual rate.", features: ["Fixed terms: 3 / 6 / 12 months", "Highest yield in the ecosystem", "Zero-temptation withdrawal lock"], accent: "rose" },
-  { id: "wealthgroup", icon: Users, name: "WealthGroup", tagline: "Digital Ajo / Esusu", rate: "30%", rateNum: 30, bestFor: "The Social Saver", short: "Culture meets automation — save with people you trust.", how: "Form a group with friends, family or colleagues. Choose Rotational (take turns receiving the pot) or Fixed (save together toward one goal).", features: ["Rotational & fixed contribution modes", "Transparent payout schedule", "Automatic dispute resolution"], accent: "sky" },
-  { id: "wealthgoal", icon: Target, name: "WealthGoal", tagline: "Target-Based Milestones", rate: "20%", rateNum: 20, bestFor: "The Big-Ticket Planner", short: "Rent, business, school, wedding — hit every milestone.", how: "Pick a category, set a target and a deadline. Track real-time progress with a visual bar that shows exactly how close you are to smashing it.", features: ["Purpose-tagged sub-accounts", "Visual progress milestones", "Smart deadline reminders"], accent: "violet" },
-  { id: "wealthflex", icon: Zap, name: "WealthFlex", tagline: "High-Yield Liquidity", rate: "5%", rateNum: 5, bestFor: "The Cautious Saver", short: "Emergency-ready cash that still earns interest.", how: "A high-interest wallet — earn while you wait. Withdraw up to 7 times a month, penalty-free, whenever life happens.", features: ["Instant withdrawals", "7 free withdrawals / month", "Interest accrues daily"], accent: "amber" },
-  { id: "wealthfam", icon: Heart, name: "WealthFam", tagline: "Family Foundation", rate: "14%", rateNum: 14, bestFor: "The Legacy Builder", short: "Build for the ones who matter most.", how: "A dedicated portfolio for family-centric needs — school fees, a spouse's venture, the family home. Separates Family Wealth from Personal Wealth.", features: ["Shared family vault", "Dedicated legacy planning", "Multi-beneficiary support"], accent: "pink" },
-  { id: "wealthflow", icon: Repeat, name: "WealthFlow", tagline: "Automated Cycle", rate: "17%", rateNum: 17, bestFor: "The Busy Professional", short: "Wealth on autopilot — pay yourself first, always.", how: "Set a rule like 'save ₦2,000 every day at 8 AM' and forget it. Money flows automatically from your bank into Wealthconomy, on your schedule.", features: ["Daily / weekly / monthly rules", "Pay-yourself-first logic", "Pause or adjust any time"], accent: "emerald" },
+  { id: "wealthflex", icon: Zap, name: "WealthFlex", tagline: "Smart Flexible Savings", rate: "5%", rateNum: 5, bestFor: "The Cautious Saver", short: "Smart flexible savings; earn interest, access anytime.", how: "A high-interest wallet — earn while you wait. Withdraw any time penalty-free, whenever life happens.", features: ["Instant withdrawals", "7 free withdrawals / month", "Interest accrues daily"], accent: "flex" },
+  { id: "wealthfix", icon: Lock, name: "WealthFix", tagline: "The Discipline Vault", rate: "25%", rateNum: 25, bestFor: "The Impulsive Saver", short: "Lock it in, block temptation, and watch your money grow.", how: "Lock a lump sum for 3, 6, or 12 months. Because it can't be touched until maturity, you earn our highest individual rate.", features: ["Fixed terms: 3 / 6 / 12 months", "Highest yield in the ecosystem", "Zero-temptation withdrawal lock"], accent: "fix" },
+  { id: "wealthgoal", icon: Target, name: "WealthGoal", tagline: "Purpose-Driven Savings", rate: "20%", rateNum: 20, bestFor: "The Big-Ticket Planner", short: "Save with discipline and smash your goals.", how: "Pick a category, set a target and a deadline. Track real-time progress with a visual bar that shows exactly how close you are to smashing it.", features: ["Purpose-tagged sub-accounts", "Visual progress milestones", "Smart deadline reminders"], accent: "goal" },
+  { id: "wealthfam", icon: Heart, name: "WealthFam", tagline: "Legacy Foundation", rate: "14%", rateNum: 14, bestFor: "The Legacy Builder", short: "Build a wealthy family; save for kids, spouse, and loved ones.", how: "A dedicated portfolio for family-centric needs — school fees, a spouse's venture, the family home. Separates Family Wealth from Personal Wealth.", features: ["Shared family vault", "Dedicated legacy planning", "Multi-beneficiary support"], accent: "fam" },
+  { id: "wealthflow", icon: Repeat, name: "WealthFlow", tagline: "Automated Cycle", rate: "17%", rateNum: 17, bestFor: "The Busy Professional", short: "Automated savings for continuous wealth flow.", how: "Set a rule like 'save ₦2,000 every day' and forget it. Money flows automatically from your bank into Wealthconomy, on your schedule.", features: ["Daily / weekly / monthly rules", "Pay-yourself-first logic", "Pause or adjust any time"], accent: "flow" },
+  { id: "wealthgroup", icon: Users, name: "WealthGroup", tagline: "Digital Ajo / Esusu", rate: "30%", rateNum: 30, bestFor: "The Social Saver", short: "Save together, grow together and win together.", how: "Form a group with friends, family or colleagues. Choose Rotational (take turns receiving the pot) or Fixed (save together toward one goal).", features: ["Rotational & fixed contribution modes", "Transparent payout schedule", "Automatic dispute resolution"], accent: "group" },
 ];
 
 const accentMap: Record<string, { tint: string; iconBg: string; ring: string; dot: string; glow: string; chipActive: string }> = {
-  rose: { tint: "bg-rose-50", iconBg: "bg-rose-100 text-rose-600", ring: "ring-rose-300", dot: "bg-rose-500", glow: "bg-rose-200/60", chipActive: "border-rose-400 bg-rose-500 text-white" },
-  sky: { tint: "bg-sky-50", iconBg: "bg-sky-100 text-sky-600", ring: "ring-sky-300", dot: "bg-sky-500", glow: "bg-sky-200/60", chipActive: "border-sky-400 bg-sky-500 text-white" },
-  violet: { tint: "bg-violet-50", iconBg: "bg-violet-100 text-violet-600", ring: "ring-violet-300", dot: "bg-violet-500", glow: "bg-violet-200/60", chipActive: "border-violet-400 bg-violet-500 text-white" },
-  amber: { tint: "bg-amber-50", iconBg: "bg-amber-100 text-amber-700", ring: "ring-amber-300", dot: "bg-amber-500", glow: "bg-amber-200/60", chipActive: "border-amber-400 bg-amber-500 text-white" },
-  pink: { tint: "bg-pink-50", iconBg: "bg-pink-100 text-pink-600", ring: "ring-pink-300", dot: "bg-pink-500", glow: "bg-pink-200/60", chipActive: "border-pink-400 bg-pink-500 text-white" },
-  emerald: { tint: "bg-emerald-50", iconBg: "bg-emerald-100 text-emerald-700", ring: "ring-emerald-300", dot: "bg-emerald-500", glow: "bg-emerald-200/60", chipActive: "border-emerald-400 bg-emerald-500 text-white" },
+  flex: { 
+    tint: "bg-[#FFF0EF]", 
+    iconBg: "bg-[#F443361A] text-[#F44336]", 
+    ring: "ring-[#F443364D]", 
+    dot: "bg-[#F44336]", 
+    glow: "bg-[#F443361A]", 
+    chipActive: "border-[#F44336] bg-[#F44336] text-white" 
+  },
+  fix: { 
+    tint: "bg-[#FAF2DF]", 
+    iconBg: "bg-[#F6AD0C1A] text-[#F6AD0C]", 
+    ring: "ring-[#F6AD0C4D]", 
+    dot: "bg-[#F6AD0C]", 
+    glow: "bg-[#F6AD0C1A]", 
+    chipActive: "border-[#F6AD0C] bg-[#F6AD0C] text-white" 
+  },
+  goal: { 
+    tint: "bg-[#F8E5EE]", 
+    iconBg: "bg-[#F3007A1A] text-[#F3007A]", 
+    ring: "ring-[#F3007A4D]", 
+    dot: "bg-[#F3007A]", 
+    glow: "bg-[#F3007A1A]", 
+    chipActive: "border-[#F3007A] bg-[#F3007A] text-white" 
+  },
+  fam: { 
+    tint: "bg-[#F1E7FF]", 
+    iconBg: "bg-[#8A38F51A] text-[#8A38F5]", 
+    ring: "ring-[#8A38F54D]", 
+    dot: "bg-[#8A38F5]", 
+    glow: "bg-[#8A38F51A]", 
+    chipActive: "border-[#8A38F5] bg-[#8A38F5] text-white" 
+  },
+  flow: { 
+    tint: "bg-[#C2E4FF]", 
+    iconBg: "bg-[#007EE01A] text-[#007EE0]", 
+    ring: "ring-[#007EE04D]", 
+    dot: "bg-[#007EE0]", 
+    glow: "bg-[#007EE01A]", 
+    chipActive: "border-[#007EE0] bg-[#007EE0] text-white" 
+  },
+  group: { 
+    tint: "bg-[#FFFFFF]", 
+    iconBg: "bg-[#CDCDCD1A] text-[#CDCDCD]", 
+    ring: "ring-[#CDCDCD4D]", 
+    dot: "bg-[#CDCDCD]", 
+    glow: "bg-[#CDCDCD1A]", 
+    chipActive: "border-[#CDCDCD] bg-[#CDCDCD] text-white" 
+  },
 };
 
 const AUTOPLAY_MS = 5500;

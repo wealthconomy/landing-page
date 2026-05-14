@@ -11,7 +11,7 @@ import {
   Target,
   Users,
   Heart,
-  ShieldAlert,
+  Repeat,
   GraduationCap,
   TrendingUp,
   Workflow,
@@ -82,10 +82,10 @@ const portfolioPeek = [
   },
   { icon: Heart, name: "WealthFam", to: "/portfolios" as const, hash: "fam" },
   {
-    icon: ShieldAlert,
-    name: "Emergency",
+    icon: Repeat,
+    name: "WealthFlow",
     to: "/portfolios" as const,
-    hash: "emergency",
+    hash: "flow",
   },
 ];
 
