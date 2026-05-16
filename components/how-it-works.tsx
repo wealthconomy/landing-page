@@ -2,7 +2,7 @@ import { Link2, Layers, Zap, LineChart } from "lucide-react";
 
 const steps = [
   { icon: Link2, title: "Connect your bank", body: "Link your everyday account in under a minute. Bank-grade encryption end-to-end." },
-  { icon: Layers, title: "Pick your portfolios", body: "Choose any mix of WealthFlex, WealthFix, WealthGoal, WealthGroup, WealthFam or Emergency." },
+  { icon: Layers, title: "Pick your portfolios", body: "Choose any mix of WealthFlex, WealthFix, WealthGoal, WealthGroup, WealthFam or WealthFlow." },
   { icon: Zap, title: "Automate discipline", body: "We auto-split every paycheck on your schedule — no willpower required." },
   { icon: LineChart, title: "Track & withdraw", body: "Watch your wealth compound on a unified dashboard. Withdraw on each portfolio's terms." },
 ];

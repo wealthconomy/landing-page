@@ -1,7 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, ShieldCheck, Zap, Lock, Users, Repeat, GraduationCap, Star } from "lucide-react";
 import { useState, useRef, useEffect } from "react";
 import phoneHome from "@/assets/phone-home.png";
 import phonePortfolio from "@/assets/phone-portfolio.png";
@@ -31,30 +31,84 @@ function PhoneFrame({
 }
 
 function MiniCard({
-  ticker,
-  company,
+  label,
+  value,
+  subtext,
+  icon: Icon,
+  trend,
   className = "",
   delay = "0s",
+  scrollY = 0,
+  side = "left",
 }: {
-  ticker: string;
-  company: string;
+  label: string;
+  value: string;
+  subtext: string;
+  icon: any;
+  trend?: string;
   className?: string;
   delay?: string;
+  scrollY?: number;
+  side?: "left" | "right";
 }) {
+  const [time, setTime] = useState(0);
+
+  useEffect(() => {
+    let rafId: number;
+    const startTime = Math.random() * 100;
+    const update = (t: number) => {
+      setTime((t / 1000) + startTime);
+      rafId = requestAnimationFrame(update);
+    };
+    rafId = requestAnimationFrame(update);
+    return () => cancelAnimationFrame(rafId);
+  }, []);
+
+  // Base float physics
+  const floatY = Math.sin(time * 0.8) * 8;
+  const floatX = Math.cos(time * 0.6) * 4;
+
+  // Absorption Physics
+  // We want the cards to accelerate toward the center-bottom of the phone
+  const scrollThreshold = 550;
+  const progress = Math.max(0, Math.min(1, scrollY / scrollThreshold));
+  
+  // Power curve for "pull" intensity (quadratic for acceleration)
+  const pull = Math.pow(progress, 2.5);
+  
+  // Horizontal convergence toward center
+  const convergeX = side === "left" ? pull * 450 : pull * -450;
+  // Vertical suction toward the phone body
+  const suctionY = pull * 500;
+  
+  // Visual effects for "entering" the device
+  const scale = 1 - (pull * 0.85);
+  const blur = pull * 12;
+  const opacity = 1 - Math.pow(progress, 5); // Stay visible until the last moment
+
   return (
     <div
-      className={`animate-card-drift flex items-center justify-between gap-6 rounded-2xl border border-border/60 bg-background/80 backdrop-blur-xl px-5 py-3.5 shadow-soft transition-all duration-500 hover:scale-110 hover:-translate-y-2 hover:shadow-glow-teal hover:border-primary/40 cursor-pointer ${className}`}
-      style={{ animationDelay: delay }}
+      className={`group flex items-center gap-4 rounded-2xl border border-white/10 bg-background/60 p-4 shadow-2xl backdrop-blur-2xl transition-shadow duration-300 hover:border-primary/40 hover:shadow-glow-teal cursor-default ${className}`}
+      style={{ 
+        opacity: opacity,
+        transform: `translate3d(${floatX + convergeX}px, ${floatY + suctionY}px, 0) scale(${scale})`,
+        filter: `blur(${blur}px)`,
+        pointerEvents: opacity < 0.2 ? 'none' : 'auto',
+        willChange: 'transform, opacity, filter'
+      }}
     >
-      <div>
-        <div className="text-sm font-semibold text-foreground">{ticker}</div>
-        <div className="text-xs text-muted-foreground">{company}</div>
+      <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary transition-colors group-hover:bg-primary group-hover:text-white">
+        <Icon className="h-5 w-5" />
       </div>
-      <div className="flex items-center gap-2 whitespace-nowrap">
-        <span className="text-sm font-medium text-foreground">$124.20</span>
-        <span className="rounded-md bg-emerald-500/10 px-1.5 py-0.5 text-[11px] font-medium text-emerald-600 dark:text-emerald-400">
-          2.1%
-        </span>
+      <div className="flex-1">
+        <div className="flex items-center justify-between gap-2">
+          <span className="text-[10px] font-bold uppercase tracking-widest text-primary/70">{label}</span>
+          {trend && (
+            <span className="text-[10px] font-bold text-emerald-500">{trend}</span>
+          )}
+        </div>
+        <div className="mt-0.5 text-base font-black tracking-tight text-foreground">{value}</div>
+        <div className="text-[10px] font-medium text-muted-foreground">{subtext}</div>
       </div>
     </div>
   );
@@ -63,7 +117,36 @@ function MiniCard({
 export function Hero() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [isHovering, setIsHovering] = useState(false);
+  const [smoothScrollY, setSmoothScrollY] = useState(0);
+  const scrollYRef = useRef(0);
+  const smoothScrollYRef = useRef(0);
   const containerRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      scrollYRef.current = window.scrollY;
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    
+    let rafId: number;
+    const update = () => {
+      // Faster lerp for more intentional feel
+      const lerpFactor = 0.15; 
+      smoothScrollYRef.current += (scrollYRef.current - smoothScrollYRef.current) * lerpFactor;
+      
+      if (Math.abs(scrollYRef.current - smoothScrollYRef.current) > 0.05) {
+        setSmoothScrollY(smoothScrollYRef.current);
+      }
+      
+      rafId = requestAnimationFrame(update);
+    };
+    
+    rafId = requestAnimationFrame(update);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      cancelAnimationFrame(rafId);
+    };
+  }, []);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLElement>) => {
     if (!containerRef.current) return;
@@ -185,12 +268,69 @@ export function Hero() {
         {/* Floating ticker cards */}
         <div className="pointer-events-none absolute inset-0 hidden lg:block">
           <div className="pointer-events-auto">
-            <MiniCard ticker="WLP" company="Wolio Inc" className="absolute left-2 top-8 w-64" delay="0s" />
-            <MiniCard ticker="TWLP" company="Twolio Inc" className="absolute left-16 top-56 w-64" delay="0.8s" />
-            <MiniCard ticker="GOOG" company="Alphabet Inc" className="absolute left-0 top-[26rem] w-64" delay="1.6s" />
-            <MiniCard ticker="AAPL" company="Apple Inc" className="absolute right-2 top-8 w-64" delay="0.4s" />
-            <MiniCard ticker="NVDA" company="Nvidia Corp" className="absolute right-16 top-56 w-64" delay="1.2s" />
-            <MiniCard ticker="TSLA" company="Tesla Inc" className="absolute right-0 top-[26rem] w-64" delay="2s" />
+            <MiniCard 
+              label="WealthFix" 
+              value="18.5% p.a." 
+              subtext="Vault Active" 
+              icon={Lock} 
+              trend="+2.4%"
+              className="absolute left-2 top-8 w-60" 
+              delay="0s" 
+              scrollY={smoothScrollY}
+              side="left"
+            />
+            <MiniCard 
+              label="WealthGroup" 
+              value="₦450,000" 
+              subtext="Next Payout: June 1" 
+              icon={Users} 
+              className="absolute left-16 top-56 w-60" 
+              delay="0.8s" 
+              scrollY={smoothScrollY}
+              side="left"
+            />
+            <MiniCard 
+              label="WiseUp" 
+              value="Masterclass" 
+              subtext="Principles of Leverage" 
+              icon={GraduationCap} 
+              className="absolute left-0 top-[26rem] w-60" 
+              delay="1.6s" 
+              scrollY={smoothScrollY}
+              side="left"
+            />
+            <MiniCard 
+              label="Wealth Score" 
+              value="842" 
+              subtext="Elite Status" 
+              icon={Star} 
+              trend="Top 1%"
+              className="absolute right-2 top-8 w-60" 
+              delay="0.4s" 
+              scrollY={smoothScrollY}
+              side="right"
+            />
+            <MiniCard 
+              label="WealthFlow" 
+              value="Daily Active" 
+              subtext="₦5,000 swept today" 
+              icon={Repeat} 
+              className="absolute right-16 top-56 w-60" 
+              delay="1.2s" 
+              scrollY={smoothScrollY}
+              side="right"
+            />
+            <MiniCard 
+              label="Total Assets" 
+              value="₦8.4M" 
+              subtext="Across 4 Portfolios" 
+              icon={ShieldCheck} 
+              trend="+12%"
+              className="absolute right-0 top-[26rem] w-60" 
+              delay="2s" 
+              scrollY={smoothScrollY}
+              side="right"
+            />
           </div>
         </div>
 

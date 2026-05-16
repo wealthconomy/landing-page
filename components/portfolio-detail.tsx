@@ -1,4 +1,4 @@
-import { Wallet, Lock, Target, Users, Heart, ShieldAlert, Check } from "lucide-react";
+import { Wallet, Lock, Target, Users, Heart, Repeat, Check } from "lucide-react";
 
 const portfolios = [
   {
@@ -47,13 +47,13 @@ const portfolios = [
     perks: ["Up to 5 linked profiles", "Joint goal tracking", "Children's literacy track", "Shared dashboard"],
   },
   {
-    id: "emergency",
-    icon: ShieldAlert,
-    name: "Emergency",
-    tagline: "When life happens, you're ready.",
-    body: "An always-liquid reserve sized to your monthly burn — withdrawn instantly, with a single tap.",
-    rate: "Instant access",
-    perks: ["Right-sized to your spend", "One-tap withdrawal", "Auto-replenish after use", "No fees, ever"],
+    id: "flow",
+    icon: Repeat,
+    name: "WealthFlow",
+    tagline: "The Automated Rhythm.",
+    body: "Set a rule like 'save ₦2,000 every day' and forget it. Money flows automatically from your bank into Wealthconomy, on your schedule.",
+    rate: "Up to 17% p.a.",
+    perks: ["Daily / weekly / monthly rules", "Pay-yourself-first logic", "Pause or adjust any time", "Auto-sweep from bank"],
   },
 ];
 

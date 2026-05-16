@@ -278,6 +278,59 @@
 .portfolio-progress-bar { animation: portfolio-progress var(--portfolio-duration, 6s) linear both; }
 .portfolio-pulse-ring { animation: portfolio-pulse-ring 1.8s ease-out infinite; }
 
+/* Cinematic Backgrounds */
+.bg-mesh-gradient {
+  background-color: var(--background);
+  background-image: 
+    radial-gradient(at 0% 0%, oklch(0.42 0.06 195 / 0.05) 0px, transparent 50%),
+    radial-gradient(at 100% 0%, oklch(0.86 0.15 85 / 0.05) 0px, transparent 50%),
+    radial-gradient(at 100% 100%, oklch(0.42 0.06 195 / 0.05) 0px, transparent 50%),
+    radial-gradient(at 0% 100%, oklch(0.86 0.15 85 / 0.05) 0px, transparent 50%);
+}
+
+.bg-glass {
+  background: color-mix(in oklch, var(--background) 70%, transparent);
+  backdrop-filter: blur(12px) saturate(180%);
+}
+
+/* Premium Reveal Animations */
+@keyframes reveal-up {
+  0% { opacity: 0; transform: translateY(30px); filter: blur(10px); }
+  100% { opacity: 1; transform: translateY(0); filter: blur(0); }
+}
+
+@keyframes reveal-in {
+  0% { opacity: 0; transform: scale(0.95); filter: blur(10px); }
+  100% { opacity: 1; transform: scale(1); filter: blur(0); }
+}
+
+.reveal-up {
+  opacity: 0;
+}
+
+.reveal-up.active {
+  animation: reveal-up 1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.reveal-in {
+  opacity: 0;
+}
+
+.reveal-in.active {
+  animation: reveal-in 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* Mouse Follow Light Effect */
+.mouse-light {
+  position: absolute;
+  inset: -1px;
+  background: radial-gradient(600px circle at var(--x) var(--y), oklch(0.42 0.06 195 / 0.15), transparent 40%);
+  pointer-events: none;
+  z-index: -1;
+  border-radius: inherit;
+  transition: opacity 0.5s ease;
+}
+
 @font-face {
   font-family: 'Inter';
   font-style: normal;

@@ -4,7 +4,7 @@ import { WaitlistCta } from "@/components/waitlist-cta";
 
 export const metadata: Metadata = {
   title: "Portfolios — Wealthconomy",
-  description: "WealthFlex, WealthFix, WealthGoal, WealthGroup, WealthFam and Emergency — six structured portfolios designed to build lasting wealth.",
+  description: "WealthFlex, WealthFix, WealthGoal, WealthGroup, WealthFam and WealthFlow — six structured portfolios designed to build lasting wealth.",
 };
 
 export default function PortfoliosPage() {

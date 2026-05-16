@@ -106,15 +106,14 @@ export function SiteFooter() {
             </div>
 
             {/* Main grid */}
-            <div className="grid grid-cols-2 gap-x-8 gap-y-14 pt-14 md:grid-cols-3 lg:grid-cols-6">
+            <div className="grid grid-cols-2 gap-x-8 gap-y-14 pt-14 md:grid-cols-3 lg:grid-cols-5">
               {/* Get started + social + newsletter */}
               <div className="col-span-2 lg:col-span-2">
-                <FooterHeading>Get Started</FooterHeading>
+                <FooterHeading>Connect</FooterHeading>
                 <ul className="space-y-3.5 mb-10">
                   <FooterLink href="/#waitlist" primary>
                     Create an account
                   </FooterLink>
-                  <FooterLink href="/#waitlist">Sign in</FooterLink>
                   <FooterLink href="/contact">Book a strategist</FooterLink>
                 </ul>
 
@@ -147,33 +146,15 @@ export function SiteFooter() {
               </div>
 
               <div>
-                <FooterHeading>Products</FooterHeading>
+                <FooterHeading>Portfolios</FooterHeading>
                 <ul className="space-y-3.5">
                   {[
                     { label: "WealthFix", to: "/portfolios#fix" },
                     { label: "WealthGroup", to: "/portfolios#group" },
                     { label: "WealthGoal", to: "/portfolios#goal" },
                     { label: "WealthFlex", to: "/portfolios#flex" },
+                    { label: "WealthFlow", to: "/portfolios#flow" },
                     { label: "WealthFam", to: "/portfolios#fam" },
-                    { label: "Emergency", to: "/portfolios#emergency" },
-                  ].map((item) => (
-                    <FooterLink key={item.label} href={item.to}>
-                      {item.label}
-                    </FooterLink>
-                  ))}
-                </ul>
-              </div>
-
-              <div>
-                <FooterHeading>Use Cases</FooterHeading>
-                <ul className="space-y-3.5">
-                  {[
-                    { label: "Disciplined Saving", to: "/portfolios#fix" },
-                    { label: "Group Contributions", to: "/portfolios#group" },
-                    { label: "Goal Funding", to: "/portfolios#goal" },
-                    { label: "Family Vault", to: "/portfolios#fam" },
-                    { label: "Auto-Investing", to: "/wealthup" },
-                    { label: "Legacy Planning", to: "/about" },
                   ].map((item) => (
                     <FooterLink key={item.label} href={item.to}>
                       {item.label}
@@ -187,7 +168,6 @@ export function SiteFooter() {
                 <ul className="space-y-3.5 mb-10">
                   {[
                     { label: "About Us", to: "/about" },
-                    { label: "Pricing", to: "/pricing" },
                     { label: "Trust Center", to: "/security" },
                     { label: "Contact", to: "/contact" },
                   ].map((item) => (
@@ -199,11 +179,9 @@ export function SiteFooter() {
                 <FooterHeading>Legal</FooterHeading>
                 <ul className="space-y-3.5">
                   {[
-                    { label: "Privacy Policy", to: "/privacy" },
-                    { label: "Terms of Use", to: "/terms" },
-                    { label: "Cookies", to: "/cookies" },
-                    { label: "Disclaimer", to: "/terms" },
+                    { label: "Privacy & Terms", to: "/terms" },
                     { label: "Security", to: "/security" },
+                    { label: "Cookies", to: "/cookies" },
                   ].map((item) => (
                     <FooterLink key={item.label} href={item.to}>
                       {item.label}
@@ -213,25 +191,14 @@ export function SiteFooter() {
               </div>
 
               <div>
-                <FooterHeading>Resources</FooterHeading>
-                <ul className="space-y-3.5 mb-10">
-                  {[
-                    { label: "WiseUp Hub", to: "/learn" },
-                    { label: "Success Stories", to: "/company" },
-                    { label: "Security", to: "/security" },
-                    { label: "Support Desk", to: "/contact" },
-                  ].map((item) => (
-                    <FooterLink key={item.label} href={item.to}>
-                      {item.label}
-                    </FooterLink>
-                  ))}
-                </ul>
-                <FooterHeading>Intelligence</FooterHeading>
+                <FooterHeading>Insights</FooterHeading>
                 <ul className="space-y-3.5">
                   {[
+                    { label: "WiseUp Hub", to: "/learn" },
                     { label: "Market Insights", to: "/learn#insights" },
                     { label: "Wealth Score", to: "/learn#score" },
                     { label: "Tax Efficiency", to: "/learn#tax" },
+                    { label: "Success Stories", to: "/company" },
                   ].map((item) => (
                     <FooterLink key={item.label} href={item.to}>
                       {item.label}
@@ -243,12 +210,12 @@ export function SiteFooter() {
 
             {/* Compliance + QR */}
             <div className="mt-16 flex flex-col items-start justify-between gap-8 border-t border-white/10 pt-10 lg:flex-row lg:items-center">
-              <div className="flex flex-wrap items-center gap-5">
-                <ComplianceBadge icon={Shield} label="Military-Grade" sub="ENCRYPTION" />
-                <ComplianceBadge icon={CheckCircle2} label="ISO 27001" sub="CERTIFIED" />
-                <ComplianceBadge icon={Globe} label="Data Sovereignty" sub="COMPLIANT" />
-                <ComplianceBadge icon={Lock} label="SOC 2 Type II" sub="AUDITED" />
-                <ComplianceBadge icon={Award} label="PCI DSS" sub="LEVEL 1" />
+              <div className="flex flex-wrap items-center gap-6">
+                <ComplianceBadge icon={Shield} label="Military-Grade" />
+                <ComplianceBadge icon={CheckCircle2} label="ISO 27001" />
+                <ComplianceBadge icon={Globe} label="Data Sovereignty" />
+                <ComplianceBadge icon={Lock} label="SOC 2 Type II" />
+                <ComplianceBadge icon={Award} label="PCI DSS" />
               </div>
 
               <div className="group flex items-center gap-4 rounded-2xl border border-white/10 bg-white/[0.04] px-5 py-3 backdrop-blur-xl transition-all hover:bg-white/[0.08]">
@@ -346,16 +313,15 @@ function SocialIcon({ icon: Icon, href }: { icon: any; href: string }) {
   );
 }
 
-function ComplianceBadge({ icon: Icon, label, sub }: { icon: any; label: string; sub: string }) {
+function ComplianceBadge({ icon: Icon, label }: { icon: any; label: string }) {
   return (
-    <div className="group flex cursor-default items-center gap-2.5 opacity-50 transition-all duration-500 hover:opacity-100">
-      <div className="flex h-9 w-9 items-center justify-center rounded-lg border border-white/10 bg-white/[0.04] backdrop-blur-xl transition-all group-hover:border-white/25 group-hover:bg-white/[0.08]">
-        <Icon className="h-4 w-4 text-white" />
+    <div className="group flex cursor-default items-center gap-2 opacity-40 transition-all duration-500 hover:opacity-100">
+      <div className="flex h-8 w-8 items-center justify-center rounded-lg border border-white/10 bg-white/[0.02] backdrop-blur-xl transition-all group-hover:border-white/20 group-hover:bg-white/[0.05]">
+        <Icon className="h-3.5 w-3.5 text-white/70" />
       </div>
-      <div className="flex flex-col leading-tight">
-        <span className="text-[10px] font-black uppercase tracking-tight text-white">{label}</span>
-        <span className="text-[9px] font-medium uppercase tracking-wider text-white/40">{sub}</span>
-      </div>
+      <span className="text-[9px] font-bold uppercase tracking-widest text-white/60 group-hover:text-white">
+        {label}
+      </span>
     </div>
   );
 }

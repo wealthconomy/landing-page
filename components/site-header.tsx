@@ -47,12 +47,6 @@ const productItems = [
     desc: "Bite-sized financial literacy.",
   },
   {
-    label: "Pricing",
-    to: "/pricing" as const,
-    icon: Tag,
-    desc: "Free to start. Transparent.",
-  },
-  {
     label: "Security",
     to: "/security" as const,
     icon: ShieldCheck,
@@ -91,7 +85,6 @@ const portfolioPeek = [
 
 const navItems = [
   { label: "About", to: "/about" as const },
-  { label: "Pricing", to: "/pricing" as const },
   { label: "FAQ", to: "/#faq" as const },
   { label: "Contact", to: "/contact" as const },
 ];
@@ -99,10 +92,27 @@ const navItems = [
 export function SiteHeader() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    setMousePos({
+      x: e.clientX - rect.left,
+      y: e.clientY - rect.top,
+    });
+  };
+
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-white/[0.05] bg-background/40 backdrop-blur-md">
+    <header 
+      onMouseMove={handleMouseMove}
+      className="group sticky top-0 z-50 w-full border-b border-white/[0.05] bg-background/60 backdrop-blur-xl transition-all duration-300"
+    >
+      <div 
+        className="mouse-light opacity-0 group-hover:opacity-100" 
+        style={{ '--x': `${mousePos.x}px`, '--y': `${mousePos.y}px` } as any}
+      />
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6">
-        <Link href="/" className="flex items-center">
+        <Link href="/" className="flex items-center transition-transform hover:scale-105">
           <img src={logo.src} alt="Wealthconomy" className="h-8 w-auto" />
         </Link>
 

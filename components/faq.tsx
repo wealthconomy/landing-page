@@ -36,7 +36,7 @@ const faqs = [
   },
   {
     q: "What portfolios do you offer?",
-    a: "Six: WealthFlex (flexible), WealthFix (locked terms), WealthGoal (target-based), WealthGroup (digital Ajo), WealthFam (household pots), and Emergency (instant-access reserve).",
+    a: "Six: WealthFlex (flexible), WealthFix (locked terms), WealthGoal (target-based), WealthGroup (digital Ajo), WealthFam (household pots), and WealthFlow (automated rhythm).",
   },
   {
     q: "How is WealthUp different from WiseUp?",
@@ -44,7 +44,7 @@ const faqs = [
   },
   {
     q: "Can I withdraw my money any time?",
-    a: "WealthFlex and Emergency are always liquid — withdraw any time, no fees. WealthFix and WealthGroup have term-based rules clearly stated upfront. Early withdrawals on locked products incur a transparent service fee.",
+    a: "WealthFlex and WealthFlow are designed for maximum flexibility — withdraw any time, no fees. WealthFix and WealthGroup have term-based rules clearly stated upfront. Early withdrawals on locked products incur a transparent service fee.",
   },
   {
     q: "How does group savings (digital Ajo) work?",

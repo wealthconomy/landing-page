@@ -75,7 +75,8 @@ export function WealthGroupSection() {
       const totalHeight = containerRef.current.offsetHeight - vh;
 
       const scrolled = Math.min(Math.max(-rect.top, 0), totalHeight);
-      const p = totalHeight > 0 ? (scrolled / totalHeight) * (slides.length - 1) : 0;
+      const p =
+        totalHeight > 0 ? (scrolled / totalHeight) * (slides.length - 1) : 0;
       setProgress(p);
     };
 
@@ -102,8 +103,8 @@ export function WealthGroupSection() {
             WealthGroup — <span className="text-gold">digitized Ajo.</span>
           </h2>
           <p className="mt-4 font-display text-lg text-muted-foreground max-w-lg mx-auto">
-            Experience the future of communal saving. Structured, transparent, and entirely
-            automated.
+            Experience the future of communal saving. Structured, transparent,
+            and entirely automated.
           </p>
         </div>
       </div>
@@ -216,37 +217,57 @@ function SceneOverlays({ activeIdx }: { activeIdx: number }) {
   return (
     <div className="relative w-full h-full">
       {/* Scene 1 — Overlay Left */}
-      <FloatingOverlay active={activeIdx === 0} position="top-1/3 left-12" delay={300}>
+      <FloatingOverlay
+        active={activeIdx === 0}
+        position="top-1/3 left-12"
+        delay={300}
+      >
         <div className="flex items-center gap-4 rounded-2xl border border-white/10 bg-black/40 p-5 backdrop-blur-xl shadow-2xl">
           <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-primary text-white">
             <Bell className="h-5 w-5" />
           </div>
           <div className="text-left font-display">
-            <p className="text-[10px] font-bold uppercase tracking-widest text-gold">Culture</p>
-            <p className="text-sm font-semibold text-white">Tunde contributed ₦50k</p>
+            <p className="text-[10px] font-bold uppercase tracking-widest text-gold">
+              Culture
+            </p>
+            <p className="text-sm font-semibold text-white">
+              Tunde contributed ₦50k
+            </p>
           </div>
         </div>
       </FloatingOverlay>
 
       {/* Scene 2 — Overlay Right */}
-      <FloatingOverlay active={activeIdx === 1} position="top-1/3 right-12" delay={300}>
+      <FloatingOverlay
+        active={activeIdx === 1}
+        position="top-1/3 right-12"
+        delay={300}
+      >
         <div className="rounded-3xl border border-white/10 bg-black/40 p-6 backdrop-blur-xl shadow-2xl min-w-[320px] font-display">
           <p className="text-[10px] font-bold uppercase tracking-widest text-gold mb-4">
             Savings Progress
           </p>
           <div className="flex items-baseline gap-2 mb-2">
-            <span className="font-display text-4xl font-bold text-white">₦245,000</span>
+            <span className="font-display text-4xl font-bold text-white">
+              ₦245,000
+            </span>
             <span className="text-sm text-white/50">/ target</span>
           </div>
           <div className="h-2 w-full rounded-full bg-white/10 overflow-hidden mt-4">
             <div className="h-full bg-gold w-[68%]" />
           </div>
-          <p className="mt-4 text-xs font-medium text-white/60">6 members active</p>
+          <p className="mt-4 text-xs font-medium text-white/60">
+            6 members active
+          </p>
         </div>
       </FloatingOverlay>
 
       {/* Scene 3 — Overlay Right */}
-      <FloatingOverlay active={activeIdx === 2} position="bottom-1/4 right-12" delay={300}>
+      <FloatingOverlay
+        active={activeIdx === 2}
+        position="bottom-1/4 right-12"
+        delay={300}
+      >
         <div className="rounded-3xl border border-white/10 bg-black/40 p-6 backdrop-blur-xl shadow-2xl min-w-[300px] font-display">
           <p className="text-[10px] font-bold uppercase tracking-widest text-white/50 mb-5">
             Payout Queue
@@ -261,9 +282,14 @@ function SceneOverlays({ activeIdx }: { activeIdx: number }) {
                 key={i}
                 className="flex items-center justify-between border-b border-white/10 pb-3 last:border-0 last:pb-0"
               >
-                <span className="text-sm font-semibold text-white">{item.name}</span>
+                <span className="text-sm font-semibold text-white">
+                  {item.name}
+                </span>
                 <span
-                  className={cn("text-[10px] font-bold uppercase tracking-widest", item.accent)}
+                  className={cn(
+                    "text-[10px] font-bold uppercase tracking-widest",
+                    item.accent,
+                  )}
                 >
                   {item.status}
                 </span>
@@ -274,20 +300,30 @@ function SceneOverlays({ activeIdx }: { activeIdx: number }) {
       </FloatingOverlay>
 
       {/* Scene 4 — Overlay Left */}
-      <FloatingOverlay active={activeIdx === 3} position="bottom-1/3 left-12" delay={300}>
+      <FloatingOverlay
+        active={activeIdx === 3}
+        position="bottom-1/3 left-12"
+        delay={300}
+      >
         <div className="flex items-center gap-4 rounded-2xl border border-white/20 bg-primary/40 backdrop-blur-xl p-5 shadow-2xl">
           <ShieldCheck className="h-8 w-8 text-emerald-400" />
           <div className="text-left font-display">
             <p className="text-[10px] font-bold uppercase tracking-widest text-white">
               Protection Active
             </p>
-            <p className="text-xs font-medium text-white/70">Monitoring health</p>
+            <p className="text-xs font-medium text-white/70">
+              Monitoring health
+            </p>
           </div>
         </div>
       </FloatingOverlay>
 
       {/* Scene 5 — Overlay Left */}
-      <FloatingOverlay active={activeIdx === 4} position="top-1/4 left-12" delay={300}>
+      <FloatingOverlay
+        active={activeIdx === 4}
+        position="top-1/4 left-12"
+        delay={300}
+      >
         <div className="rounded-3xl bg-gradient-to-br from-gold to-amber-500 p-8 text-left shadow-2xl min-w-[280px]">
           <Sparkles className="h-8 w-8 text-primary mb-6" />
           <p className="font-display text-[11px] font-bold uppercase tracking-widest text-primary/60">
