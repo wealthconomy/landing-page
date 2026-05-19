@@ -85,8 +85,8 @@ const portfolioPeek = [
 
 const navItems = [
   { label: "About", to: "/about" as const },
+  { label: "Blog", to: "/blog" as const },
   { label: "FAQ", to: "/#faq" as const },
-  { label: "Contact", to: "/contact" as const },
 ];
 
 export function SiteHeader() {
@@ -189,19 +189,22 @@ export function SiteHeader() {
         </nav>
 
         <div className="flex items-center gap-3">
-          <span className="hidden items-center gap-1.5 rounded-full border border-border bg-background/60 px-3 py-1.5 text-xs font-medium text-muted-foreground backdrop-blur-sm sm:inline-flex">
+          <Link
+            href="/contact"
+            className="hidden items-center gap-1.5 rounded-full border border-border bg-background/60 px-3 py-1.5 text-xs font-medium text-muted-foreground backdrop-blur-sm hover:bg-surface-soft hover:text-foreground transition-all sm:inline-flex"
+          >
             <span className="relative flex h-1.5 w-1.5">
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-500 opacity-75" />
               <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-emerald-500" />
             </span>
-            Now in beta
-          </span>
+            Contact us
+          </Link>
           <Button
             size="sm"
             asChild
             className="group h-10 rounded-full px-5 transition-transform hover:scale-105 active:scale-95"
           >
-            <Link href="/#waitlist">
+            <Link href="/waitlist">
               Join the waitlist
               <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
             </Link>

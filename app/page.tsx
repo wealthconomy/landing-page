@@ -15,14 +15,15 @@ import { Reveal } from "@/components/ui/reveal";
 
 export const metadata: Metadata = {
   title: "Wealthconomy — Structured Wealth for Modern Professionals",
-  description: "Save consistently, build financial discipline, grow wealth and impact — all in one structured Naira-first platform.",
+  description:
+    "Save consistently, build financial discipline, grow wealth and impact — all in one structured Naira-first platform.",
 };
 
 export default function Index() {
   return (
     <div className="bg-mesh-gradient">
       <Hero />
-      
+
       <Reveal animation="up" delay={200}>
         <StatsBand />
       </Reveal>

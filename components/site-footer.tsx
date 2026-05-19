@@ -65,20 +65,20 @@ export function SiteFooter() {
             </h2>
           </div>
           <div className="flex flex-wrap items-center gap-3">
-            <Link
-              href="/#waitlist"
+            <button
+              onClick={() => window.dispatchEvent(new CustomEvent("open-coming-soon-modal"))}
               className="group inline-flex items-center gap-2 rounded-2xl bg-white px-6 py-3.5 text-sm font-bold text-black transition-all hover:scale-[1.02] hover:shadow-[0_20px_60px_-15px_rgba(255,255,255,0.5)]"
             >
               Start for free
               <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-            </Link>
-            <a
-              href="#"
+            </button>
+            <Link
+              href="/waitlist"
               className="group inline-flex items-center gap-2 rounded-2xl border border-white/15 bg-white/5 px-6 py-3.5 text-sm font-bold text-white backdrop-blur-xl transition-all hover:bg-white/10"
             >
-              See a demo
+              Join the waitlist
               <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-            </a>
+            </Link>
           </div>
         </div>
       </div>
@@ -195,6 +195,7 @@ export function SiteFooter() {
                 <ul className="space-y-3.5">
                   {[
                     { label: "WiseUp Hub", to: "/learn" },
+                    { label: "WiseUp Blog", to: "/blog" },
                     { label: "Market Insights", to: "/learn#insights" },
                     { label: "Wealth Score", to: "/learn#score" },
                     { label: "Tax Efficiency", to: "/learn#tax" },
@@ -218,11 +219,14 @@ export function SiteFooter() {
                 <ComplianceBadge icon={Award} label="PCI DSS" />
               </div>
 
-              <div className="group flex items-center gap-4 rounded-2xl border border-white/10 bg-white/[0.04] px-5 py-3 backdrop-blur-xl transition-all hover:bg-white/[0.08]">
+              <button
+                onClick={() => window.dispatchEvent(new CustomEvent("open-coming-soon-modal"))}
+                className="group flex cursor-pointer items-center gap-4 rounded-2xl border border-white/10 bg-white/[0.04] px-5 py-3 backdrop-blur-xl transition-all hover:bg-white/[0.08]"
+              >
                 <div className="rounded-xl border border-white/10 bg-white/5 p-2">
                   <QrCode className="h-7 w-7 text-white/70 transition-colors group-hover:text-gold" />
                 </div>
-                <div className="flex flex-col">
+                <div className="flex flex-col text-left">
                   <span className="text-[11px] font-black uppercase tracking-[0.15em] text-white">
                     Get the mobile app
                   </span>
@@ -230,7 +234,7 @@ export function SiteFooter() {
                     Scan to download · iOS & Android
                   </span>
                 </div>
-              </div>
+              </button>
             </div>
 
             {/* Disclaimer */}

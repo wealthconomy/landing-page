@@ -1,6 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 import { ArrowUpRight, ShieldCheck, Zap, Lock, Users, Repeat, GraduationCap, Star } from "lucide-react";
 import { useState, useRef, useEffect } from "react";
 import phoneHome from "@/assets/phone-home.png";
@@ -70,21 +71,23 @@ function MiniCard({
 
   // Absorption Physics
   // We want the cards to accelerate toward the center-bottom of the phone
-  const scrollThreshold = 550;
+  const scrollThreshold = 800;
   const progress = Math.max(0, Math.min(1, scrollY / scrollThreshold));
   
   // Power curve for "pull" intensity (quadratic for acceleration)
-  const pull = Math.pow(progress, 2.5);
+  const pull = Math.pow(progress, 2);
   
-  // Horizontal convergence toward center
-  const convergeX = side === "left" ? pull * 450 : pull * -450;
-  // Vertical suction toward the phone body
-  const suctionY = pull * 500;
+  // Horizontal convergence toward center (moderate drift to keep them visible on the sides)
+  const convergeX = side === "left" ? pull * 180 : pull * -180;
+  // Vertical suction toward the phone body (noticeable parallax)
+  const suctionY = pull * 220;
   
-  // Visual effects for "entering" the device
-  const scale = 1 - (pull * 0.85);
-  const blur = pull * 12;
-  const opacity = 1 - Math.pow(progress, 5); // Stay visible until the last moment
+  // Visual effects for "entering" the device (moderate scale reduction)
+  const scale = 1 - (pull * 0.12);
+  
+  // Keep the cards 100% visible and sharp throughout the entire scroll threshold
+  const blur = 0;
+  const opacity = 1;
 
   return (
     <div
@@ -248,17 +251,24 @@ export function Hero() {
         </p>
 
         <div className="mt-10 flex flex-wrap justify-center gap-3">
-          <Button size="lg" className="h-12 rounded-full px-6 transition-transform hover:scale-105 active:scale-95 duration-200">
+          <Button 
+            size="lg" 
+            className="h-12 rounded-full px-6 transition-transform hover:scale-105 active:scale-95 duration-200"
+            onClick={() => window.dispatchEvent(new CustomEvent("open-coming-soon-modal"))}
+          >
             Get Started
             <ArrowUpRight className="h-4 w-4" />
           </Button>
           <Button
             size="lg"
             variant="outline"
+            asChild
             className="h-12 rounded-full border-border bg-background/50 backdrop-blur-md px-6 text-foreground hover:bg-surface-soft transition-transform hover:scale-105 active:scale-95 duration-200"
           >
-            Book a demo
-            <ArrowUpRight className="h-4 w-4" />
+            <Link href="/waitlist">
+              Join the waitlist
+              <ArrowUpRight className="h-4 w-4" />
+            </Link>
           </Button>
         </div>
       </div>

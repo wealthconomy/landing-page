@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 import { ArrowUpRight, CheckCircle2 } from "lucide-react";
 
 export function FinalCta() {
@@ -29,12 +30,18 @@ export function FinalCta() {
         </p>
 
         <div className="mt-12 flex flex-wrap justify-center gap-4">
-          <Button size="lg" className="h-14 rounded-full bg-white px-10 text-black hover:bg-white/90 font-bold transition-all hover:scale-105 active:scale-95">
+          <Button 
+            size="lg" 
+            className="h-14 rounded-full bg-white px-10 text-black hover:bg-white/90 font-bold transition-all hover:scale-105 active:scale-95"
+            onClick={() => window.dispatchEvent(new CustomEvent("open-coming-soon-modal"))}
+          >
             Start for free
             <ArrowUpRight className="ml-2 h-4 w-4" />
           </Button>
-          <Button size="lg" variant="outline" className="h-14 rounded-full border-white/20 bg-transparent px-10 text-white hover:bg-white/5 font-bold transition-all hover:scale-105 active:scale-95">
-            Book a demo
+          <Button size="lg" variant="outline" asChild className="h-14 rounded-full border-white/20 bg-transparent px-10 text-white hover:bg-white/5 font-bold transition-all hover:scale-105 active:scale-95">
+            <Link href="/waitlist">
+              Join the waitlist
+            </Link>
           </Button>
         </div>
       </div>
