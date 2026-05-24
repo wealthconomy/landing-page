@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import { Lock, Users, Target, Zap, Heart, Repeat, ArrowUpRight, Check, Pause, Play, type LucideIcon } from "lucide-react";
+import { Lock, Users, Target, Zap, Heart, Repeat, ArrowUpRight, ArrowRight, Check, Pause, Play, type LucideIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 type Product = {
@@ -137,11 +137,11 @@ export function PortfolioGrid() {
       <div className="mx-auto max-w-7xl px-6">
         <div className="mx-auto max-w-2xl text-center">
           <div className="text-sm font-medium uppercase tracking-widest text-primary">A Menu of Financial Habits</div>
-          <h2 className="mt-3 font-display text-4xl font-semibold tracking-tight md:text-5xl">
-            A Portfolio for Every Purpose.
+          <h2 className="mt-5 font-display text-4xl font-semibold tracking-tight md:text-5xl">
+            How would you want to Save?
           </h2>
-          <p className="mt-4 text-lg text-muted-foreground">
-            Wealth isn't one-size-fits-all. Pick the structure that matches your habit — and let discipline do the rest.
+          <p className="mt-5 text-lg text-muted-foreground">
+            Explore different savings products tailored to user goals and financial needs.
           </p>
         </div>
 
@@ -250,8 +250,10 @@ export function PortfolioGrid() {
                   href={`/portfolios#${active.id.replace("wealth", "")}`}
                   className="group inline-flex items-center gap-1.5 rounded-full bg-foreground px-5 py-2.5 text-sm font-medium text-background transition-all hover:gap-2.5 hover:scale-105"
                 >
-                  Explore {active.name}
-                  <ArrowUpRight className="h-4 w-4 transition-transform group-hover:rotate-45" />
+                  <span className="text-sm font-medium transition-colors group-hover:text-primary">
+                    Read More
+                  </span>
+                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1 group-hover:text-primary" />
                 </Link>
               </div>
             </div>
@@ -296,6 +298,17 @@ export function PortfolioGrid() {
               );
             })}
           </div>
+        </div>
+
+        {/* Global CTA */}
+        <div className="mt-16 text-center">
+          <button 
+            onClick={() => window.dispatchEvent(new CustomEvent("open-coming-soon-modal"))}
+            className="inline-flex items-center gap-2 rounded-full bg-primary px-8 py-4 text-sm font-bold text-white transition-all hover:scale-105 hover:bg-primary/90 shadow-glow-teal"
+          >
+            Explore a Wealth Portfolio
+            <ArrowUpRight className="h-4 w-4" />
+          </button>
         </div>
       </div>
     </section>

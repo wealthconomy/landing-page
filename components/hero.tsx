@@ -7,6 +7,7 @@ import { useState, useRef, useEffect } from "react";
 import phoneHome from "@/assets/phone-home.png";
 import phonePortfolio from "@/assets/phone-portfolio.png";
 import phoneWinup from "@/assets/phone-winup.png";
+import heroPeople from "@/assets/hero-people.png";
 
 function PhoneFrame({
   src,
@@ -239,15 +240,13 @@ export function Hero() {
         </div>
 
         <h1 className="mx-auto mt-8 max-w-4xl font-display text-5xl font-bold leading-[1.05] tracking-tight text-foreground md:text-6xl lg:text-7xl">
-          Smart wealth management
+          Wealthconomy: Where your Money
           <br />
-          for modern professionals
+          Grows into Wealth
         </h1>
 
         <p className="mx-auto mt-6 max-w-xl text-base text-muted-foreground md:text-lg">
-          Wealthconomy is your structured ecosystem for automated savings,
-          financial discipline and lasting legacy — built on data, mentorship
-          and culture.
+          Your platform to Save, Invest, Learn, Achieve your Financial goals and Impact Lives.
         </p>
 
         <div className="mt-10 flex flex-wrap justify-center gap-3">
@@ -256,19 +255,8 @@ export function Hero() {
             className="h-12 rounded-full px-6 transition-transform hover:scale-105 active:scale-95 duration-200"
             onClick={() => window.dispatchEvent(new CustomEvent("open-coming-soon-modal"))}
           >
-            Get Started
+            Start your wealth journey
             <ArrowUpRight className="h-4 w-4" />
-          </Button>
-          <Button
-            size="lg"
-            variant="outline"
-            asChild
-            className="h-12 rounded-full border-border bg-background/50 backdrop-blur-md px-6 text-foreground hover:bg-surface-soft transition-transform hover:scale-105 active:scale-95 duration-200"
-          >
-            <Link href="/waitlist">
-              Join the waitlist
-              <ArrowUpRight className="h-4 w-4" />
-            </Link>
           </Button>
         </div>
       </div>
@@ -344,28 +332,28 @@ export function Hero() {
           </div>
         </div>
 
-        {/* Three phones */}
-        <div className="relative mx-auto flex h-[600px] max-w-3xl items-end justify-center md:h-[680px]">
-          {/* Glow */}
-          <div className="pointer-events-none absolute bottom-0 left-1/2 h-[360px] w-[520px] -translate-x-1/2 rounded-full bg-primary/15 blur-[100px] animate-pulse" style={{ animationDuration: '6s' }} />
+        {/* Visuals */}
+        <div className="relative mx-auto mt-16 flex max-w-5xl flex-col items-center justify-center gap-10 lg:flex-row lg:gap-16">
+          {/* African Young Persons */}
+          <div className="relative w-full max-w-md flex-1 lg:translate-x-12">
+            <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[2.5rem] bg-neutral-900 shadow-[0_30px_70px_-20px_rgba(21,93,95,0.45)] ring-1 ring-white/10 transition-transform hover:scale-[1.02] duration-500">
+               <img src={heroPeople.src} alt="African young persons building wealth" className="h-full w-full object-cover" />
+               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
+            </div>
+            {/* Glow */}
+            <div className="pointer-events-none absolute -bottom-10 left-1/2 h-[200px] w-[300px] -translate-x-1/2 rounded-full bg-primary/20 blur-[80px] animate-pulse" />
+          </div>
 
-          <PhoneFrame
-            src={phonePortfolio.src}
-            alt="Wealthconomy wealth portfolio screen"
-            className="animate-phone-a absolute bottom-6 left-1/2 -translate-x-[88%] origin-bottom w-[200px] md:w-[230px]"
-          />
-
-          <PhoneFrame
-            src={phoneHome.src}
-            alt="Wealthconomy home dashboard"
-            className="animate-phone-b relative z-10 origin-bottom w-[230px] md:w-[270px]"
-          />
-
-          <PhoneFrame
-            src={phoneWinup.src}
-            alt="Wealthconomy WinUp transactions"
-            className="animate-phone-c absolute bottom-6 left-1/2 translate-x-[-12%] origin-bottom w-[200px] md:w-[230px]"
-          />
+          {/* App mockup */}
+          <div className="relative flex w-full max-w-[280px] flex-1 items-center justify-center lg:-translate-x-12 z-10">
+             <PhoneFrame
+               src={phoneHome.src}
+               alt="Wealthconomy home dashboard"
+               className="relative z-10 w-full animate-in zoom-in duration-1000 delay-500"
+             />
+             {/* Glow */}
+             <div className="pointer-events-none absolute bottom-0 left-1/2 h-[200px] w-[200px] -translate-x-1/2 rounded-full bg-gold/15 blur-[60px] animate-pulse" style={{ animationDelay: '2s' }} />
+          </div>
         </div>
       </div>
     </section>

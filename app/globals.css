@@ -164,6 +164,13 @@
     color: var(--color-foreground);
   }
 
+  /* Global pointer cursor for clickable elements */
+  button, 
+  a, 
+  [role="button"] {
+    cursor: pointer !important;
+  }
+
   .font-display {
     font-family: var(--font-display);
     letter-spacing: -0.03em;
@@ -229,6 +236,13 @@
 }
 .animate-marquee-left { animation: marquee-left 60s linear infinite; }
 .animate-marquee-right { animation: marquee-right 60s linear infinite; }
+
+@keyframes app-scroll {
+  0%, 15% { background-position: top center; }
+  45%, 55% { background-position: bottom center; }
+  85%, 100% { background-position: top center; }
+}
+.animate-app-scroll { animation: app-scroll 12s ease-in-out infinite; }
 
 /* Portfolio section animations */
 @keyframes portfolio-slide-in {

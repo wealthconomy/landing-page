@@ -17,7 +17,32 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Wealthconomy | Smart Wealth Management",
-  description: "Wealthconomy is your structured ecosystem for automated savings, financial discipline and lasting legacy.",
+  description: "Wealthconomy is your structured ecosystem for automated savings, financial discipline and lasting legacy. Empowering Africans to build community-driven wealth.",
+  openGraph: {
+    title: "Wealthconomy | Smart Wealth Management",
+    description: "Wealthconomy is your structured ecosystem for automated savings, financial discipline and lasting legacy.",
+    url: "https://wealthconomy.com",
+    siteName: "Wealthconomy",
+    images: [
+      {
+        url: "/og-image.jpg", // We will assume there is an og-image
+        width: 1200,
+        height: 630,
+        alt: "Wealthconomy Preview",
+      },
+    ],
+    locale: "en_NG",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Wealthconomy | Smart Wealth Management",
+    description: "Empowering Africans to build community-driven wealth.",
+    images: ["/og-image.jpg"],
+  },
+  icons: {
+    icon: "/favicon.ico",
+  },
 };
 
 export default function RootLayout({

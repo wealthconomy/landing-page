@@ -16,6 +16,8 @@ import {
   Sparkles,
   Lock,
   Award,
+  Facebook,
+  Phone,
 } from "lucide-react";
 import logo from "@/assets/wealthconomy-logo-new.png";
 
@@ -101,7 +103,7 @@ export function SiteFooter() {
                 </span>
               </div>
               <div className="text-xs font-medium tracking-wide text-white/40">
-                {currentYear} © Wealthconomy Technologies Limited
+                © 2026 Wealthconomy. Empowering Financial Growth Across Africa.
               </div>
             </div>
 
@@ -141,20 +143,21 @@ export function SiteFooter() {
                 <div className="flex items-center gap-3">
                   <SocialIcon icon={Twitter} href="#" />
                   <SocialIcon icon={Instagram} href="#" />
+                  <SocialIcon icon={Facebook} href="#" />
                   <SocialIcon icon={Linkedin} href="#" />
                 </div>
               </div>
 
               <div>
-                <FooterHeading>Portfolios</FooterHeading>
+                <FooterHeading>Quick Links</FooterHeading>
                 <ul className="space-y-3.5">
                   {[
-                    { label: "WealthFix", to: "/portfolios#fix" },
-                    { label: "WealthGroup", to: "/portfolios#group" },
-                    { label: "WealthGoal", to: "/portfolios#goal" },
-                    { label: "WealthFlex", to: "/portfolios#flex" },
-                    { label: "WealthFlow", to: "/portfolios#flow" },
-                    { label: "WealthFam", to: "/portfolios#fam" },
+                    { label: "About Us", to: "/about" },
+                    { label: "Features", to: "/#how-it-works" },
+                    { label: "Savings Plans", to: "/portfolios" },
+                    { label: "Financial Education", to: "/learn" },
+                    { label: "FAQs", to: "/#faq" },
+                    { label: "Contact Us", to: "/contact" },
                   ].map((item) => (
                     <FooterLink key={item.label} href={item.to}>
                       {item.label}
@@ -164,17 +167,20 @@ export function SiteFooter() {
               </div>
 
               <div>
-                <FooterHeading>Company</FooterHeading>
+                <FooterHeading>Contact</FooterHeading>
                 <ul className="space-y-3.5 mb-10">
-                  {[
-                    { label: "About Us", to: "/about" },
-                    { label: "Trust Center", to: "/security" },
-                    { label: "Contact", to: "/contact" },
-                  ].map((item) => (
-                    <FooterLink key={item.label} href={item.to}>
-                      {item.label}
-                    </FooterLink>
-                  ))}
+                  <li>
+                    <a href="mailto:hello@wealthconomy.org" className="group relative flex items-center text-[14px] text-white/75 transition-all duration-300 hover:text-white">
+                      <Mail className="mr-2 h-4 w-4 text-primary" />
+                      <span className="relative">hello@wealthconomy.org<span className="absolute -bottom-1 left-0 h-px w-0 bg-current opacity-70 transition-all duration-300 group-hover:w-full" /></span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="tel:+2348116491114" className="group relative flex items-center text-[14px] text-white/75 transition-all duration-300 hover:text-white">
+                      <Phone className="mr-2 h-4 w-4 text-primary" />
+                      <span className="relative">+234 8116491114<span className="absolute -bottom-1 left-0 h-px w-0 bg-current opacity-70 transition-all duration-300 group-hover:w-full" /></span>
+                    </a>
+                  </li>
                 </ul>
                 <FooterHeading>Legal</FooterHeading>
                 <ul className="space-y-3.5">

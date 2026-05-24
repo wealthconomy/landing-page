@@ -30,6 +30,105 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: "saving-discipline-the-first-step",
+    title: "Saving Discipline: The first step",
+    date: "May 24, 2026",
+    readTime: "3 min read",
+    category: "Basics",
+    tags: ["Savings", "Discipline", "Basics"],
+    image: budgetingImg,
+    excerpt: "Building wealth starts with a single habit: consistency. Learn how setting aside a fixed amount weekly can compound over time and secure your financial future.",
+    introduction: "Many people believe that building wealth requires a massive salary or a stroke of luck. In reality, the foundation of financial independence is built on a much simpler concept: discipline. The habit of saving consistently, regardless of how small the amount, is the most crucial first step in any wealth-building journey.",
+    sections: [
+      {
+        id: "start-small",
+        title: "1. Start Small, Think Big",
+        content: "You don't need to save half your income to make a difference. Starting with just 5% or 10% of your earnings builds the mental muscle of saving. The goal initially isn't the monetary value, but establishing the habit."
+      },
+      {
+        id: "pay-yourself-first",
+        title: "2. Pay Yourself First",
+        content: "The golden rule of saving is to treat your savings account like a non-negotiable monthly bill. Before paying rent, buying groceries, or spending on entertainment, direct a fixed percentage of your income straight into your savings."
+      },
+      {
+        id: "automate-the-process",
+        title: "3. Automate the Process",
+        content: "Willpower is finite. By automating your transfers on payday, you remove the emotional friction of parting with your money. Out of sight means out of mind, and your wealth grows quietly in the background."
+      }
+    ],
+    proTip: {
+      title: "The 1% Challenge",
+      text: "If 10% feels too steep, start by saving just 1% of your income this month. Next month, increase it to 2%. Gradually scale up until you hit your target rate."
+    },
+    conclusion: "Discipline is the bridge between financial goals and financial reality. By starting small, paying yourself first, and automating the process, you set the stage for a lifetime of wealth accumulation."
+  },
+  {
+    slug: "common-financial-mistakes",
+    title: "Common Financial Mistakes",
+    date: "May 20, 2026",
+    readTime: "5 min read",
+    category: "Strategy",
+    tags: ["Mistakes", "Strategy", "Personal Finance"],
+    image: emergencyImg,
+    excerpt: "Many young professionals fall into the trap of lifestyle inflation. Discover the top 3 mistakes to avoid when you get a salary increase, and how to allocate it smartly.",
+    introduction: "Financial success isn't just about making the right moves; it's equally about avoiding the wrong ones. Even high earners can find themselves living paycheck to paycheck if they fall prey to common financial pitfalls.",
+    sections: [
+      {
+        id: "lifestyle-inflation",
+        title: "1. Lifestyle Inflation",
+        content: "Also known as lifestyle creep, this occurs when your expenses rise at the same rate as your income. When you get a raise, it's tempting to upgrade your car, apartment, or wardrobe. To build wealth, you must maintain your standard of living and direct the extra income into investments."
+      },
+      {
+        id: "ignoring-emergency-funds",
+        title: "2. Ignoring the Emergency Fund",
+        content: "Investing all your spare cash without keeping a liquid buffer is a recipe for disaster. When an unexpected expense hits, you may be forced to sell investments at a loss or take on high-interest debt."
+      },
+      {
+        id: "bad-debt",
+        title: "3. Accumulating High-Interest Debt",
+        content: "Not all debt is created equal. While a mortgage can be a tool for leverage, consumer debt (like credit card balances) carries exorbitant interest rates that mathematically destroy your ability to compound wealth."
+      }
+    ],
+    proTip: {
+      title: "The 50% Raise Rule",
+      text: "Whenever you receive a salary increase or bonus, commit to saving or investing at least 50% of the new money. You can use the other 50% to improve your lifestyle guilt-free."
+    },
+    conclusion: "By actively avoiding lifestyle inflation, maintaining an emergency buffer, and steering clear of bad debt, you protect your wealth-building engine from unnecessary friction."
+  },
+  {
+    slug: "investment-basics-101",
+    title: "Investment Basics 101",
+    date: "May 15, 2026",
+    readTime: "4 min read",
+    category: "Invest",
+    tags: ["Investment", "Basics", "Beginners"],
+    image: investmentImg,
+    excerpt: "Confused by stocks, bonds, and mutual funds? This quick guide breaks down investment vehicles into simple terms, helping you choose the right path for your risk appetite.",
+    introduction: "Saving protects your money, but investing grows it. For beginners, the world of investing can seem like a labyrinth of complex jargon and intimidating charts. However, the core principles of investing are straightforward and accessible to everyone.",
+    sections: [
+      {
+        id: "what-is-investing",
+        title: "1. What is Investing?",
+        content: "At its core, investing is the act of allocating money to an asset with the expectation of generating an income or profit over time. Unlike saving, which simply parks money, investing puts your money to work."
+      },
+      {
+        id: "asset-classes",
+        title: "2. Understanding Asset Classes",
+        content: "The primary vehicles include Equities (owning a piece of a company through stocks), Fixed Income (lending money to governments or corporations via bonds), and Real Estate (owning physical property). Each carries a different risk and reward profile."
+      },
+      {
+        id: "diversification",
+        title: "3. The Power of Diversification",
+        content: "Never put all your eggs in one basket. By spreading your investments across different asset classes, sectors, and geographies, you reduce the risk of a single negative event wiping out your portfolio."
+      }
+    ],
+    proTip: {
+      title: "Index Funds",
+      text: "For most beginners, low-cost broad-market index funds offer the best balance of diversification and historical returns without the need to pick individual stocks."
+    },
+    conclusion: "Investing is a long-term game. By understanding the basics, diversifying your portfolio, and remaining patient, you can harness the power of the market to achieve financial freedom."
+  },
+  {
     slug: "the-future-of-digital-payments",
     title: "The Future of Digital Payments: What It Means For You",
     date: "Jan 14, 2026",

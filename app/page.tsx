@@ -1,13 +1,11 @@
 import type { Metadata } from "next";
 import { Hero } from "@/components/hero";
-import { StatsBand } from "@/components/stats-band";
+import { ExploreWealthOptions } from "@/components/explore-wealth-options";
 import { PortfolioGrid } from "@/components/portfolio-grid";
-import { WealthGroupSection } from "@/components/wealth-group";
+import { WhyChoose } from "@/components/why-choose";
+import { TrustBand } from "@/components/trust-band";
 import { HowItWorks } from "@/components/how-it-works";
 import { DashboardPreview } from "@/components/dashboard-preview";
-import { PillarsLearnInvest } from "@/components/pillars-learn-invest";
-import { ImpactStrip } from "@/components/impact-strip";
-import { TrustBand } from "@/components/trust-band";
 import { Testimonials } from "@/components/testimonials";
 import { FAQ } from "@/components/faq";
 import { WaitlistCta } from "@/components/waitlist-cta";
@@ -24,36 +22,28 @@ export default function Index() {
     <div className="bg-mesh-gradient">
       <Hero />
 
-      <Reveal animation="up" delay={200}>
-        <StatsBand />
+      <Reveal animation="up" threshold={0.05}>
+        <ExploreWealthOptions />
       </Reveal>
 
       <Reveal animation="up" threshold={0.05}>
         <PortfolioGrid />
       </Reveal>
 
-      <Reveal animation="up" threshold={0.1}>
-        <WealthGroupSection />
-      </Reveal>
-
       <Reveal animation="up" threshold={0.15}>
         <HowItWorks />
       </Reveal>
 
-      <Reveal animation="in" threshold={0.2}>
-        <DashboardPreview />
-      </Reveal>
-
-      <Reveal animation="up" threshold={0.1}>
-        <PillarsLearnInvest />
-      </Reveal>
-
-      <Reveal animation="up" threshold={0.1}>
-        <ImpactStrip />
+      <Reveal>
+        <WhyChoose />
       </Reveal>
 
       <Reveal animation="up" threshold={0.1}>
         <TrustBand />
+      </Reveal>
+
+      <Reveal animation="in" threshold={0.2}>
+        <DashboardPreview />
       </Reveal>
 
       <Reveal animation="up" threshold={0.1}>
