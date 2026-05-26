@@ -15,18 +15,21 @@ export function AboutHero() {
           Our Mission
         </div>
         
-        <h1 className="font-display text-5xl font-black leading-[1.05] tracking-tight md:text-7xl">
-          Building the infrastructure for{" "}
+        <h1 className="font-display text-4xl font-semibold leading-[1.1] tracking-tight md:text-5xl lg:text-6xl max-w-4xl mx-auto">
+          To empower everyone to better manage and multiply their money for{" "}
           <span className="bg-gradient-to-r from-primary via-primary-glow to-primary bg-clip-text text-transparent">
-            disciplined wealth.
+            impactful wealth building
           </span>
         </h1>
         
-        <p className="mx-auto mt-8 max-w-2xl text-lg text-muted-foreground leading-relaxed">
-          Wealth isn't just about making money; it's about keeping it, growing it, and passing it on. 
-          We are redesigning traditional saving culture into a structured, transparent, and automated 
-          ecosystem for the modern professional.
-        </p>
+        <div className="mx-auto mt-8 max-w-3xl space-y-6 text-base md:text-lg text-muted-foreground leading-relaxed">
+          <p>
+            Wealthconomy is a people-first financial platform building the simplest and safest path for Africans to save, invest, learn and use their wealth to create positive change. We combine competitive savings, practical financial education, high-yielding investment opportunities and purpose-driven impact products so that every African can reach life goals, grow lasting wealth, and uplift others.
+          </p>
+          <p>
+            We empower Africans to build financial resilience and generational wealth through secure, intelligent, and inclusive products that create measurable impact.
+          </p>
+        </div>
       </div>
     </section>
   );

@@ -39,60 +39,16 @@ export function SiteFooter() {
         <div className="absolute -top-[20%] left-1/2 h-[700px] w-[1200px] -translate-x-1/2 rounded-full bg-primary/20 blur-[160px]" />
         <div className="absolute top-[10%] -left-[10%] h-[500px] w-[500px] rounded-full bg-primary/15 blur-[140px] animate-pulse-slow" />
         <div className="absolute -bottom-[20%] -right-[5%] h-[600px] w-[600px] rounded-full bg-gold/10 blur-[160px] animate-pulse-slow" style={{ animationDelay: "3s" }} />
-        <div
-          className="absolute inset-0 opacity-[0.08]"
-          style={{
-            backgroundImage:
-              "linear-gradient(rgba(255,255,255,0.6) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.6) 1px, transparent 1px)",
-            backgroundSize: "64px 64px",
-            maskImage: "radial-gradient(ellipse at top, black, transparent 70%)",
-            WebkitMaskImage: "radial-gradient(ellipse at top, black, transparent 70%)",
-          }}
-        />
       </div>
 
-      {/* Big CTA strip */}
-      <div className="relative px-6 pt-24 pb-16 lg:px-10">
-        <div className="mx-auto flex max-w-7xl flex-col items-start justify-between gap-10 lg:flex-row lg:items-end">
-          <div className="max-w-3xl">
-            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3.5 py-1.5 text-[11px] font-bold uppercase tracking-[0.25em] text-white/70 backdrop-blur-xl">
-              <Sparkles className="h-3.5 w-3.5 text-gold" />
-              Structured Wealth, Simplified
-            </div>
-            <h2 className="font-display text-5xl font-black leading-[0.95] tracking-tight md:text-7xl">
-              Start building <br />
-              <span className="bg-gradient-to-r from-white via-white to-white/40 bg-clip-text text-transparent">
-                wealth that lasts.
-              </span>
-            </h2>
-          </div>
-          <div className="flex flex-wrap items-center gap-3">
-            <button
-              onClick={() => window.dispatchEvent(new CustomEvent("open-coming-soon-modal"))}
-              className="group inline-flex items-center gap-2 rounded-2xl bg-white px-6 py-3.5 text-sm font-bold text-black transition-all hover:scale-[1.02] hover:shadow-[0_20px_60px_-15px_rgba(255,255,255,0.5)]"
-            >
-              Start for free
-              <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-            </button>
-            <Link
-              href="/waitlist"
-              className="group inline-flex items-center gap-2 rounded-2xl border border-white/15 bg-white/5 px-6 py-3.5 text-sm font-bold text-white backdrop-blur-xl transition-all hover:bg-white/10"
-            >
-              Join the waitlist
-              <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-            </Link>
-          </div>
-        </div>
-      </div>
-
-      {/* Glass card */}
-      <div className="relative px-3 pb-6 lg:px-6">
-        <div className="relative mx-auto max-w-[1400px] overflow-hidden rounded-[32px] border border-white/10 bg-white/[0.03] backdrop-blur-2xl">
+      {/* Glass footer content */}
+      <div className="relative w-full border-t border-white/10 bg-white/[0.03] backdrop-blur-2xl">
+        <div className="relative mx-auto max-w-[1400px] overflow-hidden">
           {/* Inner glow */}
-          <div className="pointer-events-none absolute inset-0 rounded-[32px] bg-gradient-to-b from-white/[0.04] to-transparent" />
-          <div className="pointer-events-none absolute -top-px left-10 right-10 h-px bg-gradient-to-r from-transparent via-white/30 to-transparent" />
+          <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-white/[0.04] to-transparent" />
+          <div className="pointer-events-none absolute -top-px left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/30 to-transparent" />
 
-          <div className="relative px-7 py-12 lg:px-14 lg:py-16">
+          <div className="relative px-7 pt-10 pb-12 lg:px-14 lg:pt-12 lg:pb-16">
             {/* Top row: logo + meta */}
             <div className="flex flex-col items-start justify-between gap-8 border-b border-white/10 pb-10 md:flex-row md:items-center">
               <div className="flex items-center gap-5">
@@ -215,56 +171,9 @@ export function SiteFooter() {
               </div>
             </div>
 
-            {/* Compliance + QR */}
-            <div className="mt-16 flex flex-col items-start justify-between gap-8 border-t border-white/10 pt-10 lg:flex-row lg:items-center">
-              <div className="flex flex-wrap items-center gap-6">
-                <ComplianceBadge icon={Shield} label="Military-Grade" />
-                <ComplianceBadge icon={CheckCircle2} label="ISO 27001" />
-                <ComplianceBadge icon={Globe} label="Data Sovereignty" />
-                <ComplianceBadge icon={Lock} label="SOC 2 Type II" />
-                <ComplianceBadge icon={Award} label="PCI DSS" />
-              </div>
-
-              <button
-                onClick={() => window.dispatchEvent(new CustomEvent("open-coming-soon-modal"))}
-                className="group flex cursor-pointer items-center gap-4 rounded-2xl border border-white/10 bg-white/[0.04] px-5 py-3 backdrop-blur-xl transition-all hover:bg-white/[0.08]"
-              >
-                <div className="rounded-xl border border-white/10 bg-white/5 p-2">
-                  <QrCode className="h-7 w-7 text-white/70 transition-colors group-hover:text-gold" />
-                </div>
-                <div className="flex flex-col text-left">
-                  <span className="text-[11px] font-black uppercase tracking-[0.15em] text-white">
-                    Get the mobile app
-                  </span>
-                  <span className="text-[10px] font-medium uppercase tracking-wider text-white/40">
-                    Scan to download · iOS & Android
-                  </span>
-                </div>
-              </button>
-            </div>
-
-            {/* Disclaimer */}
-            <div className="mt-12 border-t border-white/5 pt-10">
-              <p className="max-w-5xl text-[11px] italic leading-relaxed text-white/40">
-                Wealthconomy Technologies Limited is a financial technology company, not a bank. Banking
-                services are provided by our licensed partner banks. All investments involve risk and the
-                past performance of a financial product does not guarantee future results or returns.
-              </p>
-              <p className="mt-4 text-[11px] font-bold uppercase tracking-[0.2em] text-white/50">
-                Structure · Discipline · Legacy
-              </p>
-            </div>
           </div>
 
-          {/* Giant brand wordmark */}
-          <div className="pointer-events-none relative -mt-2 select-none overflow-hidden">
-            <div
-              className="bg-gradient-to-b from-white/[0.06] to-transparent bg-clip-text text-center font-display font-black leading-[0.85] tracking-tighter text-transparent"
-              style={{ fontSize: "clamp(80px, 18vw, 280px)" }}
-            >
-              wealthconomy
-            </div>
-          </div>
+
         </div>
       </div>
     </footer>

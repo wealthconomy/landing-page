@@ -1,22 +1,235 @@
-import { ChevronRight, TrendingUp, ShieldCheck, Target, LineChart, Star, Calculator } from "lucide-react";
+"use client";
+
+import { useState } from "react";
+import { ChevronRight, TrendingUp, ShieldCheck, Target, LineChart, Star, Calculator, Mail, BookOpen, FileText, ArrowUpRight } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 export function WiseUp() {
+  const [email, setEmail] = useState("");
+  const [subscribed, setSubsubscribed] = useState(false);
+
+  const handleScrollToModules = (e: React.MouseEvent) => {
+    e.preventDefault();
+    const el = document.getElementById("learning-modules");
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <section id="wiseup" className="bg-background py-24 lg:py-32 overflow-hidden font-display">
       <div className="mx-auto max-w-7xl px-6">
-        {/* Intro Header */}
-        <div className="mb-20 text-center max-w-3xl mx-auto">
-          <div className="text-sm font-bold uppercase tracking-widest text-primary mb-4">
-            WiseUp · The Education Pillar
+        
+        {/* Intro Header Grid */}
+        <div className="grid lg:grid-cols-12 gap-12 items-center mb-24">
+          <div className="lg:col-span-7 space-y-6 text-left">
+            <div className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-4 py-1.5 text-xs font-medium text-primary">
+              <BookOpen className="h-4 w-4 text-gold" />
+              WiseUp: Your Financial Literacy Hub
+            </div>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight text-foreground leading-[1.1]">
+              Equip yourself with the knowledge to make <span className="bg-gradient-to-r from-primary to-primary-glow bg-clip-text text-transparent">informed financial decisions</span>
+            </h1>
+            <p className="text-base text-muted-foreground leading-relaxed max-w-xl">
+              Wealth building requires structured knowledge. Access our blogs, assessments, and regular market trend reports to build long-term discipline.
+            </p>
+            
+            <ul className="space-y-3 pt-2 text-sm text-muted-foreground">
+              <li className="flex items-center gap-2.5">
+                <CheckIcon />
+                <span>Access to expert insights and tips.</span>
+              </li>
+              <li className="flex items-center gap-2.5">
+                <CheckIcon />
+                <span>Engaging assessments to test your financial knowledge.</span>
+              </li>
+              <li className="flex items-center gap-2.5">
+                <CheckIcon />
+                <span>Regular reports on market trends and financial strategies.</span>
+              </li>
+            </ul>
+
+            <div className="pt-4">
+              <Button onClick={handleScrollToModules} className="rounded-full h-11 px-6 gap-2">
+                Start Learning <ChevronRight className="h-4 w-4" />
+              </Button>
+            </div>
           </div>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight text-foreground font-display">
-            Knowledge is the <br className="hidden md:block" /> <span className="text-gold">highest-yielding asset.</span>
+
+          {/* Right Column: Interactive Infographic / Chart Mockup */}
+          <div className="lg:col-span-5 relative">
+            <div className="absolute -inset-4 rounded-[2rem] bg-gradient-to-br from-primary/10 to-gold/5 blur-2xl pointer-events-none" />
+            <div className="relative rounded-3xl border border-border bg-card p-6 shadow-glow-teal">
+              <div className="flex items-center justify-between mb-4">
+                <div className="text-xs font-bold uppercase tracking-wider text-muted-foreground">Growth of ₦10,000 (Adjusted for Inflation)</div>
+                <TrendingUp className="h-4 w-4 text-emerald-500" />
+              </div>
+              
+              {/* Infographic Chart Lines */}
+              <div className="h-48 w-full border-b border-l border-border/80 relative mt-6 mb-2 flex items-end">
+                {/* Y Axis Labels */}
+                <div className="absolute left-1 top-0 text-[9px] text-muted-foreground">₦120k</div>
+                <div className="absolute left-1 top-1/2 -translate-y-1/2 text-[9px] text-muted-foreground">₦60k</div>
+                <div className="absolute left-1 bottom-1 text-[9px] text-muted-foreground">₦10k</div>
+
+                {/* X Axis Labels */}
+                <div className="absolute bottom-1 right-2 text-[9px] text-muted-foreground">5 Years</div>
+
+                {/* Line 1: Structured Savings (Primary Glow) */}
+                <svg className="absolute inset-0 h-full w-full text-primary" viewBox="0 0 100 100" preserveAspectRatio="none">
+                  <path d="M 0,90 Q 25,85 50,60 T 100,10" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
+                  <path d="M 0,90 Q 25,85 50,60 T 100,10 L 100,100 L 0,100 Z" fill="url(#grad-primary)" opacity="0.1" />
+                  <defs>
+                    <linearGradient id="grad-primary" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0%" stopColor="currentColor" />
+                      <stop offset="100%" stopColor="currentColor" stopOpacity="0" />
+                    </linearGradient>
+                  </defs>
+                </svg>
+
+                {/* Line 2: Sitting Cash under inflation (Red/Orange) */}
+                <svg className="absolute inset-0 h-full w-full text-rose-500/60" viewBox="0 0 100 100" preserveAspectRatio="none">
+                  <path d="M 0,90 Q 30,92 60,94 T 100,96" fill="none" stroke="currentColor" strokeWidth="2" strokeDasharray="3,3" />
+                </svg>
+
+                {/* Highlight dot */}
+                <span className="absolute top-[8%] right-[10%] w-3 h-3 rounded-full bg-gold border-2 border-background shadow-glow-teal animate-ping" />
+                <span className="absolute top-[8%] right-[10%] w-3 h-3 rounded-full bg-gold border-2 border-background shadow-glow-teal" />
+              </div>
+
+              <div className="flex justify-between text-[10px] font-semibold tracking-wider uppercase text-muted-foreground pt-2">
+                <span className="flex items-center gap-1.5"><span className="w-2.5 h-2.5 rounded-full bg-primary" /> WinUp Compound Plan</span>
+                <span className="flex items-center gap-1.5"><span className="w-2.5 h-2.5 rounded-full bg-rose-500/60" /> Cash in hand</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Section: Financial Position Tests */}
+        <div className="mb-24">
+          <div className="max-w-3xl mb-12">
+            <h2 className="text-2xl md:text-3xl font-semibold tracking-tight text-foreground uppercase">
+              Financial Position Tests
+            </h2>
+            <p className="text-sm text-muted-foreground mt-2">
+              Test your savings readiness and financial position. Please note that after taking the test, full results can only be unlocked via the Wealthconomy app.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-6">
+            <div className="group rounded-3xl border border-border bg-card p-6 shadow-sm hover:border-gold/30 hover:shadow-soft transition-all duration-300 flex flex-col justify-between">
+              <div>
+                <span className="text-[10px] font-bold text-gold uppercase tracking-wider bg-gold/10 px-2 py-1 rounded">Assessment 01</span>
+                <h3 className="text-xl font-semibold mt-4">Financial Position Test 1</h3>
+                <p className="text-sm text-muted-foreground mt-2 leading-relaxed">
+                  Evaluate your current asset-to-liability ratio and understand your immediate net worth distribution category.
+                </p>
+              </div>
+              <div className="mt-6 pt-4 border-t border-border flex items-center justify-between">
+                <span className="text-xs font-semibold text-primary">Unlocks via Mobile App</span>
+                <Button variant="outline" size="sm" onClick={() => window.dispatchEvent(new CustomEvent("open-coming-soon-modal"))} className="rounded-full gap-1 text-xs">
+                  Take test <ArrowUpRight className="w-3.5 h-3.5" />
+                </Button>
+              </div>
+            </div>
+
+            <div className="group rounded-3xl border border-border bg-card p-6 shadow-sm hover:border-gold/30 hover:shadow-soft transition-all duration-300 flex flex-col justify-between">
+              <div>
+                <span className="text-[10px] font-bold text-gold uppercase tracking-wider bg-gold/10 px-2 py-1 rounded">Assessment 02</span>
+                <h3 className="text-xl font-semibold mt-4">Financial Position Test 2</h3>
+                <p className="text-sm text-muted-foreground mt-2 leading-relaxed">
+                  Analyze your savings capacity and emergency buffer readiness score to verify your risk defense category.
+                </p>
+              </div>
+              <div className="mt-6 pt-4 border-t border-border flex items-center justify-between">
+                <span className="text-xs font-semibold text-primary">Unlocks via Mobile App</span>
+                <Button variant="outline" size="sm" onClick={() => window.dispatchEvent(new CustomEvent("open-coming-soon-modal"))} className="rounded-full gap-1 text-xs">
+                  Take test <ArrowUpRight className="w-3.5 h-3.5" />
+                </Button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Section: Blog Line */}
+        <div className="mb-24">
+          <div className="max-w-3xl mb-12">
+            <h2 className="text-2xl md:text-3xl font-semibold tracking-tight text-foreground uppercase">
+              Featured Money Lessons
+            </h2>
+            <p className="text-sm text-muted-foreground mt-2">
+              Browse our latest blogs linking directly to deeper deep-dives in the mobile app.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-6">
+            {[
+              { title: "Saving Discipline: The first step", desc: "Why willpower fails and automated habits win the long-term wealth game.", cat: "Basics" },
+              { title: "Common Financial Mistakes", desc: "Top portfolio pitfalls that keep Africans working for money instead of money working for them.", cat: "Strategy" },
+              { title: "Investment Basics 101", desc: "Demystifying returns, risks, and compounding horizons for modern professionals.", cat: "Invest" }
+            ].map((b, i) => (
+              <div key={i} className="group rounded-2xl border border-border bg-surface-soft/40 p-6 hover:bg-card hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between">
+                <div>
+                  <span className="text-[9px] uppercase tracking-widest text-primary font-bold">{b.cat}</span>
+                  <h4 className="text-base font-semibold mt-3 group-hover:text-primary transition-colors">{b.title}</h4>
+                  <p className="text-xs text-muted-foreground mt-2 leading-relaxed">{b.desc}</p>
+                </div>
+                <div className="mt-6 pt-4 border-t border-border/60">
+                  <Button variant="ghost" onClick={() => window.dispatchEvent(new CustomEvent("open-coming-soon-modal"))} className="p-0 hover:bg-transparent text-xs text-primary font-bold group-hover:text-primary-glow flex items-center gap-1">
+                    Read on App <ArrowUpRight className="w-3 h-3" />
+                  </Button>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Section: Newsletter subscription */}
+        <div className="relative overflow-hidden rounded-[2rem] bg-gradient-to-br from-primary to-[#0e4143] px-8 py-12 text-center text-primary-foreground md:px-16 md:py-16 mb-32">
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(255,207,101,0.2),transparent_60%)] pointer-events-none" />
+          <div className="relative max-w-xl mx-auto space-y-6">
+            <h3 className="font-display text-2xl md:text-3xl font-semibold tracking-tight text-white">
+              WiseUp Newsletter
+            </h3>
+            <p className="text-white/75 text-sm leading-relaxed">
+              Subscribe to WiseUp newsletters and unlock full assessment results in the app.
+            </p>
+            {subscribed ? (
+              <div className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-xs font-semibold backdrop-blur-sm">
+                🎉 Thanks for subscribing!
+              </div>
+            ) : (
+              <form onSubmit={(e) => { e.preventDefault(); setSubsubscribed(true); }} className="flex flex-col sm:flex-row gap-2 mt-4">
+                <input 
+                  type="email" 
+                  required
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="Enter your email" 
+                  className="flex-1 rounded-full border border-white/15 bg-white/10 px-5 py-3 text-sm text-white placeholder:text-white/40 focus:outline-none focus:border-gold"
+                />
+                <Button type="submit" className="rounded-full bg-gold text-black hover:bg-gold/90 h-12 px-6 font-bold">
+                  Subscribe
+                </Button>
+              </form>
+            )}
+          </div>
+        </div>
+
+        {/* Learning Modules Section Header */}
+        <div id="learning-modules" className="mb-20 text-center max-w-3xl mx-auto scroll-mt-24">
+          <div className="text-sm font-bold uppercase tracking-widest text-primary mb-4">
+            Curriculum modules
+          </div>
+          <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-foreground font-display">
+            The Mathematics of Wealth
           </h2>
-          <p className="mt-6 text-lg text-muted-foreground leading-relaxed max-w-2xl mx-auto">
-            A structured bank account is useless without a structured mind. Master the core principles of wealth-building through our integrated, byte-sized education modules.
+          <p className="mt-4 text-base text-muted-foreground">
+            Explore byte-sized lessons on time value, leverage, asset allocation, and tax-efficiency.
           </p>
         </div>
 
+        {/* Learning Blocks */}
         <div className="space-y-32">
           {/* Block 1: Compounding */}
           <div className="grid lg:grid-cols-2 gap-16 items-center">
@@ -52,7 +265,6 @@ export function WiseUp() {
                        <span className="text-emerald-500">+₦700,000</span>
                     </div>
                  </div>
-                 {/* Mini graph line */}
                  <svg className="w-full h-12 mt-4 text-emerald-500 opacity-80" viewBox="0 0 100 30" preserveAspectRatio="none">
                     <path d="M0,30 Q20,28 40,20 T80,10 T100,0" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
                  </svg>
@@ -74,7 +286,7 @@ export function WiseUp() {
             </div>
           </div>
 
-          {/* Block 2: Structured Discipline / Hitting Targets */}
+          {/* Block 2: Structured Discipline */}
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div className="order-2 lg:order-2 max-w-xl mx-auto lg:mx-0">
                <div className="flex items-center gap-3 mb-4">
@@ -93,7 +305,6 @@ export function WiseUp() {
               </a>
             </div>
             
-            {/* UI Graphic: Target reached / Progress */}
             <div className="order-1 lg:order-1 relative h-[300px] w-full flex items-center justify-center">
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-gold/10 blur-[80px] rounded-full pointer-events-none" />
               
@@ -105,7 +316,6 @@ export function WiseUp() {
                       <p className="text-xs text-muted-foreground">Target: ₦2,000,000</p>
                    </div>
                 </div>
-                {/* Progress bar */}
                 <div className="h-2 w-full rounded-full bg-border mb-3 overflow-hidden">
                    <div className="h-full bg-gold rounded-full w-[85%]" />
                 </div>
@@ -143,14 +353,11 @@ export function WiseUp() {
               </a>
             </div>
             
-            {/* Graphic: Crossed out "Inflation" */}
             <div className="order-1 lg:order-2 relative h-[300px] w-full flex items-center justify-center">
               <div className="relative inline-block select-none group">
                 <span className="font-display text-[70px] sm:text-[90px] md:text-[110px] font-black text-foreground tracking-tight transition-transform duration-500 group-hover:scale-105">
                   Inflation
                 </span>
-                
-                {/* Zigzag SVG path for crossing out */}
                 <svg 
                   viewBox="0 0 400 120" 
                   className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[110%] h-[120%] text-rose-500 overflow-visible pointer-events-none drop-shadow-[0_0_15px_rgba(244,63,94,0.6)]"
@@ -167,121 +374,18 @@ export function WiseUp() {
               </div>
             </div>
           </div>
-
-          {/* Block 4: Market Insights */}
-          <div id="insights" className="grid lg:grid-cols-2 gap-16 items-center">
-            <div className="order-2 lg:order-2 max-w-xl mx-auto lg:mx-0">
-               <div className="flex items-center gap-3 mb-4">
-                 <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-500/10 text-blue-500">
-                    <LineChart className="h-5 w-5" />
-                 </div>
-                 <h3 className="font-display text-3xl md:text-4xl font-semibold tracking-tight text-foreground">
-                   Market Insights
-                 </h3>
-              </div>
-              <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
-                Stay ahead of the curve with curated market intelligence. We distill complex global trends into 
-                actionable insights for the Nigerian professional, helping you identify emerging opportunities 
-                before they go mainstream.
-              </p>
-              <a href="#" className="inline-flex items-center text-blue-500 font-semibold hover:text-blue-500/80 transition-colors">
-                View Latest Analysis <ChevronRight className="ml-1 h-4 w-4" />
-              </a>
-            </div>
-            
-            <div className="order-1 lg:order-1 relative h-[300px] w-full flex items-center justify-center">
-              <div className="relative w-[340px] rounded-3xl border border-white/10 bg-white/5 p-6 shadow-glow-teal backdrop-blur-xl">
-                <div className="mb-4 flex items-center justify-between">
-                  <span className="text-xs font-bold uppercase tracking-widest text-white/40">Market Trend</span>
-                  <span className="rounded-full bg-blue-500/20 px-2 py-0.5 text-[10px] font-bold text-blue-400">Bullish</span>
-                </div>
-                <div className="space-y-4">
-                  {[1, 2, 3].map((i) => (
-                    <div key={i} className="flex items-center gap-4 border-b border-white/5 pb-3 last:border-0">
-                      <div className="h-2 w-full rounded-full bg-white/10 overflow-hidden">
-                        <div className="h-full bg-blue-500" style={{ width: `${90 - i * 15}%` }} />
-                      </div>
-                      <span className="text-xs font-bold text-white">{90 - i * 15}%</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Block 5: Wealth Score */}
-          <div id="score" className="grid lg:grid-cols-2 gap-16 items-center">
-            <div className="order-2 lg:order-1 max-w-xl mx-auto lg:mx-0">
-               <div className="flex items-center gap-3 mb-4">
-                 <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gold/10 text-gold">
-                    <Star className="h-5 w-5" />
-                 </div>
-                 <h3 className="font-display text-3xl md:text-4xl font-semibold tracking-tight text-foreground">
-                   The Wealth Score
-                 </h3>
-              </div>
-              <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
-                Measure what matters. Your Wealth Score isn't just about your balance—it's a reflection of your 
-                discipline, diversification, and trajectory. Understand your financial health through a single, 
-                powerful metric.
-              </p>
-              <a href="#" className="inline-flex items-center text-gold font-semibold hover:text-gold/80 transition-colors">
-                Calculate My Score <ChevronRight className="ml-1 h-4 w-4" />
-              </a>
-            </div>
-            
-            <div className="order-1 lg:order-2 relative h-[300px] w-full flex items-center justify-center">
-              <div className="relative flex flex-col items-center justify-center rounded-full border-8 border-gold/20 h-64 w-64 shadow-glow-gold">
-                <span className="text-xs font-bold uppercase tracking-widest text-muted-foreground">Your Score</span>
-                <span className="text-7xl font-black text-foreground">842</span>
-                <span className="mt-2 text-xs font-bold text-emerald-500 uppercase tracking-widest">Elite Tier</span>
-              </div>
-            </div>
-          </div>
-
-          {/* Block 6: Tax Efficiency */}
-          <div id="tax" className="grid lg:grid-cols-2 gap-16 items-center">
-            <div className="order-2 lg:order-2 max-w-xl mx-auto lg:mx-0">
-               <div className="flex items-center gap-3 mb-4">
-                 <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-emerald-500/10 text-emerald-500">
-                    <Calculator className="h-5 w-5" />
-                 </div>
-                 <h3 className="font-display text-3xl md:text-4xl font-semibold tracking-tight text-foreground">
-                   Tax Efficiency
-                 </h3>
-              </div>
-              <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
-                Keep more of what you earn. Our tax-smart strategies help you structure your savings and 
-                investments to minimize liabilities legally, ensuring your gross gains translate into the 
-                highest possible net wealth.
-              </p>
-              <a href="#" className="inline-flex items-center text-emerald-500 font-semibold hover:text-emerald-500/80 transition-colors">
-                Explore Tax Guides <ChevronRight className="ml-1 h-4 w-4" />
-              </a>
-            </div>
-            
-            <div className="order-1 lg:order-1 relative h-[300px] w-full flex items-center justify-center">
-              <div className="relative w-[340px] rounded-3xl border border-white/10 bg-white/5 p-8 backdrop-blur-xl">
-                <div className="mb-6 flex items-center justify-between">
-                   <div className="text-sm font-bold text-white">Tax Optimization</div>
-                   <div className="text-emerald-400 font-bold">+12% Yield</div>
-                </div>
-                <div className="space-y-4">
-                   <div className="h-2 w-full rounded-full bg-white/10 overflow-hidden">
-                      <div className="h-full bg-emerald-500 w-[60%]" />
-                   </div>
-                   <div className="h-2 w-full rounded-full bg-white/10 overflow-hidden">
-                      <div className="h-full bg-emerald-500 w-[40%]" />
-                   </div>
-                </div>
-                <p className="mt-6 text-[10px] text-white/40 leading-relaxed uppercase tracking-widest">
-                  Optimized for Nigerian Tax Code 2026
-                </p>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     </section>
+  );
+}
+
+function CheckIcon() {
+  return (
+    <div className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary">
+      <svg className="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="3">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+      </svg>
+    </div>
   );
 }

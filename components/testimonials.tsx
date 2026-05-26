@@ -1,4 +1,7 @@
-import { Quote } from "lucide-react";
+"use client";
+
+import { useState } from "react";
+import { Quote, ChevronDown, ChevronUp } from "lucide-react";
 
 const quotes = [
   { name: "Adaeze O.", role: "Senior Developer", quote: "Wealthconomy didn't just give me an app; it gave me a mentor. I've reached my business goals faster than I ever thought possible.", initial: "A" },
@@ -32,6 +35,8 @@ function Card({ q }: { q: (typeof quotes)[number] }) {
 }
 
 export function Testimonials() {
+  const [isExpanded, setIsExpanded] = useState(false);
+
   const row1 = [...quotes, ...quotes];
   const row2 = [...quotes.slice().reverse(), ...quotes.slice().reverse()];
 
@@ -51,16 +56,35 @@ export function Testimonials() {
         </div>
       </div>
 
-      <div className="relative mt-16 space-y-6">
+      <div className="relative mt-16">
         <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-32 bg-gradient-to-r from-surface-soft to-transparent" />
         <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-32 bg-gradient-to-l from-surface-soft to-transparent" />
 
         <div className="flex w-max animate-marquee-left">
           {row1.map((q, i) => <Card key={`a-${i}`} q={q} />)}
         </div>
-        <div className="flex w-max animate-marquee-right">
-          {row2.map((q, i) => <Card key={`b-${i}`} q={q} />)}
+        
+        <div className={`grid transition-all duration-500 ease-in-out ${isExpanded ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"}`}>
+          <div className="overflow-hidden min-h-0">
+            <div className="mt-6 flex w-max animate-marquee-right">
+              {row2.map((q, i) => <Card key={`b-${i}`} q={q} />)}
+            </div>
+          </div>
         </div>
+      </div>
+
+      <div className="mx-auto mt-12 flex max-w-[1400px] justify-center px-6 md:justify-end">
+        <button
+          onClick={() => setIsExpanded(!isExpanded)}
+          className="group flex items-center gap-2 rounded-full border border-border bg-card px-6 py-3 text-sm font-medium text-foreground shadow-soft transition-all hover:bg-muted"
+        >
+          {isExpanded ? "View Less" : "View More"}
+          {isExpanded ? (
+            <ChevronUp className="h-4 w-4 transition-transform group-hover:-translate-y-0.5" />
+          ) : (
+            <ChevronDown className="h-4 w-4 transition-transform group-hover:translate-y-0.5" />
+          )}
+        </button>
       </div>
     </section>
   );

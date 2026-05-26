@@ -81,10 +81,10 @@ export function ComingSoonModal() {
             className="w-full h-12 rounded-full font-bold group bg-primary hover:bg-primary-glow"
             onClick={() => setIsOpen(false)}
           >
-            <Link href="/waitlist" className="flex items-center justify-center gap-1">
+            <a href="https://forms.gle/M4NrF9w9HSny4YR49" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-1">
               Join the Priority Waitlist
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-            </Link>
+            </a>
           </Button>
           <button
             onClick={() => setIsOpen(false)}

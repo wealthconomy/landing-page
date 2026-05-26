@@ -5,7 +5,7 @@ import Link from "next/link";
 import { Plus, MessageCircleQuestion } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-const faqs = [
+export const faqs = [
   {
     q: "What exactly is Wealthconomy?",
     a: "Wealthconomy is a structured wealth ecosystem that combines automated savings portfolios (WealthFix, WealthGroup, WealthGoal and more) with financial education through WiseUp — built specifically for modern professionals who want discipline without the willpower tax.",
@@ -75,7 +75,7 @@ export function FAQ() {
         </div>
 
         <div className="mt-14 space-y-3">
-          {faqs.map((f, i) => {
+          {faqs.slice(0, 3).map((f, i) => {
             const isOpen = open === i;
             return (
               <div
@@ -113,7 +113,17 @@ export function FAQ() {
           })}
         </div>
 
-        <div className="mt-12 text-center text-sm text-muted-foreground">
+        <div className="mt-12 flex justify-center">
+          <Link 
+            href="/faq" 
+            className="group flex items-center gap-2 rounded-full border border-border bg-card px-6 py-3 text-sm font-medium text-foreground shadow-soft transition-all hover:bg-muted"
+          >
+            View More FAQs
+            <span className="transition-transform group-hover:translate-x-1">→</span>
+          </Link>
+        </div>
+
+        <div className="mt-8 text-center text-sm text-muted-foreground">
           Still curious? <Link href="/contact" className="font-semibold text-primary hover:text-primary-glow">Talk to our team →</Link>
         </div>
       </div>

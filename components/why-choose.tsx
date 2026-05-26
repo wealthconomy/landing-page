@@ -1,26 +1,26 @@
-import { ShieldCheck, Smartphone, Target, BookOpen } from "lucide-react";
+import { ShieldCheck, Smartphone, BookOpen, Heart } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const features = [
   {
     icon: ShieldCheck,
-    title: "Secure transactions",
-    body: "Built on rigorous compliance standards to ensure your funds and data are always protected.",
+    title: "Security & trust",
+    body: "Your funds and transactions are protected with advanced industry standard security and compliance standards.",
   },
   {
     icon: Smartphone,
-    title: "User-friendly experience",
-    body: "An intuitive interface designed to make wealth management simple, accessible, and completely stress-free.",
+    title: "Intelligent products",
+    body: "Goal-driven features and personalized insights that help you achieve your goals.",
   },
   {
-    icon: Target,
-    title: "Wealth building with purpose",
-    body: "Save and invest toward your goals while contributing to impactful community initiatives.",
+    icon: Heart,
+    title: "Inclusive impact",
+    body: "Options for Halal-compliant and impact-focused saving so your money supports results you care about.",
   },
   {
     icon: BookOpen,
-    title: "Financial education tools",
-    body: "Access tailored insights, interactive tests, and rich content to boost your financial literacy.",
+    title: "Expert Resources",
+    body: "Access to financial literacy tools and resources.",
   },
 ];
 

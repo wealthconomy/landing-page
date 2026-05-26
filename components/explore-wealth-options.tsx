@@ -24,7 +24,7 @@ export function ExploreWealthOptions() {
             Explore Your <span className="bg-gradient-to-r from-primary to-primary-glow bg-clip-text text-transparent">Wealth Options</span>
           </h2>
           <p className="mt-5 text-lg text-muted-foreground">
-            Wealthconomy helps Africans save smarter, grow wealth consistently, and achieve life goals. It's Secure, Intelligent, and Inclusive.
+            Wealthconomy helps Africans save smarter, grow wealth consistently, and achieve life goals. It’s Secure, Intelligent, and Inclusive.
           </p>
         </div>
 
@@ -39,26 +39,28 @@ export function ExploreWealthOptions() {
               </div>
               <h3 className="mt-6 font-display text-2xl font-semibold">1. WinUp: Smart Savings Made Easy</h3>
               <p className="mt-3 text-muted-foreground text-sm">
-                Maximize your savings with competitive interest rates and impact-driven savings designed to help you achieve your financial goals.
+                Maximize your savings with competitive interest rates and impact drive tailored to help you achieve your financial goals.
               </p>
               <ul className="mt-6 space-y-3">
                 <li className="flex items-start gap-3 text-sm">
                   <div className="mt-0.5 h-1.5 w-1.5 rounded-full bg-primary shrink-0" />
-                  <span><strong>Impact / Halal Savings:</strong> Compliant with Islamic principles, ensures ethical saving structure, and supports impact-driven financial growth.</span>
+                  <span><strong>Impact/Halal Savings:</strong> Compliant with Islamic principles, ensuring peace of mind and driving impact</span>
                 </li>
                 <li className="flex items-start gap-3 text-sm">
                   <div className="mt-0.5 h-1.5 w-1.5 rounded-full bg-primary shrink-0" />
-                  <span><strong>Interest Savings:</strong> Competitive interest rates helps users grow wealth steadily and supports personal financial goals.</span>
+                  <span><strong>Interest Savings:</strong> Competitive interest rates to grow your money and achieve your goals</span>
                 </li>
                 <li className="flex items-start gap-3 text-sm">
                   <div className="mt-0.5 h-1.5 w-1.5 rounded-full bg-primary shrink-0" />
-                  <span><strong>Mixed Savings:</strong> Wealth with purpose model, part of interest contributes to WealthPact, drives community impact initiatives.</span>
+                  <span><strong>Mixed Savings:</strong> Wealth with purpose, contribute part of your interest to our WealthPact initiative, driving positive impact in communities.</span>
                 </li>
               </ul>
             </div>
             <div className="mt-8 pt-6 border-t border-border">
-              <Button onClick={() => window.dispatchEvent(new CustomEvent("open-coming-soon-modal"))} className="rounded-full gap-2">
-                Start Saving <ArrowUpRight className="h-4 w-4" />
+              <Button asChild className="rounded-full gap-2">
+                <a href="https://forms.gle/M4NrF9w9HSny4YR49" target="_blank" rel="noopener noreferrer">
+                  Start Saving <ArrowUpRight className="h-4 w-4" />
+                </a>
               </Button>
             </div>
           </div>
@@ -71,9 +73,24 @@ export function ExploreWealthOptions() {
                 <BookOpen className="h-6 w-6" />
               </div>
               <h3 className="mt-6 font-display text-2xl font-semibold">2. WiseUp: Your Financial Literacy Hub</h3>
-              <p className="mt-3 text-muted-foreground text-sm mb-6">
-                Equip users with financial knowledge through structured learning tools including blogs, assessments, and financial insights.
+              <p className="mt-3 text-muted-foreground text-sm mb-4">
+                Equip yourself with the knowledge to make informed financial decisions through our blogs, assessments, and reports.
               </p>
+              
+              <ul className="mt-4 mb-6 space-y-2 text-sm text-muted-foreground">
+                <li className="flex items-center gap-2">
+                  <div className="h-1.5 w-1.5 rounded-full bg-gold" />
+                  <span>Access to expert insights and tips.</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <div className="h-1.5 w-1.5 rounded-full bg-gold" />
+                  <span>Engaging assessments to test your financial knowledge.</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <div className="h-1.5 w-1.5 rounded-full bg-gold" />
+                  <span>Regular reports on market trends and financial strategies.</span>
+                </li>
+              </ul>
               
               {/* Infographic mini-dashboard / Insights */}
               <div className="bg-surface-soft rounded-2xl p-4 mb-6 border border-border">
@@ -92,12 +109,12 @@ export function ExploreWealthOptions() {
 
                 <div className="grid grid-cols-2 gap-2">
                   <button onClick={() => window.dispatchEvent(new CustomEvent("open-coming-soon-modal"))} className="bg-background rounded-xl p-3 border border-border hover:border-gold/30 transition-colors cursor-pointer text-left group/test flex flex-col">
-                    <span className="text-xs font-medium">Financial health assessment</span>
-                    <span className="text-[10px] text-muted-foreground mt-1 flex items-center gap-1">Take test <ArrowUpRight className="h-3 w-3 opacity-0 group-hover/test:opacity-100 transition-opacity" /></span>
+                    <span className="text-xs font-medium">Financial Position Test 1</span>
+                    <span className="text-[10px] text-muted-foreground mt-1 flex items-center gap-1">Take test (results in app only) <ArrowUpRight className="h-3 w-3 opacity-0 group-hover/test:opacity-100 transition-opacity" /></span>
                   </button>
                   <button onClick={() => window.dispatchEvent(new CustomEvent("open-coming-soon-modal"))} className="bg-background rounded-xl p-3 border border-border hover:border-gold/30 transition-colors cursor-pointer text-left group/test flex flex-col">
-                    <span className="text-xs font-medium">Savings readiness test</span>
-                    <span className="text-[10px] text-muted-foreground mt-1 flex items-center gap-1">Take test <ArrowUpRight className="h-3 w-3 opacity-0 group-hover/test:opacity-100 transition-opacity" /></span>
+                    <span className="text-xs font-medium">Financial Position Test 2</span>
+                    <span className="text-[10px] text-muted-foreground mt-1 flex items-center gap-1">Take test (results in app only) <ArrowUpRight className="h-3 w-3 opacity-0 group-hover/test:opacity-100 transition-opacity" /></span>
                   </button>
                 </div>
               </div>
@@ -129,6 +146,9 @@ export function ExploreWealthOptions() {
             </div>
             
             <div className="mt-8 pt-6 border-t border-border space-y-4">
+              <div className="text-xs text-muted-foreground font-semibold px-1">
+                Subscribe to WiseUp newsletters to unlock full assessment results in the app.
+              </div>
               <form onSubmit={(e) => e.preventDefault()} className="flex items-center gap-2 rounded-full border border-border bg-background p-1 pl-4 focus-within:border-gold/50 transition-colors">
                 <Mail className="h-4 w-4 text-muted-foreground" />
                 <input 
@@ -198,9 +218,9 @@ export function ExploreWealthOptions() {
               <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-black/10 text-black backdrop-blur-sm">
                 <Heart className="h-6 w-6" />
               </div>
-              <h3 className="mt-6 font-display text-2xl font-semibold">3. WealthPact: Make an Impact</h3>
+              <h3 className="mt-6 font-display text-2xl font-semibold">3. WealthPact: Use Wealth to make Impact</h3>
               <p className="mt-3 text-black/70 text-sm mb-6">
-                A social impact system where users contribute to community development initiatives.
+                WealthPact is our vehicle for making a difference. Here, you contribute to meaningful community initiatives for women, the less privileged, youths, businesses and more. You can be an impact saver or just donate.
               </p>
 
               <div className="flex flex-wrap gap-2 mb-6">
@@ -213,25 +233,29 @@ export function ExploreWealthOptions() {
               <div className="grid grid-cols-3 gap-4 mb-4">
                 <div className="text-center p-3 rounded-2xl bg-black/5 border border-black/10">
                   <div className="font-display text-2xl font-bold text-black">300+</div>
-                  <div className="text-[10px] uppercase tracking-wider text-black/70 mt-1 font-semibold">women trained</div>
+                  <div className="text-[10px] uppercase tracking-wider text-black/70 mt-1 font-semibold">Women Trained</div>
                 </div>
                 <div className="text-center p-3 rounded-2xl bg-black/5 border border-black/10">
                   <div className="font-display text-2xl font-bold text-black">15+</div>
-                  <div className="text-[10px] uppercase tracking-wider text-black/70 mt-1 font-semibold">businesses funded</div>
+                  <div className="text-[10px] uppercase tracking-wider text-black/70 mt-1 font-semibold">Businesses given grants</div>
                 </div>
                 <div className="text-center p-3 rounded-2xl bg-black/5 border border-black/10">
                   <div className="font-display text-2xl font-bold text-black">5+</div>
-                  <div className="text-[10px] uppercase tracking-wider text-black/70 mt-1 font-semibold">ongoing impact projects</div>
+                  <div className="text-[10px] uppercase tracking-wider text-black/70 mt-1 font-semibold">New Impact Project</div>
                 </div>
               </div>
             </div>
             
             <div className="mt-8 pt-6 border-t border-black/10 flex flex-wrap gap-3">
-              <Button onClick={() => window.dispatchEvent(new CustomEvent("open-coming-soon-modal"))} className="rounded-full bg-black hover:bg-black/80 text-gold font-semibold gap-2 flex-1">
-                Start Impact Saving
+              <Button asChild className="rounded-full bg-black hover:bg-black/80 text-gold font-semibold gap-2 flex-1">
+                <a href="https://forms.gle/M4NrF9w9HSny4YR49" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2">
+                  Start Impact Saving
+                </a>
               </Button>
-              <Button onClick={() => window.dispatchEvent(new CustomEvent("open-coming-soon-modal"))} variant="outline" className="rounded-full border-black/20 bg-transparent hover:bg-black/5 text-black gap-2 flex-1">
-                Donate for Impact
+              <Button asChild variant="outline" className="rounded-full border-black/20 bg-transparent hover:bg-black/5 text-black gap-2 flex-1">
+                <a href="https://forms.gle/M4NrF9w9HSny4YR49" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2">
+                  Donate for Impact
+                </a>
               </Button>
             </div>
           </div>
@@ -243,23 +267,15 @@ export function ExploreWealthOptions() {
               <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-white/10 text-gold backdrop-blur-sm">
                 <TrendingUp className="h-6 w-6" />
               </div>
-              <h3 className="mt-6 font-display text-2xl font-semibold">4. WealthUp: Future Investments</h3>
+              <h3 className="mt-6 font-display text-2xl font-semibold">4. WealthUp: Future Investment Opportunities</h3>
               <p className="mt-3 text-white/75 text-sm">
-                Upcoming investment products designed for sustainable wealth growth.
+                Stay tuned for our upcoming investment products designed to grow your wealth sustainably.
               </p>
               
               <ul className="mt-6 space-y-3">
                 <li className="flex items-start gap-3 text-sm text-white/90">
                   <div className="mt-0.5 h-1.5 w-1.5 rounded-full bg-gold shrink-0" />
-                  <span>Risk-based investment portfolios.</span>
-                </li>
-                <li className="flex items-start gap-3 text-sm text-white/90">
-                  <div className="mt-0.5 h-1.5 w-1.5 rounded-full bg-gold shrink-0" />
-                  <span>Personalized investment options.</span>
-                </li>
-                <li className="flex items-start gap-3 text-sm text-white/90">
-                  <div className="mt-0.5 h-1.5 w-1.5 rounded-full bg-gold shrink-0" />
-                  <span>Long-term wealth planning.</span>
+                  <span>Tailored investment portfolios to meet your risk appetite and financial goals.</span>
                 </li>
               </ul>
             </div>

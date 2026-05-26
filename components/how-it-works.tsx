@@ -3,8 +3,8 @@ import phoneHome from "@/assets/phone-home.png";
 
 const steps = [
   { icon: UserPlus, title: "Create Your Account", body: "Sign up in minutes using your phone number or email." },
-  { icon: Layers, title: "Choose Your Wealth Portfolio", body: "Select savings type and financial goal." },
-  { icon: LineChart, title: "Save Consistently & Grow", body: "Automated savings, tracking, and progress monitoring." },
+  { icon: Layers, title: "Choose Your Wealth Portfolio", body: "Choose the type of savings and what you want to save towards and customize your plan." },
+  { icon: LineChart, title: "Save Consistently & Grow", body: "Automate savings, monitor progress, and build wealth" },
 ];
 
 export function HowItWorks() {

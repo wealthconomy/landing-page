@@ -1,13 +1,11 @@
 import { ShieldCheck, Lock, Zap, FileText, Headphones, Building2, Server } from "lucide-react";
 
 const pillars = [
-  { icon: ShieldCheck, title: "CBN & NDIC aligned", body: "Compliant with national financial regulations." },
-  { icon: Building2, title: "Regulated partner banks", body: "Funds held with regulated partner banks." },
-  { icon: Lock, title: "Bank-grade encryption", body: "End-to-end security for all your data." },
-  { icon: Server, title: "Data privacy protection", body: "Your privacy is our utmost priority." },
-  { icon: Zap, title: "Secure transaction systems", body: "Fast, reliable, and secure transaction infrastructure." },
-  { icon: FileText, title: "Reliable transaction records", body: "Transparent and easily accessible records." },
-  { icon: Headphones, title: "Trusted customer support", body: "Customer support you can trust, whenever you need it." },
+  { icon: ShieldCheck, title: "CBN & NDIC aligned", body: "Funds custodied with regulated partner banks" },
+  { icon: Server, title: "Data privacy protection", body: "Bank grade encryption" },
+  { icon: Zap, title: "Easy & secure transactions", body: "Easy and secure transaction infrastructure" },
+  { icon: FileText, title: "Reliable transaction records", body: "Transparent and accessible logs" },
+  { icon: Headphones, title: "Customer support you can trust", body: "Dedicated support team at hello@wealthconomy.org" },
 ];
 
 export function TrustBand() {
@@ -18,8 +16,8 @@ export function TrustBand() {
           <h2 className="font-display text-3xl font-semibold tracking-tight md:text-4xl">
             Your Money. Your Trust. Our Priority.
           </h2>
-          <p className="mt-4 text-lg text-muted-foreground">
-            Wealthconomy prioritizes security, transparency, and responsible financial management.
+          <p className="mt-4 text-base text-muted-foreground">
+            Wealthconomy is committed to security of funds, transparency, and responsible financial management. We leverage secure infrastructure and best practices to protect user funds and data.
           </p>
         </div>
         <div className="mt-12 flex flex-wrap justify-center gap-6">

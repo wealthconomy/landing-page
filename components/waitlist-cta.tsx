@@ -1,13 +1,9 @@
 "use client";
 
-import { useState } from "react";
-import { ArrowRight, CheckCircle2 } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export function WaitlistCta() {
-  const [email, setEmail] = useState("");
-  const [done, setDone] = useState(false);
-
   return (
     <section id="waitlist" className="bg-background py-24 lg:py-32">
       <div className="mx-auto max-w-5xl px-6">
@@ -24,29 +20,28 @@ export function WaitlistCta() {
               Join the waitlist and be among the first to experience structured, disciplined, impact-aligned wealth building.
             </p>
 
-            {done ? (
-              <div className="mx-auto mt-8 inline-flex items-center gap-2 rounded-full bg-white/10 px-5 py-3 text-sm font-medium backdrop-blur-sm">
-                <CheckCircle2 className="h-4 w-4 text-emerald-400" /> You're on the list — see you soon.
-              </div>
-            ) : (
-              <form
-                onSubmit={(e) => { e.preventDefault(); if (email) setDone(true); }}
-                className="mx-auto mt-8 flex max-w-md flex-col gap-3 sm:flex-row"
+            <div className="mx-auto mt-8 flex flex-wrap justify-center gap-4">
+              <Button 
+                asChild
+                className="h-12 rounded-full bg-gold px-8 text-black hover:bg-gold/90 font-bold transition-transform hover:scale-105 active:scale-95 duration-200"
               >
-                <input
-                  type="email"
-                  required
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder="you@email.com"
-                  className="flex-1 rounded-full border border-white/15 bg-white/10 px-5 py-3 text-sm text-white placeholder:text-white/50 backdrop-blur-sm focus:border-gold focus:outline-none"
-                />
-                <Button type="submit" className="h-12 rounded-full bg-gold px-6 text-gold-foreground hover:bg-gold/90">
-                  Join waitlist <ArrowRight className="h-4 w-4" />
-                </Button>
-              </form>
-            )}
-            <p className="mt-4 text-xs text-white/50">No spam. We email when your invite is ready.</p>
+                <a href="https://forms.gle/M4NrF9w9HSny4YR49" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
+                  Start your wealth journey
+                  <ArrowRight className="h-4 w-4" />
+                </a>
+              </Button>
+              <Button 
+                asChild
+                variant="outline"
+                className="h-12 rounded-full border-white/20 bg-white/5 px-8 text-white hover:bg-white/10 font-bold transition-transform hover:scale-105 active:scale-95 duration-200"
+              >
+                <a href="https://chat.whatsapp.com/LTUgZfloaYK8KcXB2yVkdy?mode=gi_t" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
+                  Join our community
+                  <ArrowRight className="h-4 w-4" />
+                </a>
+              </Button>
+            </div>
+            <p className="mt-6 text-xs text-white/50">Follow our journey and grow wealth together.</p>
           </div>
         </div>
       </div>

@@ -20,12 +20,12 @@ type Product = {
 };
 
 const products: Product[] = [
-  { id: "wealthflex", icon: Zap, name: "WealthFlex", tagline: "Smart Flexible Savings", rate: "5%", rateNum: 5, bestFor: "The Cautious Saver", short: "Smart flexible savings; earn interest, access anytime.", how: "A high-interest wallet — earn while you wait. Withdraw any time penalty-free, whenever life happens.", features: ["Instant withdrawals", "7 free withdrawals / month", "Interest accrues daily"], accent: "flex" },
-  { id: "wealthfix", icon: Lock, name: "WealthFix", tagline: "The Discipline Vault", rate: "25%", rateNum: 25, bestFor: "The Impulsive Saver", short: "Lock it in, block temptation, and watch your money grow.", how: "Lock a lump sum for 3, 6, or 12 months. Because it can't be touched until maturity, you earn our highest individual rate.", features: ["Fixed terms: 3 / 6 / 12 months", "Highest yield in the ecosystem", "Zero-temptation withdrawal lock"], accent: "fix" },
-  { id: "wealthgoal", icon: Target, name: "WealthGoal", tagline: "Purpose-Driven Savings", rate: "20%", rateNum: 20, bestFor: "The Big-Ticket Planner", short: "Save with discipline and smash your goals.", how: "Pick a category, set a target and a deadline. Track real-time progress with a visual bar that shows exactly how close you are to smashing it.", features: ["Purpose-tagged sub-accounts", "Visual progress milestones", "Smart deadline reminders"], accent: "goal" },
-  { id: "wealthfam", icon: Heart, name: "WealthFam", tagline: "Legacy Foundation", rate: "14%", rateNum: 14, bestFor: "The Legacy Builder", short: "Build a wealthy family; save for kids, spouse, and loved ones.", how: "A dedicated portfolio for family-centric needs — school fees, a spouse's venture, the family home. Separates Family Wealth from Personal Wealth.", features: ["Shared family vault", "Dedicated legacy planning", "Multi-beneficiary support"], accent: "fam" },
-  { id: "wealthflow", icon: Repeat, name: "WealthFlow", tagline: "Automated Cycle", rate: "17%", rateNum: 17, bestFor: "The Busy Professional", short: "Automated savings for continuous wealth flow.", how: "Set a rule like 'save ₦2,000 every day' and forget it. Money flows automatically from your bank into Wealthconomy, on your schedule.", features: ["Daily / weekly / monthly rules", "Pay-yourself-first logic", "Pause or adjust any time"], accent: "flow" },
-  { id: "wealthgroup", icon: Users, name: "WealthGroup", tagline: "Digital Ajo / Esusu", rate: "30%", rateNum: 30, bestFor: "The Social Saver", short: "Save together, grow together and win together.", how: "Form a group with friends, family or colleagues. Choose Rotational (take turns receiving the pot) or Fixed (save together toward one goal).", features: ["Rotational & fixed contribution modes", "Transparent payout schedule", "Automatic dispute resolution"], accent: "group" },
+  { id: "wealthflex", icon: Zap, name: "WealthFlex", tagline: "Smart Flexible Savings", rate: "5%", rateNum: 5, bestFor: "The Cautious Saver", short: "Prepare for emergencies through flexible savings", how: "A high-interest wallet — earn while you wait. Withdraw any time penalty-free, whenever life happens.", features: ["Instant withdrawals", "7 free withdrawals / month", "Interest accrues daily"], accent: "flex" },
+  { id: "wealthfix", icon: Lock, name: "WealthFix", tagline: "The Discipline Vault", rate: "25%", rateNum: 25, bestFor: "The Impulsive Saver", short: "Stay disciplined and fix your money or savings for guaranteed returns.", how: "Lock a lump sum for 3, 6, or 12 months. Because it can't be touched until maturity, you earn our highest individual rate.", features: ["Fixed terms: 3 / 6 / 12 months", "Highest yield in the ecosystem", "Zero-temptation withdrawal lock"], accent: "fix" },
+  { id: "wealthgoal", icon: Target, name: "WealthGoal", tagline: "Purpose-Driven Savings", rate: "20%", rateNum: 20, bestFor: "The Big-Ticket Planner", short: "Got a goal? Create a targeted savings plan and save manually or trigger auto-debit for it.", how: "Pick a category, set a target and a deadline. Track real-time progress with a visual bar that shows exactly how close you are to smashing it.", features: ["Purpose-tagged sub-accounts", "Visual progress milestones", "Smart deadline reminders"], accent: "goal" },
+  { id: "wealthfam", icon: Heart, name: "WealthFam", tagline: "Legacy Foundation", rate: "14%", rateNum: 14, bestFor: "The Legacy Builder", short: "create savings plans for family and friends, including spouses and kids.", how: "A dedicated portfolio for family-centric needs — school fees, a spouse's venture, the family home. Separates Family Wealth from Personal Wealth.", features: ["Shared family vault", "Dedicated legacy planning", "Multi-beneficiary support"], accent: "fam" },
+  { id: "wealthflow", icon: Repeat, name: "WealthFlow", tagline: "Automated Cycle", rate: "17%", rateNum: 17, bestFor: "The Busy Professional", short: "Set your savings schedule, automate the flow, accumulate your savings.", how: "Set a rule like 'save ₦2,000 every day' and forget it. Money flows automatically from your bank into Wealthconomy, on your schedule.", features: ["Daily / weekly / monthly rules", "Pay-yourself-first logic", "Pause or adjust any time"], accent: "flow" },
+  { id: "wealthgroup", icon: Users, name: "WealthGroup", tagline: "Digital Ajo / Esusu", rate: "30%", rateNum: 30, bestFor: "The Social Saver", short: "Save together as a group. Friends, staff, cooperatives use this for secure and transparent group savings.", how: "Form a group with friends, family or colleagues. Choose Rotational (take turns receiving the pot) or Fixed (save together toward one goal).", features: ["Rotational & fixed contribution modes", "Transparent payout schedule", "Automatic dispute resolution"], accent: "group" },
 ];
 
 const accentMap: Record<string, { tint: string; iconBg: string; ring: string; dot: string; glow: string; chipActive: string }> = {
@@ -141,7 +141,7 @@ export function PortfolioGrid() {
             How would you want to Save?
           </h2>
           <p className="mt-5 text-lg text-muted-foreground">
-            Explore different savings products tailored to user goals and financial needs.
+            Explore diverse savings options to meet your needs
           </p>
         </div>
 
@@ -302,13 +302,15 @@ export function PortfolioGrid() {
 
         {/* Global CTA */}
         <div className="mt-16 text-center">
-          <button 
-            onClick={() => window.dispatchEvent(new CustomEvent("open-coming-soon-modal"))}
+          <a 
+            href="https://forms.gle/M4NrF9w9HSny4YR49"
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-flex items-center gap-2 rounded-full bg-primary px-8 py-4 text-sm font-bold text-white transition-all hover:scale-105 hover:bg-primary/90 shadow-glow-teal"
           >
             Explore a Wealth Portfolio
             <ArrowUpRight className="h-4 w-4" />
-          </button>
+          </a>
         </div>
       </div>
     </section>
