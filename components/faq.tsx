@@ -8,7 +8,7 @@ import { cn } from "@/lib/utils";
 export const faqs = [
   {
     q: "What exactly is Wealthconomy?",
-    a: "Wealthconomy is a structured wealth ecosystem that combines automated savings portfolios (WealthFix, WealthGroup, WealthGoal and more) with financial education through WiseUp — built specifically for modern professionals who want discipline without the willpower tax.",
+    a: "Wealthconomy is a structured wealth ecosystem that combines automated savings portfolios (WealthFix, WealthGroup, WealthGoal and more) with financial education through WiseUp. It is built specifically for modern professionals who want discipline without the willpower tax.",
   },
   {
     q: "Is my money safe and regulated?",
@@ -16,11 +16,11 @@ export const faqs = [
   },
   {
     q: "How are the interest rates so high?",
-    a: "Each portfolio routes funds into different yield strategies — fixed-term locks (WealthFix) earn the highest rates because capital is committed, while flexible wallets (WealthFlex) earn less. Group savings (WealthGroup) use rotational mechanics inspired by Ajo / Esusu.",
+    a: "Each portfolio routes funds into different yield strategies. Fixed-term locks (WealthFix) earn the highest rates because capital is committed, while flexible wallets (WealthFlex) earn less. Group savings (WealthGroup) use rotational mechanics inspired by Ajo / Esusu.",
   },
   {
     q: "Do I have to pay to use Wealthconomy?",
-    a: "Creating an account is free. You only pay small, transparent service fees on specific actions like early withdrawals or premium WiseUp content — never on your principal or your earned interest.",
+    a: "Creating an account is free. You only pay small, transparent service fees on specific actions like early withdrawals or premium WiseUp content, never on your principal or your earned interest.",
   },
   {
     q: "Can I use Wealthconomy with my existing bank?",
@@ -40,15 +40,15 @@ export const faqs = [
   },
   {
     q: "How is WealthUp different from WiseUp?",
-    a: "WiseUp is our financial literacy hub — lessons on saving, debt, taxes and investing fundamentals. WealthUp is the next step: curated, vetted investment opportunities (real estate, agri, T-bills) you can actually deploy capital into.",
+    a: "WiseUp is our financial literacy hub with lessons on saving, debt, taxes and investing fundamentals. WealthUp is the next step: curated, vetted investment opportunities (real estate, agri, T-bills) you can actually deploy capital into.",
   },
   {
     q: "Can I withdraw my money any time?",
-    a: "WealthFlex and WealthFlow are designed for maximum flexibility — withdraw any time, no fees. WealthFix and WealthGroup have term-based rules clearly stated upfront. Early withdrawals on locked products incur a transparent service fee.",
+    a: "WealthFlex and WealthFlow are designed for maximum flexibility. You can withdraw any time with no fees. WealthFix and WealthGroup have term-based rules clearly stated upfront. Early withdrawals on locked products incur a transparent service fee.",
   },
   {
     q: "How does group savings (digital Ajo) work?",
-    a: "You join or create a cohort. Every member contributes on a fixed cadence. Each round, one member receives the pooled payout — order is set fairly at the start. Our defaulter buffer pool ensures the group is never disadvantaged.",
+    a: "You join or create a cohort. Every member contributes on a fixed cadence. Each round, one member receives the pooled payout, and the order is set fairly at the start. Our defaulter buffer pool ensures the group is never disadvantaged.",
   },
 ];
 
@@ -56,7 +56,7 @@ export function FAQ() {
   const [open, setOpen] = useState<number | null>(0);
 
   return (
-    <section id="faq" className="relative overflow-hidden bg-background py-24 lg:py-32">
+    <section id="faq" className="relative overflow-hidden bg-background py-14 lg:py-20">
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute left-1/2 top-1/3 h-[500px] w-[500px] -translate-x-1/2 rounded-full bg-primary/5 blur-[120px]" />
       </div>
@@ -66,15 +66,15 @@ export function FAQ() {
           <div className="inline-flex items-center gap-2 rounded-full border border-border bg-background/60 px-3 py-1 text-xs font-medium uppercase tracking-widest text-primary backdrop-blur-sm">
             <MessageCircleQuestion className="h-3.5 w-3.5" /> FAQ
           </div>
-          <h2 className="mt-5 font-display text-4xl font-semibold leading-[1.05] tracking-tight md:text-5xl lg:text-6xl">
+          <h2 className="mt-3 font-display text-4xl font-semibold leading-[1.05] tracking-tight md:text-5xl lg:text-6xl">
             Questions, <span className="bg-gradient-to-r from-primary to-primary-glow bg-clip-text text-transparent">answered.</span>
           </h2>
-          <p className="mt-5 text-lg text-muted-foreground">
+          <p className="mt-3 text-lg text-muted-foreground">
             Everything you need to know about building structured wealth with Wealthconomy.
           </p>
         </div>
 
-        <div className="mt-14 space-y-3">
+        <div className="mt-10 space-y-3">
           {faqs.slice(0, 3).map((f, i) => {
             const isOpen = open === i;
             return (
@@ -113,7 +113,7 @@ export function FAQ() {
           })}
         </div>
 
-        <div className="mt-12 flex justify-center">
+        <div className="mt-8 flex justify-center">
           <Link 
             href="/faq" 
             className="group flex items-center gap-2 rounded-full border border-border bg-card px-6 py-3 text-sm font-medium text-foreground shadow-soft transition-all hover:bg-muted"

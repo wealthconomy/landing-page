@@ -279,7 +279,7 @@ export const blogPosts: BlogPost[] = [
       {
         id: "real-assets-vs-cash",
         title: "1. Moving from Fiat to Productive Real Assets",
-        content: "Cash is only a medium of exchange; it is not a store of value in an inflationary spiral. Protect your capital by allocating to productive assets—such as real estate, agriculture, or equity index funds—which historically appreciate in step with, or faster than, the consumer price index."
+        content: "Cash is only a medium of exchange; it is not a store of value in an inflationary spiral. Protect your capital by allocating to productive assets, such as real estate, agriculture, or equity index funds, which historically appreciate in step with, or faster than, the consumer price index."
       },
       {
         id: "hedging-with-multi-currency-yields",

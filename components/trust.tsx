@@ -3,7 +3,7 @@ import { cn } from "@/lib/utils";
 
 export function Trust() {
   return (
-    <section id="trust" className="bg-background py-24 lg:py-32 overflow-hidden border-t border-border relative">
+    <section id="trust" className="bg-background py-14 lg:py-20 overflow-hidden border-t border-border relative">
       
       {/* Decorative Grid Background */}
       <div className="absolute inset-0 pointer-events-none opacity-[0.05] dark:opacity-[0.02]">
@@ -18,7 +18,7 @@ export function Trust() {
       </div>
 
       <div className="mx-auto max-w-7xl px-6 relative z-10">
-        <div className="mx-auto max-w-2xl text-center mb-16">
+        <div className="mx-auto max-w-2xl text-center mb-10">
           <div className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/10 px-3 py-1.5 text-xs font-bold uppercase tracking-widest text-primary mb-6">
             <ShieldCheck className="h-4 w-4" />
             <span>Trust & Security</span>

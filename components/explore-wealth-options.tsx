@@ -1,16 +1,17 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowUpRight, TrendingUp, Heart, BookOpen, Wallet, BarChart3, Mail, Clock, Tag, Target, AlertTriangle, Briefcase, Users, Check } from "lucide-react";
+import { ArrowUpRight, TrendingUp, Heart, BookOpen, Wallet, BarChart3, Mail, Clock, Tag, Target, AlertTriangle, Briefcase, Users, Check, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
 
 export function ExploreWealthOptions() {
   const [email, setEmail] = useState("");
+  const [isWiseUpExpanded, setIsWiseUpExpanded] = useState(false);
 
   return (
-    <section className="bg-surface-soft/40 py-24 lg:py-32 overflow-hidden relative">
+    <section className="bg-surface-soft/40 py-14 lg:py-20 overflow-hidden relative">
       {/* Background elements */}
       <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
         <div className="absolute -top-[10%] left-[-10%] w-[500px] h-[500px] bg-primary/5 rounded-full blur-[100px]" />
@@ -19,29 +20,61 @@ export function ExploreWealthOptions() {
 
       <div className="relative z-10 mx-auto max-w-7xl px-6">
         <div className="mx-auto max-w-2xl text-center">
-          <div className="text-sm font-medium uppercase tracking-widest text-primary mb-3">Wealth Ecosystem</div>
+          <div className="text-sm font-medium uppercase tracking-widest text-primary mb-2">Wealth Ecosystem</div>
           <h2 className="font-display text-4xl font-semibold tracking-tight md:text-5xl">
             Explore Your <span className="bg-gradient-to-r from-primary to-primary-glow bg-clip-text text-transparent">Wealth Options</span>
           </h2>
-          <p className="mt-5 text-lg text-muted-foreground">
+          <p className="mt-3 text-lg text-muted-foreground">
             Wealthconomy helps Africans save smarter, grow wealth consistently, and achieve life goals. It’s Secure, Intelligent, and Inclusive.
           </p>
         </div>
 
-        <div className="mt-16 grid gap-6 lg:grid-cols-2">
+        <div className="mt-10 grid gap-6 lg:grid-cols-2">
           
           {/* WinUp */}
           <div className="group relative overflow-hidden rounded-3xl border border-border bg-background p-8 lg:p-10 transition-all duration-500 hover:-translate-y-1 hover:border-primary/40 hover:shadow-glow-teal flex flex-col justify-between">
-            <div className="absolute right-0 top-0 w-64 h-64 bg-primary/5 rounded-bl-full pointer-events-none" />
+            {/* SVG Illustration */}
+            <div className="absolute right-4 top-4 w-20 h-20 sm:w-24 sm:h-24 lg:w-28 lg:h-28 pointer-events-none transition-all duration-500 group-hover:scale-110 group-hover:rotate-3 z-20">
+              <svg viewBox="0 0 120 120" className="w-full h-full" fill="none" xmlns="http://www.w3.org/2000/svg">
+                {/* Background glow */}
+                <circle cx="60" cy="56" r="48" fill="url(#winup-grad)" fillOpacity="0.1" />
+                <circle cx="60" cy="56" r="40" stroke="url(#winup-grad)" strokeWidth="1.2" strokeDasharray="4 4" className="animate-spin-slow" />
+                
+                {/* Vault / Safe */}
+                <rect x="40" y="45" width="40" height="32" rx="6" fill="url(#winup-grad)" fillOpacity="0.15" stroke="url(#winup-grad)" strokeWidth="2" />
+                <path d="M40 55H80" stroke="url(#winup-grad)" strokeWidth="1.5" />
+                <circle cx="60" cy="61" r="5" fill="none" stroke="url(#winup-grad)" strokeWidth="2" />
+                
+                {/* Upward graph path */}
+                <path d="M30 85C45 72 55 62 90 42" stroke="#2DD4BF" strokeWidth="2" strokeLinecap="round" strokeDasharray="3 3" />
+                <path d="M82 42H90V50" stroke="#2DD4BF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+
+                {/* Floating elements */}
+                <circle cx="45" cy="30" r="3" fill="#0D9488" />
+                <circle cx="82" cy="32" r="2.5" fill="#0D9488" />
+                <path d="M56 22L60 26L64 22L60 18L56 22Z" fill="#2DD4BF" />
+
+                <defs>
+                  <linearGradient id="winup-grad" x1="40" y1="45" x2="80" y2="77" gradientUnits="userSpaceOnUse">
+                    <stop stopColor="#0D9488" />
+                    <stop offset="1" stopColor="#2DD4BF" />
+                  </linearGradient>
+                </defs>
+              </svg>
+            </div>
             <div>
-              <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-primary/10 text-primary">
-                <Wallet className="h-6 w-6" />
+              <div className="flex items-center gap-3">
+                <span className="inline-flex items-center rounded-full bg-primary/10 px-3 py-0.5 text-[11px] font-semibold uppercase tracking-wider text-primary">
+                  WinUp
+                </span>
               </div>
-              <h3 className="mt-6 font-display text-2xl font-semibold">1. WinUp: Smart Savings Made Easy</h3>
-              <p className="mt-3 text-muted-foreground text-sm">
+              <h3 className="mt-3 font-display text-2xl font-bold tracking-tight text-foreground pr-20 sm:pr-24 lg:pr-28 leading-tight">
+                Smart Savings Made Easy
+              </h3>
+              <p className="mt-2 text-muted-foreground text-sm">
                 Maximize your savings with competitive interest rates and impact drive tailored to help you achieve your financial goals.
               </p>
-              <ul className="mt-6 space-y-3">
+              <ul className="mt-4 space-y-2">
                 <li className="flex items-start gap-3 text-sm">
                   <div className="mt-0.5 h-1.5 w-1.5 rounded-full bg-primary shrink-0" />
                   <span><strong>Impact/Halal Savings:</strong> Compliant with Islamic principles, ensuring peace of mind and driving impact</span>
@@ -56,7 +89,7 @@ export function ExploreWealthOptions() {
                 </li>
               </ul>
             </div>
-            <div className="mt-8 pt-6 border-t border-border">
+            <div className="mt-6 pt-4 border-t border-border">
               <Button asChild className="rounded-full gap-2">
                 <a href="https://forms.gle/M4NrF9w9HSny4YR49" target="_blank" rel="noopener noreferrer">
                   Start Saving <ArrowUpRight className="h-4 w-4" />
@@ -67,17 +100,53 @@ export function ExploreWealthOptions() {
 
           {/* WiseUp */}
           <div className="group relative overflow-hidden rounded-3xl border border-border bg-background p-8 lg:p-10 transition-all duration-500 hover:-translate-y-1 hover:border-gold/40 hover:shadow-soft flex flex-col justify-between">
-            <div className="absolute right-0 top-0 w-64 h-64 bg-gold/5 rounded-bl-full pointer-events-none" />
+            {/* SVG Illustration */}
+            <div className="absolute right-4 top-4 w-20 h-20 sm:w-24 sm:h-24 lg:w-28 lg:h-28 pointer-events-none transition-all duration-500 group-hover:scale-110 group-hover:rotate-3 z-20">
+              <svg viewBox="0 0 120 120" className="w-full h-full" fill="none" xmlns="http://www.w3.org/2000/svg">
+                {/* Background glow */}
+                <circle cx="60" cy="53" r="48" fill="url(#wiseup-grad)" fillOpacity="0.1" />
+                <circle cx="60" cy="53" r="42" stroke="url(#wiseup-grad)" strokeWidth="1.2" strokeDasharray="6 3" className="animate-spin-slow" />
+                
+                {/* Open Book (shifted down by 7px) */}
+                <path d="M35 82C45 77 55 79 60 82C65 79 75 77 85 82V52C75 47 65 49 60 52C55 47 45 47 35 52V82Z" fill="url(#wiseup-grad)" fillOpacity="0.15" stroke="url(#wiseup-grad)" strokeWidth="1.8" strokeLinejoin="round" />
+                <path d="M60 52V82" stroke="url(#wiseup-grad)" strokeWidth="1.8" />
+                
+                {/* Lightbulb rising (shifted down by 7px) */}
+                <path d="M52 42C52 35.5 55.5 32 60 32C64.5 32 68 35.5 68 42C68 46 65 48 63 50V53H57V50C55 48 52 46 52 42Z" fill="url(#wiseup-grad)" fillOpacity="0.2" stroke="url(#wiseup-grad)" strokeWidth="1.5" />
+                <path d="M57 56H63" stroke="url(#wiseup-grad)" strokeWidth="2" strokeLinecap="round" />
+                
+                {/* Lightbulb rays (shifted down by 7px) */}
+                <line x1="60" y1="25" x2="60" y2="21" stroke="#F59E0B" strokeWidth="1.5" strokeLinecap="round" />
+                <line x1="47" y1="31" x2="44" y2="28" stroke="#F59E0B" strokeWidth="1.5" strokeLinecap="round" />
+                <line x1="73" y1="31" x2="76" y2="28" stroke="#F59E0B" strokeWidth="1.5" strokeLinecap="round" />
+                
+                {/* Graduation cap (shifted down by 7px) */}
+                <path d="M50 25L60 21L70 25L60 29L50 25Z" fill="#F59E0B" stroke="#F59E0B" strokeWidth="1" />
+                <path d="M55 27V30C55 31.5 65 31.5 65 30V27" stroke="#F59E0B" strokeWidth="1" fill="none" />
+                <path d="M68 25.5V30.5" stroke="#F59E0B" strokeWidth="1" />
+                
+                <defs>
+                  <linearGradient id="wiseup-grad" x1="35" y1="52" x2="85" y2="82" gradientUnits="userSpaceOnUse">
+                    <stop stopColor="#D97706" />
+                    <stop offset="1" stopColor="#F59E0B" />
+                  </linearGradient>
+                </defs>
+              </svg>
+            </div>
             <div>
-              <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-gold/10 text-gold">
-                <BookOpen className="h-6 w-6" />
+              <div className="flex items-center gap-3">
+                <span className="inline-flex items-center rounded-full bg-amber-500/10 px-3 py-0.5 text-[11px] font-semibold uppercase tracking-wider text-amber-700">
+                  WiseUp
+                </span>
               </div>
-              <h3 className="mt-6 font-display text-2xl font-semibold">2. WiseUp: Your Financial Literacy Hub</h3>
-              <p className="mt-3 text-muted-foreground text-sm mb-4">
+              <h3 className="mt-3 font-display text-2xl font-bold tracking-tight text-foreground pr-20 sm:pr-24 lg:pr-28 leading-tight">
+                Your Financial Literacy Hub
+              </h3>
+              <p className="mt-2 text-muted-foreground text-sm mb-3">
                 Equip yourself with the knowledge to make informed financial decisions through our blogs, assessments, and reports.
               </p>
               
-              <ul className="mt-4 mb-6 space-y-2 text-sm text-muted-foreground">
+              <ul className="mt-3 mb-4 space-y-1.5 text-sm text-muted-foreground">
                 <li className="flex items-center gap-2">
                   <div className="h-1.5 w-1.5 rounded-full bg-gold" />
                   <span>Access to expert insights and tips.</span>
@@ -92,11 +161,13 @@ export function ExploreWealthOptions() {
                 </li>
               </ul>
               
-              {/* Infographic mini-dashboard / Insights */}
-              <div className="bg-surface-soft rounded-2xl p-4 mb-6 border border-border">
+              <div className={`grid transition-all duration-500 ease-in-out ${isWiseUpExpanded ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"}`}>
+                <div className="overflow-hidden min-h-0">
+                  {/* Infographic mini-dashboard / Insights */}
+                  <div className="bg-surface-soft rounded-2xl p-4 mb-4 border border-border mt-2">
                 <div className="flex items-center justify-between mb-4">
                   <div className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Market & Behavior Insights</div>
-                  <BarChart3 className="h-4 w-4 text-gold" />
+                  <BarChart3 className="h-4 w-4 text-amber-700" />
                 </div>
                 
                 {/* CSS Chart Mockup */}
@@ -104,7 +175,7 @@ export function ExploreWealthOptions() {
                   <div className="w-1/4 bg-primary/20 hover:bg-primary/40 rounded-t-sm h-[40%] transition-colors relative group"><span className="absolute -top-6 left-1/2 -translate-x-1/2 text-[9px] opacity-0 group-hover:opacity-100">Trends</span></div>
                   <div className="w-1/4 bg-primary/40 hover:bg-primary/60 rounded-t-sm h-[70%] transition-colors relative group"><span className="absolute -top-6 left-1/2 -translate-x-1/2 text-[9px] opacity-0 group-hover:opacity-100">Savings</span></div>
                   <div className="w-1/4 bg-primary/60 hover:bg-primary/80 rounded-t-sm h-[50%] transition-colors relative group"><span className="absolute -top-6 left-1/2 -translate-x-1/2 text-[9px] opacity-0 group-hover:opacity-100">Growth</span></div>
-                  <div className="w-1/4 bg-gold rounded-t-sm h-[90%] transition-colors relative group shadow-glow-teal"><span className="absolute -top-6 left-1/2 -translate-x-1/2 text-[9px] opacity-0 group-hover:opacity-100 text-gold">Wealth</span></div>
+                  <div className="w-1/4 bg-gold rounded-t-sm h-[90%] transition-colors relative group shadow-glow-teal"><span className="absolute -top-6 left-1/2 -translate-x-1/2 text-[9px] opacity-0 group-hover:opacity-100 text-amber-700">Wealth</span></div>
                 </div>
 
                 <div className="grid grid-cols-2 gap-2">
@@ -143,9 +214,21 @@ export function ExploreWealthOptions() {
                   </Link>
                 ))}
               </div>
+                </div>
+              </div>
+
+              <div className="flex justify-center mt-4">
+                <button 
+                  onClick={() => setIsWiseUpExpanded(!isWiseUpExpanded)}
+                  className="group flex items-center gap-2 rounded-full border border-amber-500/20 bg-amber-500/10 px-4 py-2 text-xs font-medium text-amber-700 transition-all hover:bg-amber-500/20"
+                >
+                  {isWiseUpExpanded ? "View Less" : "View Insights & Tools"}
+                  <ChevronDown className={cn("h-4 w-4 transition-transform duration-300", isWiseUpExpanded && "rotate-180")} />
+                </button>
+              </div>
             </div>
             
-            <div className="mt-8 pt-6 border-t border-border space-y-4">
+            <div className="mt-6 pt-4 border-t border-border space-y-3">
               <div className="text-xs text-muted-foreground font-semibold px-1">
                 Subscribe to WiseUp newsletters to unlock full assessment results in the app.
               </div>
@@ -169,90 +252,86 @@ export function ExploreWealthOptions() {
           {/* 
           WealthGroup (The Movement) - Digitized Ajo
           Commented out for now, to be used in the future if needed.
-          
-          <div className="group relative overflow-hidden rounded-3xl border border-border bg-background p-8 lg:p-10 transition-all duration-500 hover:-translate-y-1 hover:border-violet-500/40 hover:shadow-soft flex flex-col justify-between">
-            <div className="absolute right-0 top-0 w-64 h-64 bg-violet-500/5 rounded-bl-full pointer-events-none" />
-            <div>
-              <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-violet-500/10 text-violet-600 dark:text-violet-400">
-                <Users className="h-6 w-6" />
-              </div>
-              <h3 className="mt-6 font-display text-2xl font-semibold text-foreground">WealthGroup: The Movement</h3>
-              <p className="mt-3 text-muted-foreground text-sm mb-6">
-                A modernized Ajo (Esusu) system designed to build community-driven wealth. Form groups, contribute periodically, and take turns receiving bulk payouts.
-              </p>
-
-              <ul className="space-y-3 mb-6">
-                <li className="flex items-center gap-3 text-sm text-foreground">
-                  <div className="flex h-6 w-6 items-center justify-center rounded-full bg-violet-500/10 text-violet-600 dark:text-violet-400">
-                    <Check className="h-3 w-3" />
-                  </div>
-                  Private and Public Groups
-                </li>
-                <li className="flex items-center gap-3 text-sm text-foreground">
-                  <div className="flex h-6 w-6 items-center justify-center rounded-full bg-violet-500/10 text-violet-600 dark:text-violet-400">
-                    <Check className="h-3 w-3" />
-                  </div>
-                  Contribution Tracking
-                </li>
-                <li className="flex items-center gap-3 text-sm text-foreground">
-                  <div className="flex h-6 w-6 items-center justify-center rounded-full bg-violet-500/10 text-violet-600 dark:text-violet-400">
-                    <Check className="h-3 w-3" />
-                  </div>
-                  Payout Schedule Management
-                </li>
-              </ul>
-            </div>
-            
-            <div className="mt-8 pt-6 border-t border-border">
-              <Button onClick={() => window.dispatchEvent(new CustomEvent("open-coming-soon-modal"))} className="w-full rounded-full bg-violet-600 hover:bg-violet-700 text-white gap-2">
-                Join a WealthGroup
-              </Button>
-            </div>
-          </div>
+          ...
           */}
 
           {/* WealthPact */}
-          <div className="group relative overflow-hidden rounded-3xl border border-gold/50 bg-gold p-8 lg:p-10 transition-all duration-500 hover:-translate-y-1 hover:shadow-glow-gold flex flex-col justify-between text-black">
-            <div className="absolute right-0 top-0 w-64 h-64 bg-white/20 rounded-bl-full pointer-events-none" />
+          <div className="group relative overflow-hidden rounded-3xl border border-border bg-secondary p-8 lg:p-10 transition-all duration-500 hover:-translate-y-1 hover:border-gold/40 hover:shadow-soft flex flex-col justify-between text-foreground">
+            {/* SVG Illustration */}
+            <div className="absolute right-4 top-4 w-20 h-20 sm:w-24 sm:h-24 lg:w-28 lg:h-28 pointer-events-none transition-all duration-500 group-hover:scale-110 group-hover:rotate-3 z-20">
+              <svg viewBox="0 0 120 120" className="w-full h-full" fill="none" xmlns="http://www.w3.org/2000/svg">
+                {/* Background circles */}
+                <circle cx="60" cy="59" r="48" fill="url(#wealthpact-grad)" fillOpacity="0.1" />
+                <circle cx="60" cy="59" r="40" stroke="url(#wealthpact-grad)" strokeWidth="1.2" strokeDasharray="5 5" className="animate-spin-slow" />
+                
+                {/* Heart */}
+                <path d="M60 76C60 76 38 62 38 48C38 39.5 44.5 34 51.5 34C55.5 34 58.5 36 60 38.5C61.5 36 64.5 34 68.5 34C75.5 34 82 39.5 82 48C82 62 60 76 60 76Z" fill="url(#wealthpact-grad)" fillOpacity="0.15" stroke="url(#wealthpact-grad)" strokeWidth="1.8" strokeLinejoin="round" />
+                
+                {/* Tree / Growth from heart */}
+                <path d="M60 55V44" stroke="url(#wealthpact-grad)" strokeWidth="2" strokeLinecap="round" />
+                <path d="M60 48C56 46 54 44 54 44" stroke="url(#wealthpact-grad)" strokeWidth="1.5" strokeLinecap="round" />
+                <path d="M60 46C64 44 66 42 66 42" stroke="url(#wealthpact-grad)" strokeWidth="1.5" strokeLinecap="round" />
+                
+                {/* Small circular leaves */}
+                <circle cx="54" cy="44" r="2.5" fill="#FB7185" />
+                <circle cx="66" cy="42" r="2.5" fill="#FB7185" />
+                <circle cx="60" cy="40" r="3" fill="#F43F5E" />
+                
+                {/* Hands below heart */}
+                <path d="M42 78C48 83 54 84 60 84C66 84 72 83 78 78" stroke="url(#wealthpact-grad)" strokeWidth="2" strokeLinecap="round" />
+                <path d="M48 76C53 79 57 80 60 80C63 80 67 79 72 76" stroke="url(#wealthpact-grad)" strokeWidth="1.2" strokeLinecap="round" />
+                
+                <defs>
+                  <linearGradient id="wealthpact-grad" x1="38" y1="34" x2="82" y2="84" gradientUnits="userSpaceOnUse">
+                    <stop stopColor="#F43F5E" />
+                    <stop offset="1" stopColor="#FB7185" />
+                  </linearGradient>
+                </defs>
+              </svg>
+            </div>
             <div>
-              <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-black/10 text-black backdrop-blur-sm">
-                <Heart className="h-6 w-6" />
+              <div className="flex items-center gap-3">
+                <span className="inline-flex items-center rounded-full bg-amber-500/10 px-3 py-0.5 text-[11px] font-semibold uppercase tracking-wider text-amber-700">
+                  WealthPact
+                </span>
               </div>
-              <h3 className="mt-6 font-display text-2xl font-semibold">3. WealthPact: Use Wealth to make Impact</h3>
-              <p className="mt-3 text-black/70 text-sm mb-6">
+              <h3 className="mt-3 font-display text-2xl font-bold tracking-tight text-foreground pr-20 sm:pr-24 lg:pr-28 leading-tight">
+                Use Wealth to make Impact
+              </h3>
+              <p className="mt-2 text-muted-foreground text-sm mb-4">
                 WealthPact is our vehicle for making a difference. Here, you contribute to meaningful community initiatives for women, the less privileged, youths, businesses and more. You can be an impact saver or just donate.
               </p>
 
-              <div className="flex flex-wrap gap-2 mb-6">
-                <span className="text-[10px] border border-black/10 bg-black/5 px-2 py-1 rounded text-black/80 font-medium">Women empowerment</span>
-                <span className="text-[10px] border border-black/10 bg-black/5 px-2 py-1 rounded text-black/80 font-medium">Youth development</span>
-                <span className="text-[10px] border border-black/10 bg-black/5 px-2 py-1 rounded text-black/80 font-medium">Business support</span>
-                <span className="text-[10px] border border-black/10 bg-black/5 px-2 py-1 rounded text-black/80 font-medium">Community funding</span>
+              <div className="flex flex-wrap gap-2 mb-4">
+                <span className="text-[10px] border border-border bg-background px-2 py-1 rounded text-muted-foreground font-medium">Women empowerment</span>
+                <span className="text-[10px] border border-border bg-background px-2 py-1 rounded text-muted-foreground font-medium">Youth development</span>
+                <span className="text-[10px] border border-border bg-background px-2 py-1 rounded text-muted-foreground font-medium">Business support</span>
+                <span className="text-[10px] border border-border bg-background px-2 py-1 rounded text-muted-foreground font-medium">Community funding</span>
               </div>
               
-              <div className="grid grid-cols-3 gap-4 mb-4">
-                <div className="text-center p-3 rounded-2xl bg-black/5 border border-black/10">
-                  <div className="font-display text-2xl font-bold text-black">300+</div>
-                  <div className="text-[10px] uppercase tracking-wider text-black/70 mt-1 font-semibold">Women Trained</div>
+              <div className="grid grid-cols-3 gap-4 mb-3">
+                <div className="text-center p-3 rounded-2xl bg-background border border-border">
+                  <div className="font-display text-2xl font-bold text-foreground">300+</div>
+                  <div className="text-[10px] uppercase tracking-wider text-muted-foreground mt-1 font-semibold">Women Trained</div>
                 </div>
-                <div className="text-center p-3 rounded-2xl bg-black/5 border border-black/10">
-                  <div className="font-display text-2xl font-bold text-black">15+</div>
-                  <div className="text-[10px] uppercase tracking-wider text-black/70 mt-1 font-semibold">Businesses given grants</div>
+                <div className="text-center p-3 rounded-2xl bg-background border border-border">
+                  <div className="font-display text-2xl font-bold text-foreground">15+</div>
+                  <div className="text-[10px] uppercase tracking-wider text-muted-foreground mt-1 font-semibold">Businesses given grants</div>
                 </div>
-                <div className="text-center p-3 rounded-2xl bg-black/5 border border-black/10">
-                  <div className="font-display text-2xl font-bold text-black">5+</div>
-                  <div className="text-[10px] uppercase tracking-wider text-black/70 mt-1 font-semibold">New Impact Project</div>
+                <div className="text-center p-3 rounded-2xl bg-background border border-border">
+                  <div className="font-display text-2xl font-bold text-foreground">5+</div>
+                  <div className="text-[10px] uppercase tracking-wider text-muted-foreground mt-1 font-semibold">New Impact Project</div>
                 </div>
               </div>
             </div>
             
-            <div className="mt-8 pt-6 border-t border-black/10 flex flex-wrap gap-3">
-              <Button asChild className="rounded-full bg-black hover:bg-black/80 text-gold font-semibold gap-2 flex-1">
+            <div className="mt-6 pt-4 border-t border-border flex flex-wrap gap-3">
+              <Button asChild className="rounded-full bg-primary hover:bg-primary/90 text-white font-semibold gap-2 flex-1">
                 <a href="https://forms.gle/M4NrF9w9HSny4YR49" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2">
                   Start Impact Saving
                 </a>
               </Button>
-              <Button asChild variant="outline" className="rounded-full border-black/20 bg-transparent hover:bg-black/5 text-black gap-2 flex-1">
+              <Button asChild variant="outline" className="rounded-full border-border bg-background hover:bg-muted text-foreground gap-2 flex-1">
                 <a href="https://forms.gle/M4NrF9w9HSny4YR49" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2">
                   Donate for Impact
                 </a>
@@ -262,17 +341,58 @@ export function ExploreWealthOptions() {
 
           {/* WealthUp */}
           <div className="group relative overflow-hidden rounded-3xl border border-border bg-gradient-to-br from-primary to-[#0e4143] p-8 lg:p-10 text-white transition-all duration-500 hover:-translate-y-1 hover:shadow-glow-teal flex flex-col justify-between">
-            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(255,207,101,0.25),transparent_60%)]" />
+            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(255,207,101,0.25),transparent_60%)] z-0" />
+            
+            {/* SVG Illustration */}
+            <div className="absolute right-4 top-4 w-20 h-20 sm:w-24 sm:h-24 lg:w-28 lg:h-28 pointer-events-none transition-all duration-500 group-hover:scale-110 group-hover:rotate-3 z-20">
+              <svg viewBox="0 0 120 120" className="w-full h-full" fill="none" xmlns="http://www.w3.org/2000/svg">
+                {/* Background circles */}
+                <circle cx="60" cy="57" r="48" fill="url(#wealthup-grad)" fillOpacity="0.1" />
+                <circle cx="60" cy="57" r="40" stroke="url(#wealthup-grad)" strokeWidth="1" strokeDasharray="3 6" className="animate-spin-slow" />
+                
+                {/* Rocket body */}
+                <path d="M60 25C65 38 67 45 67 55V75H53V55C53 45 55 38 60 25Z" fill="url(#wealthup-grad)" fillOpacity="0.2" stroke="url(#wealthup-grad)" strokeWidth="1.8" />
+                <path d="M60 25V75" stroke="url(#wealthup-grad)" strokeWidth="1" strokeDasharray="2 2" />
+                
+                {/* Rocket fins */}
+                <path d="M53 65L45 75H53V65Z" fill="url(#wealthup-grad)" fillOpacity="0.3" stroke="url(#wealthup-grad)" strokeWidth="1.2" />
+                <path d="M67 65L75 75H67V65Z" fill="url(#wealthup-grad)" fillOpacity="0.3" stroke="url(#wealthup-grad)" strokeWidth="1.2" />
+                
+                {/* Window & Flame */}
+                <circle cx="60" cy="45" r="3.5" fill="#F59E0B" />
+                <path d="M57 78L60 88L63 78H57Z" fill="#F59E0B" />
+                
+                {/* Upward trend curve */}
+                <path d="M30 90C45 75 55 45 90 30" stroke="#F59E0B" strokeWidth="2" strokeLinecap="round" />
+                <path d="M80 30H90V40" stroke="#F59E0B" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                
+                {/* Sparkles */}
+                <path d="M85 55L87 57L85 59L83 57L85 55Z" fill="white" />
+                <path d="M35 40L36 41L35 42L34 41L35 40Z" fill="white" />
+                
+                <defs>
+                  <linearGradient id="wealthup-grad" x1="53" y1="25" x2="67" y2="75" gradientUnits="userSpaceOnUse">
+                    <stop stopColor="#FFFFFF" />
+                    <stop offset="1" stopColor="#F59E0B" />
+                  </linearGradient>
+                </defs>
+              </svg>
+            </div>
+            
             <div className="relative z-10">
-              <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-white/10 text-gold backdrop-blur-sm">
-                <TrendingUp className="h-6 w-6" />
+              <div className="flex items-center gap-3">
+                <span className="inline-flex items-center rounded-full bg-white/20 px-3 py-0.5 text-[11px] font-semibold uppercase tracking-wider text-white">
+                  WealthUp
+                </span>
               </div>
-              <h3 className="mt-6 font-display text-2xl font-semibold">4. WealthUp: Future Investment Opportunities</h3>
-              <p className="mt-3 text-white/75 text-sm">
+              <h3 className="mt-3 font-display text-2xl font-bold tracking-tight text-white pr-20 sm:pr-24 lg:pr-28 leading-tight">
+                Future Investment Opportunities
+              </h3>
+              <p className="mt-2 text-white/75 text-sm">
                 Stay tuned for our upcoming investment products designed to grow your wealth sustainably.
               </p>
               
-              <ul className="mt-6 space-y-3">
+              <ul className="mt-4 space-y-3">
                 <li className="flex items-start gap-3 text-sm text-white/90">
                   <div className="mt-0.5 h-1.5 w-1.5 rounded-full bg-gold shrink-0" />
                   <span>Tailored investment portfolios to meet your risk appetite and financial goals.</span>
@@ -280,7 +400,7 @@ export function ExploreWealthOptions() {
               </ul>
             </div>
             
-            <div className="relative z-10 mt-8 pt-6 border-t border-white/20">
+            <div className="relative z-10 mt-6 pt-4 border-t border-white/20">
               <Button asChild className="rounded-full bg-white text-primary hover:bg-white/90 gap-2">
                 <Link href="/wealthup">Explore Investments <ArrowUpRight className="h-4 w-4" /></Link>
               </Button>

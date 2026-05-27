@@ -9,21 +9,21 @@ const opportunities = [
 export function WealthUpHero() {
   return (
     <>
-      <section className="bg-background py-24 lg:py-32">
+      <section className="bg-background/60 backdrop-blur-xl py-14 lg:py-20 border-b border-white/5">
         <div className="mx-auto max-w-7xl px-6">
           <div className="mx-auto max-w-3xl text-center">
             <div className="inline-flex items-center gap-2 rounded-full border border-border bg-background/60 px-3 py-1 text-xs font-medium uppercase tracking-widest text-primary">
               <TrendingUp className="h-3.5 w-3.5" /> WealthUp
             </div>
-            <h1 className="mt-5 font-display text-5xl font-semibold tracking-tight md:text-6xl">
+            <h1 className="mt-3 font-display text-5xl font-semibold tracking-tight md:text-6xl">
               When saving <span className="bg-gradient-to-r from-primary to-primary-glow bg-clip-text text-transparent">isn't enough</span>.
             </h1>
-            <p className="mt-6 text-lg text-muted-foreground">
-              Curated, vetted investment opportunities — fixed income, real-estate notes, agri-funds, and treasury bills — packaged for everyday Nigerians.
+            <p className="mt-4 text-lg text-muted-foreground">
+              Curated, vetted investment opportunities like fixed income, real-estate notes, agri-funds, and treasury bills, designed to be accessible to everyone.
             </p>
           </div>
 
-          <div className="mt-16 grid gap-5 md:grid-cols-3">
+          <div className="mt-10 grid gap-5 md:grid-cols-3">
             {opportunities.map((o, i) => (
               <div
                 key={o.name}

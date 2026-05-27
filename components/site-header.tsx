@@ -26,17 +26,37 @@ import { Calculator, FileText, Rss, Mail, Menu, X } from "lucide-react";
 
 const navItems = [
   { label: "Save", to: "/portfolios" as const },
-  { label: "Learn", to: "/learn" as const },
+  // { label: "Learn", to: "/learn" as const },
   { label: "Invest", to: "/wealthup" as const },
   { label: "Impact", to: "/#impact" as const },
   { label: "FAQ", to: "/#faq" as const },
 ];
 
 const resourcesItems = [
-  { label: "Calculator", to: "/resources/calculator", icon: Calculator, desc: "Calculate your wealth projection." },
-  { label: "Reports", to: "/resources/reports", icon: FileText, desc: "Market trends and financial reports." },
-  { label: "Blogs", to: "/blog", icon: Rss, desc: "Insights and tips for wealth building." },
-  { label: "Newsletters", to: "/resources/newsletters", icon: Mail, desc: "Subscribe to our latest updates." },
+  {
+    label: "Calculator",
+    to: "/resources/calculator",
+    icon: Calculator,
+    desc: "Calculate your wealth projection.",
+  },
+  {
+    label: "Reports",
+    to: "/resources/reports",
+    icon: FileText,
+    desc: "Market trends and financial reports.",
+  },
+  {
+    label: "Blogs",
+    to: "/blog",
+    icon: Rss,
+    desc: "Insights and tips for wealth building.",
+  },
+  {
+    label: "Newsletters",
+    to: "/resources/newsletters",
+    icon: Mail,
+    desc: "Subscribe to our latest updates.",
+  },
 ];
 
 const aboutItem = { label: "About Us", to: "/about" as const };
@@ -61,17 +81,20 @@ export function SiteHeader() {
   };
 
   return (
-    <header 
+    <header
       onMouseMove={handleMouseMove}
       className="group sticky top-0 z-50 w-full border-b border-white/[0.05] bg-background/60 backdrop-blur-xl transition-all duration-300"
     >
-      <div 
-        className="mouse-light opacity-0 group-hover:opacity-100" 
-        style={{ '--x': `${mousePos.x}px`, '--y': `${mousePos.y}px` } as any}
+      <div
+        className="mouse-light opacity-0 group-hover:opacity-100"
+        style={{ "--x": `${mousePos.x}px`, "--y": `${mousePos.y}px` } as any}
       />
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6">
-        <Link href="/" className="flex items-center transition-transform hover:scale-105">
-          <img src={logo.src} alt="Wealthconomy" className="h-8 w-auto" />
+        <Link
+          href="/"
+          className="flex items-center transition-transform hover:scale-105"
+        >
+          <img src={logo.src} alt="Wealthconomy" className="h-10 w-auto" />
         </Link>
 
         <nav className="hidden items-center gap-8 md:flex">
@@ -155,10 +178,14 @@ export function SiteHeader() {
             asChild
             className="hidden md:flex group h-10 rounded-full px-5 transition-transform hover:scale-105 active:scale-95"
           >
-            <Link href="/waitlist">
-              Join the waitlist
+            <a
+              href="https://forms.gle/M4NrF9w9HSny4YR49"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Start Saving
               <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-            </Link>
+            </a>
           </Button>
 
           {/* Mobile Menu Toggle */}
@@ -167,90 +194,111 @@ export function SiteHeader() {
               onClick={() => setMobileOpen(!mobileOpen)}
               className="relative z-[60] flex h-10 w-10 items-center justify-center rounded-full border border-border bg-surface-soft text-foreground transition-all hover:bg-surface-soft/80 active:scale-95"
             >
-              {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+              {mobileOpen ? (
+                <X className="h-5 w-5" />
+              ) : (
+                <Menu className="h-5 w-5" />
+              )}
             </button>
           </div>
         </div>
       </div>
 
       {/* Custom Smooth Mobile Drawer (Portaled to body to escape header's stacking context) */}
-      {mounted && createPortal(
-        <>
-          <div 
-            className={`fixed inset-0 z-[100] bg-black/60 backdrop-blur-sm transition-opacity duration-500 md:hidden ${
-              mobileOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
-            }`}
-            onClick={() => setMobileOpen(false)}
-          />
-          
-          <div 
-            className={`fixed inset-y-0 right-0 z-[100] w-[85vw] max-w-[360px] bg-background/95 backdrop-blur-2xl border-l border-white/10 shadow-2xl transition-transform duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] md:hidden ${
-              mobileOpen ? "translate-x-0" : "translate-x-full"
-            }`}
-          >
-            <div className="flex h-full flex-col overflow-y-auto px-6 py-8">
-              <Link href="/" className="flex items-center mb-10" onClick={() => setMobileOpen(false)}>
-                <img src={logo.src} alt="Wealthconomy" className="h-8 w-auto" />
-              </Link>
+      {mounted &&
+        createPortal(
+          <>
+            <div
+              className={`fixed inset-0 z-[100] bg-black/60 backdrop-blur-sm transition-opacity duration-500 md:hidden ${
+                mobileOpen
+                  ? "opacity-100 pointer-events-auto"
+                  : "opacity-0 pointer-events-none"
+              }`}
+              onClick={() => setMobileOpen(false)}
+            />
 
-              <nav className="flex flex-1 flex-col gap-6">
-                <div className="flex flex-col gap-5">
-                  {navItems.map((item) => (
-                    <Link
-                      key={item.label}
-                      href={item.to}
-                      onClick={() => setMobileOpen(false)}
-                      className={`text-lg font-medium transition-colors hover:text-primary ${pathname === item.to ? "text-primary" : "text-foreground"}`}
-                    >
-                      {item.label}
-                    </Link>
-                  ))}
-                </div>
-                
-                <div className="pt-6 border-t border-border">
-                  <p className="text-xs text-muted-foreground mb-4 uppercase tracking-widest font-semibold">Resources</p>
+            <div
+              className={`fixed inset-y-0 right-0 z-[100] w-[85vw] max-w-[360px] bg-background/95 backdrop-blur-2xl border-l border-white/10 shadow-2xl transition-transform duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] md:hidden ${
+                mobileOpen ? "translate-x-0" : "translate-x-full"
+              }`}
+            >
+              <div className="flex h-full flex-col overflow-y-auto px-6 py-8">
+                <Link
+                  href="/"
+                  className="flex items-center mb-10"
+                  onClick={() => setMobileOpen(false)}
+                >
+                  <img
+                    src={logo.src}
+                    alt="Wealthconomy"
+                    className="h-8 w-auto"
+                  />
+                </Link>
+
+                <nav className="flex flex-1 flex-col gap-6">
                   <div className="flex flex-col gap-5">
-                    {resourcesItems.map((p) => (
+                    {navItems.map((item) => (
                       <Link
-                        key={p.label}
-                        href={p.to}
+                        key={item.label}
+                        href={item.to}
                         onClick={() => setMobileOpen(false)}
-                        className="group flex items-center gap-4 text-base font-medium text-foreground hover:text-primary transition-colors"
+                        className={`text-lg font-medium transition-colors hover:text-primary ${pathname === item.to ? "text-primary" : "text-foreground"}`}
                       >
-                        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-surface-soft border border-border group-hover:bg-primary/10 group-hover:border-primary/20 transition-colors">
-                          <p.icon className="h-5 w-5 text-muted-foreground group-hover:text-primary transition-colors" />
-                        </div>
-                        {p.label}
+                        {item.label}
                       </Link>
                     ))}
                   </div>
-                </div>
 
-                <div className="pt-6 border-t border-border mt-auto">
-                  <div className="flex flex-col gap-3">
-                    <Link
-                      href="/contact"
-                      onClick={() => setMobileOpen(false)}
-                      className="rounded-full border border-border bg-surface-soft px-4 py-3 text-center text-sm font-medium text-foreground hover:bg-surface-soft/80 transition-colors"
-                    >
-                      Contact us
-                    </Link>
-                    <Button
-                      asChild
-                      className="rounded-full h-12 w-full bg-primary hover:bg-primary-glow text-white shadow-glow-teal"
-                    >
-                      <Link href="/waitlist" onClick={() => setMobileOpen(false)}>
-                        Join the waitlist
-                      </Link>
-                    </Button>
+                  <div className="pt-6 border-t border-border">
+                    <p className="text-xs text-muted-foreground mb-4 uppercase tracking-widest font-semibold">
+                      Resources
+                    </p>
+                    <div className="flex flex-col gap-5">
+                      {resourcesItems.map((p) => (
+                        <Link
+                          key={p.label}
+                          href={p.to}
+                          onClick={() => setMobileOpen(false)}
+                          className="group flex items-center gap-4 text-base font-medium text-foreground hover:text-primary transition-colors"
+                        >
+                          <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-surface-soft border border-border group-hover:bg-primary/10 group-hover:border-primary/20 transition-colors">
+                            <p.icon className="h-5 w-5 text-muted-foreground group-hover:text-primary transition-colors" />
+                          </div>
+                          {p.label}
+                        </Link>
+                      ))}
+                    </div>
                   </div>
-                </div>
-              </nav>
+
+                  <div className="pt-6 border-t border-border mt-auto">
+                    <div className="flex flex-col gap-3">
+                      <Link
+                        href="/contact"
+                        onClick={() => setMobileOpen(false)}
+                        className="rounded-full border border-border bg-surface-soft px-4 py-3 text-center text-sm font-medium text-foreground hover:bg-surface-soft/80 transition-colors"
+                      >
+                        Contact us
+                      </Link>
+                      <Button
+                        asChild
+                        className="rounded-full h-12 w-full bg-primary hover:bg-primary-glow text-white shadow-glow-teal"
+                      >
+                        <a
+                          href="https://forms.gle/M4NrF9w9HSny4YR49"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          Start Saving
+                        </a>
+                      </Button>
+                    </div>
+                  </div>
+                </nav>
+              </div>
             </div>
-          </div>
-        </>,
-        document.body
-      )}
+          </>,
+          document.body,
+        )}
     </header>
   );
 }

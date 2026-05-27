@@ -25,7 +25,7 @@ const slides: Slide[] = [
     id: "culture",
     label: "Built on Culture",
     title: "Traditional saving culture, redesigned.",
-    body: "We've digitized the heart of communal saving — bringing transparency and accountability to the traditions we've always trusted.",
+    body: "We've digitized the heart of communal saving, bringing transparency and accountability to the traditions we've always trusted.",
     image: scene1.src,
     alignment: "right",
   },
@@ -57,7 +57,7 @@ const slides: Slide[] = [
     id: "impact",
     label: "Real Wealth Outcomes",
     title: "This is what disciplined saving unlocks.",
-    body: "From business launches to home ownership — transform small contributions into life-changing milestones.",
+    body: "From business launches to home ownership, transform small contributions into life-changing milestones.",
     image: scene5.src,
     alignment: "right",
   },
@@ -100,7 +100,7 @@ export function WealthGroupSection() {
             The Movement
           </div>
           <h2 className="mt-3 font-display text-4xl font-semibold tracking-tight text-foreground md:text-5xl">
-            WealthGroup — <span className="text-gold">digitized Ajo.</span>
+            WealthGroup: <span className="text-gold">digitized Ajo.</span>
           </h2>
           <p className="mt-4 font-display text-lg text-muted-foreground max-w-lg mx-auto">
             Experience the future of communal saving. Structured, transparent,

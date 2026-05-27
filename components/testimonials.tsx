@@ -5,7 +5,7 @@ import { Quote, ChevronDown, ChevronUp } from "lucide-react";
 
 const quotes = [
   { name: "Adaeze O.", role: "Senior Developer", quote: "Wealthconomy didn't just give me an app; it gave me a mentor. I've reached my business goals faster than I ever thought possible.", initial: "A" },
-  { name: "Tunde A.", role: "SME Owner", quote: "The WealthGroup feature replaced three messy WhatsApp groups. My contributors trust the process — and so do I.", initial: "T" },
+  { name: "Tunde A.", role: "SME Owner", quote: "The WealthGroup feature replaced three messy WhatsApp groups. My contributors trust the process, and so do I.", initial: "T" },
   { name: "Chiamaka U.", role: "Product Designer", quote: "WiseUp turned saving from a chore into a craft. I finally understand my money.", initial: "C" },
   { name: "Femi B.", role: "Investment Analyst", quote: "Discipline used to be a buzzword. With Wealthconomy it's a system that runs while I sleep.", initial: "F" },
   { name: "Ifeoma K.", role: "Founder", quote: "It feels less like a fintech and more like a private wealth coach in my pocket.", initial: "I" },
@@ -41,22 +41,22 @@ export function Testimonials() {
   const row2 = [...quotes.slice().reverse(), ...quotes.slice().reverse()];
 
   return (
-    <section className="overflow-hidden bg-surface-soft py-24 lg:py-32">
+    <section className="overflow-hidden bg-surface-soft py-14 lg:py-20">
       <div className="mx-auto max-w-7xl px-6">
         <div className="max-w-3xl">
           <div className="text-sm font-medium uppercase tracking-widest text-primary">Wealth Builders</div>
-          <h2 className="mt-3 font-display text-4xl font-semibold leading-[1.1] tracking-tight md:text-6xl">
-            Built by professionals.
+          <h2 className="mt-2 font-display text-4xl font-semibold leading-[1.1] tracking-tight md:text-6xl">
+            Institutional-grade growth.
             <br />
-            For professionals.
+            Designed for everyday people.
           </h2>
-          <p className="mt-5 max-w-xl text-base text-muted-foreground md:text-lg">
+          <p className="mt-3 max-w-xl text-base text-muted-foreground md:text-lg">
             We care deeply about our customers' experience, and we work hard to make every interaction feel smooth, supportive, and worthwhile.
           </p>
         </div>
       </div>
 
-      <div className="relative mt-16">
+      <div className="relative mt-10">
         <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-32 bg-gradient-to-r from-surface-soft to-transparent" />
         <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-32 bg-gradient-to-l from-surface-soft to-transparent" />
 
@@ -73,7 +73,7 @@ export function Testimonials() {
         </div>
       </div>
 
-      <div className="mx-auto mt-12 flex max-w-[1400px] justify-center px-6 md:justify-end">
+      <div className="mx-auto mt-8 flex max-w-[1400px] justify-center px-6 md:justify-end">
         <button
           onClick={() => setIsExpanded(!isExpanded)}
           className="group flex items-center gap-2 rounded-full border border-border bg-card px-6 py-3 text-sm font-medium text-foreground shadow-soft transition-all hover:bg-muted"

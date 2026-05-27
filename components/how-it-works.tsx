@@ -9,7 +9,7 @@ const steps = [
 
 export function HowItWorks() {
   return (
-    <section className="relative overflow-hidden bg-surface-soft/40 py-24 lg:py-32">
+    <section className="relative overflow-hidden bg-surface-soft/40 py-14 lg:py-20">
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute right-0 top-0 h-[500px] w-[500px] rounded-full bg-primary/5 blur-[120px]" />
       </div>
@@ -20,11 +20,11 @@ export function HowItWorks() {
             <div className="inline-flex items-center gap-2 rounded-full border border-border bg-background/60 px-3 py-1 text-xs font-medium uppercase tracking-widest text-primary">
               How it works
             </div>
-            <h2 className="mt-5 font-display text-4xl font-semibold tracking-tight md:text-5xl">
+            <h2 className="mt-3 font-display text-4xl font-semibold tracking-tight md:text-5xl">
               Start Building Wealth in <span className="bg-gradient-to-r from-primary to-primary-glow bg-clip-text text-transparent">3 Easy Steps</span>
             </h2>
             
-            <div className="mt-12 space-y-8">
+            <div className="mt-8 space-y-6">
               {steps.map((s, i) => (
                 <div key={s.title} className="flex gap-6 group">
                   <div className="flex flex-col items-center">
@@ -32,24 +32,24 @@ export function HowItWorks() {
                       <s.icon className="h-6 w-6 text-primary" />
                     </div>
                     {i !== steps.length - 1 && (
-                      <div className="w-px h-full bg-gradient-to-b from-border to-transparent mt-4" />
+                      <div className="w-px h-full bg-gradient-to-b from-border to-transparent mt-3" />
                     )}
                   </div>
-                  <div className="pb-8">
+                  <div className="pb-6">
                     <div className="text-sm font-bold text-primary mb-1">Step 0{i + 1}</div>
                     <h3 className="font-display text-xl font-semibold text-foreground">{s.title}</h3>
-                    <p className="mt-2 text-muted-foreground">{s.body}</p>
+                    <p className="mt-1 text-muted-foreground">{s.body}</p>
                   </div>
                 </div>
               ))}
             </div>
           </div>
           
-          <div className="relative mx-auto w-full max-w-[280px] lg:max-w-[300px] aspect-[1/2.16] bg-gray-950 rounded-[3rem] border-[8px] border-gray-900 shadow-2xl overflow-hidden ring-4 ring-gray-900/10">
+          <div className="relative mx-auto w-full max-w-[240px] sm:max-w-[280px] lg:max-w-[300px] aspect-[1/2.16] bg-gray-950 rounded-[2rem] lg:rounded-[3rem] border-[4px] sm:border-[6px] border-gray-900 shadow-2xl overflow-hidden ring-4 ring-gray-900/10">
             {/* Dynamic Island / Notch */}
-            <div className="absolute top-2 left-1/2 -translate-x-1/2 w-[90px] h-[24px] bg-black rounded-full z-40 flex items-center justify-between px-2 shadow-sm">
-              <div className="w-2 h-2 rounded-full bg-gray-800/80" />
-              <div className="w-2 h-2 rounded-full bg-blue-900/40" />
+            <div className="absolute top-1.5 left-1/2 -translate-x-1/2 w-[60px] h-[16px] bg-black rounded-full z-40 flex items-center justify-between px-2 shadow-sm">
+              <div className="w-1.5 h-1.5 rounded-full bg-gray-800/80" />
+              <div className="w-1.5 h-1.5 rounded-full bg-blue-900/40" />
             </div>
 
             {/* Pinned Top Bar (Status Bar ONLY) */}

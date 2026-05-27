@@ -27,7 +27,7 @@ export function DisciplineEngine() {
   const { ref, inView } = useInView<HTMLDivElement>();
 
   return (
-    <section className="relative overflow-hidden bg-background py-24 lg:py-32">
+    <section className="relative overflow-hidden bg-background py-14 lg:py-20">
       {/* Ambient backdrop */}
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute -left-40 top-20 h-[420px] w-[420px] rounded-full bg-primary/10 blur-[120px] portfolio-blob" />
@@ -35,7 +35,7 @@ export function DisciplineEngine() {
         <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(128,128,128,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(128,128,128,0.05)_1px,transparent_1px)] bg-[size:48px_48px] [mask-image:radial-gradient(ellipse_60%_60%_at_50%_50%,#000_30%,transparent_100%)]" />
       </div>
 
-      <div ref={ref} className="relative mx-auto grid max-w-7xl gap-16 px-6 lg:grid-cols-2 lg:items-center">
+      <div ref={ref} className="relative mx-auto grid max-w-7xl gap-10 px-6 lg:grid-cols-2 lg:items-center">
         {/* Left: Copy */}
         <div className={cn("space-y-7", inView && "portfolio-detail-enter")}>
           <div className="inline-flex items-center gap-2 rounded-full border border-border bg-background/60 px-3 py-1 text-xs font-medium uppercase tracking-widest text-primary backdrop-blur-sm">
@@ -47,7 +47,7 @@ export function DisciplineEngine() {
             <span className="bg-gradient-to-r from-primary to-primary-glow bg-clip-text text-transparent">Our system isn't.</span>
           </h2>
           <p className="max-w-xl text-lg text-muted-foreground">
-            Wealthconomy removes the burden of "trying to save." Real-time visual progress and automated rules mean you don't just see numbers — you see your dreams getting closer, every single day.
+            Wealthconomy removes the burden of "trying to save." Real-time visual progress and automated rules mean you don't just see numbers. You see your dreams getting closer every single day.
           </p>
 
           <div className="grid gap-4 sm:grid-cols-2">

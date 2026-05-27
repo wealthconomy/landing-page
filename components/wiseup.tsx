@@ -17,11 +17,11 @@ export function WiseUp() {
   };
 
   return (
-    <section id="wiseup" className="bg-background py-24 lg:py-32 overflow-hidden font-display">
+    <section id="wiseup" className="bg-background py-14 lg:py-20 overflow-hidden font-display">
       <div className="mx-auto max-w-7xl px-6">
         
         {/* Intro Header Grid */}
-        <div className="grid lg:grid-cols-12 gap-12 items-center mb-24">
+        <div className="grid lg:grid-cols-12 gap-12 items-center mb-14">
           <div className="lg:col-span-7 space-y-6 text-left">
             <div className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-4 py-1.5 text-xs font-medium text-primary">
               <BookOpen className="h-4 w-4 text-gold" />
@@ -106,8 +106,8 @@ export function WiseUp() {
         </div>
 
         {/* Section: Financial Position Tests */}
-        <div className="mb-24">
-          <div className="max-w-3xl mb-12">
+        <div className="mb-14">
+          <div className="max-w-3xl mb-8">
             <h2 className="text-2xl md:text-3xl font-semibold tracking-tight text-foreground uppercase">
               Financial Position Tests
             </h2>
@@ -152,8 +152,8 @@ export function WiseUp() {
         </div>
 
         {/* Section: Blog Line */}
-        <div className="mb-24">
-          <div className="max-w-3xl mb-12">
+        <div className="mb-14">
+          <div className="max-w-3xl mb-8">
             <h2 className="text-2xl md:text-3xl font-semibold tracking-tight text-foreground uppercase">
               Featured Money Lessons
             </h2>
@@ -185,7 +185,7 @@ export function WiseUp() {
         </div>
 
         {/* Section: Newsletter subscription */}
-        <div className="relative overflow-hidden rounded-[2rem] bg-gradient-to-br from-primary to-[#0e4143] px-8 py-12 text-center text-primary-foreground md:px-16 md:py-16 mb-32">
+        <div className="relative overflow-hidden rounded-[2rem] bg-gradient-to-br from-primary to-[#0e4143] px-8 py-8 text-center text-primary-foreground md:px-16 md:py-12 mb-16">
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(255,207,101,0.2),transparent_60%)] pointer-events-none" />
           <div className="relative max-w-xl mx-auto space-y-6">
             <h3 className="font-display text-2xl md:text-3xl font-semibold tracking-tight text-white">
@@ -217,22 +217,22 @@ export function WiseUp() {
         </div>
 
         {/* Learning Modules Section Header */}
-        <div id="learning-modules" className="mb-20 text-center max-w-3xl mx-auto scroll-mt-24">
+        <div id="learning-modules" className="mb-10 text-center max-w-3xl mx-auto scroll-mt-24">
           <div className="text-sm font-bold uppercase tracking-widest text-primary mb-4">
             Curriculum modules
           </div>
           <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-foreground font-display">
             The Mathematics of Wealth
           </h2>
-          <p className="mt-4 text-base text-muted-foreground">
+          <p className="mt-3 text-base text-muted-foreground">
             Explore byte-sized lessons on time value, leverage, asset allocation, and tax-efficiency.
           </p>
         </div>
 
         {/* Learning Blocks */}
-        <div className="space-y-32">
+        <div className="space-y-20">
           {/* Block 1: Compounding */}
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
+          <div className="grid lg:grid-cols-2 gap-10 items-center">
             <div className="order-2 lg:order-1 max-w-xl mx-auto lg:mx-0">
               <div className="flex items-center gap-3 mb-4">
                  <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10 text-primary">
@@ -287,7 +287,7 @@ export function WiseUp() {
           </div>
 
           {/* Block 2: Structured Discipline */}
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
+          <div className="grid lg:grid-cols-2 gap-10 items-center">
             <div className="order-2 lg:order-2 max-w-xl mx-auto lg:mx-0">
                <div className="flex items-center gap-3 mb-4">
                  <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gold/10 text-gold">
@@ -335,7 +335,7 @@ export function WiseUp() {
           </div>
 
           {/* Block 3: Beating Inflation */}
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
+          <div className="grid lg:grid-cols-2 gap-10 items-center">
             <div className="order-2 lg:order-1 max-w-xl mx-auto lg:mx-0">
                <div className="flex items-center gap-3 mb-4">
                  <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-rose-500/10 text-rose-500">

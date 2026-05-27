@@ -23,22 +23,22 @@ const team = [
 
 export function AboutTeam() {
   return (
-    <section className="bg-surface-soft/40 py-24 lg:py-32">
+    <section className="bg-surface-soft/40 py-14 lg:py-20">
       <div className="mx-auto max-w-7xl px-6 lg:px-12">
-        <div className="mb-16 text-center">
+        <div className="mb-10 text-center">
           <h2 className="font-display text-3xl font-bold tracking-tight md:text-5xl">
             Meet the architects of <br />
             <span className="bg-gradient-to-r from-gold to-amber-500 bg-clip-text text-transparent">
               the new economy.
             </span>
           </h2>
-          <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground">
+          <p className="mx-auto mt-4 max-w-2xl text-lg text-muted-foreground">
             We are a team of engineers, economists, and designers united by a single goal: 
             making wealth generation a structured, inevitable outcome.
           </p>
         </div>
 
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {team.map((member) => (
             <div key={member.name} className="group relative overflow-hidden rounded-3xl border border-border bg-background p-6 transition-all duration-500 hover:shadow-soft">
               <div className="aspect-square w-full overflow-hidden rounded-2xl bg-muted">

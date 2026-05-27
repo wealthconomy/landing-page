@@ -2,19 +2,18 @@ import type { Metadata } from "next";
 import { Hero } from "@/components/hero";
 import { ExploreWealthOptions } from "@/components/explore-wealth-options";
 import { PortfolioGrid } from "@/components/portfolio-grid";
-import { WhyChoose } from "@/components/why-choose";
 import { TrustBand } from "@/components/trust-band";
 import { HowItWorks } from "@/components/how-it-works";
 import { DashboardPreview } from "@/components/dashboard-preview";
 import { Testimonials } from "@/components/testimonials";
-import { FAQ } from "@/components/faq";
+
 import { WaitlistCta } from "@/components/waitlist-cta";
 import { Reveal } from "@/components/ui/reveal";
 
 export const metadata: Metadata = {
   title: "Wealthconomy — Structured Wealth for Modern Professionals",
   description:
-    "Save consistently, build financial discipline, grow wealth and impact — all in one structured Naira-first platform.",
+    "Save consistently, build financial discipline, grow wealth and impact, all in one structured Naira-first platform.",
 };
 
 export default function Index() {
@@ -34,10 +33,6 @@ export default function Index() {
         <HowItWorks />
       </Reveal>
 
-      <Reveal>
-        <WhyChoose />
-      </Reveal>
-
       <Reveal animation="up" threshold={0.1}>
         <TrustBand />
       </Reveal>
@@ -50,9 +45,6 @@ export default function Index() {
         <Testimonials />
       </Reveal>
 
-      <Reveal animation="up" threshold={0.1}>
-        <FAQ />
-      </Reveal>
 
       <Reveal animation="up" threshold={0.1}>
         <WaitlistCta />

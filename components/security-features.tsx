@@ -2,10 +2,10 @@ import { ShieldCheck, Lock, Fingerprint, FileCheck, Eye, ServerCog } from "lucid
 
 const features = [
   { icon: ShieldCheck, title: "Regulator-aligned custody", body: "Funds held with CBN-licensed partner institutions, NDIC-aware structuring on all custodial accounts." },
-  { icon: Lock, title: "256-bit AES at rest", body: "Every record — balances, transactions, KYC — is encrypted at rest. TLS 1.3 in transit." },
+  { icon: Lock, title: "256-bit AES at rest", body: "Every record, including balances, transactions, and KYC, is encrypted at rest. TLS 1.3 in transit." },
   { icon: Fingerprint, title: "Biometric + 2FA", body: "Face ID, fingerprint, and TOTP authentication on every sensitive action." },
-  { icon: FileCheck, title: "On-platform receipts", body: "Every transaction generates a verifiable, exportable receipt — useful for taxes and audits." },
-  { icon: Eye, title: "Transparent rules", body: "Every portfolio's mechanics — rates, locks, fees — are documented in plain English in-app." },
+  { icon: FileCheck, title: "On-platform receipts", body: "Every transaction generates a verifiable, exportable receipt, useful for taxes and audits." },
+  { icon: Eye, title: "Transparent rules", body: "Every portfolio's mechanics, including rates, locks, and fees, are documented in plain English in-app." },
   { icon: ServerCog, title: "Continuous monitoring", body: "24/7 fraud monitoring, anomaly detection, and quarterly third-party penetration tests." },
 ];
 
@@ -21,7 +21,7 @@ export function SecurityFeatures() {
             Trusted with your <span className="bg-gradient-to-r from-primary to-primary-glow bg-clip-text text-transparent">future</span>.
           </h1>
           <p className="mt-5 text-lg text-muted-foreground">
-            Your wealth deserves more than promises. Here's exactly how we protect it — top to bottom.
+            Your wealth deserves more than promises. Here's exactly how we protect it from top to bottom.
           </p>
         </div>
         <div className="mt-14 grid gap-5 md:grid-cols-2 lg:grid-cols-3">

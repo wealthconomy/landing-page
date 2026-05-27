@@ -1,7 +1,7 @@
 import { Sprout, HandHeart, Globe } from "lucide-react";
 
 const items = [
-  { icon: Sprout, title: "Cause-linked goals", body: "Pledge a slice of every payout to a cause you care about — automatically." },
+  { icon: Sprout, title: "Cause-linked goals", body: "Pledge a slice of every payout to a cause you care about, automatically." },
   { icon: HandHeart, title: "Community pools", body: "Communal saving pools that fund member emergencies before they become crises." },
   { icon: Globe, title: "Verified impact", body: "Track real-world outcomes from your contributions, reported on a quarterly cadence." },
 ];
@@ -19,7 +19,7 @@ export function ImpactStrip() {
               Wealth that <span className="bg-gradient-to-r from-primary to-primary-glow bg-clip-text text-transparent">lifts others</span> too.
             </h2>
             <p className="mt-5 text-muted-foreground">
-              Every Wealthconomy portfolio can route a sliver of its growth into community, climate, or family-of-choice causes — without slowing your own progress.
+              Every Wealthconomy portfolio can route a sliver of its growth into community, climate, or family-of-choice causes, without slowing your own progress.
             </p>
           </div>
           <div className="grid gap-5 sm:grid-cols-3">

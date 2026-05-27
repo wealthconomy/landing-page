@@ -59,7 +59,7 @@ export function SiteFooter() {
                 </span>
               </div>
               <div className="text-xs font-medium tracking-wide text-white/40">
-                © 2026 Wealthconomy. Empowering Financial Growth Across Africa.
+                © {currentYear} Wealthconomy. Empowering Financial Growth Across Africa.
               </div>
             </div>
 

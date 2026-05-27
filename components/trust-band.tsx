@@ -10,22 +10,22 @@ const pillars = [
 
 export function TrustBand() {
   return (
-    <section className="border-y border-border bg-surface-soft/40 py-20">
+    <section className="border-y border-border bg-surface-soft/40 py-14">
       <div className="mx-auto max-w-7xl px-6">
         <div className="mx-auto max-w-2xl text-center">
           <h2 className="font-display text-3xl font-semibold tracking-tight md:text-4xl">
             Your Money. Your Trust. Our Priority.
           </h2>
-          <p className="mt-4 text-base text-muted-foreground">
+          <p className="mt-3 text-base text-muted-foreground">
             Wealthconomy is committed to security of funds, transparency, and responsible financial management. We leverage secure infrastructure and best practices to protect user funds and data.
           </p>
         </div>
-        <div className="mt-12 flex flex-wrap justify-center gap-6">
+        <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
           {pillars.map((p) => (
-            <div key={p.title} className="rounded-2xl border border-border bg-background p-6 w-full sm:w-[calc(50%-12px)] md:w-[calc(33.333%-16px)] lg:w-[calc(25%-18px)]">
+            <div key={p.title} className="rounded-2xl border border-border bg-background p-5 flex flex-col items-center text-center lg:items-start lg:text-left">
               <p.icon className="h-6 w-6 text-primary" />
-              <h3 className="mt-4 font-display text-base font-semibold">{p.title}</h3>
-              <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">{p.body}</p>
+              <h3 className="mt-3 font-display text-base font-semibold">{p.title}</h3>
+              <p className="mt-1 text-sm leading-relaxed text-muted-foreground">{p.body}</p>
             </div>
           ))}
         </div>

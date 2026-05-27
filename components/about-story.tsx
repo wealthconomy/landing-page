@@ -3,23 +3,23 @@ import { Button } from "@/components/ui/button";
 
 export function AboutStory() {
   return (
-    <div className="space-y-24 py-24 lg:space-y-32 lg:py-32 overflow-hidden">
+    <div className="space-y-8 py-6 lg:space-y-10 lg:py-8 overflow-hidden">
       
       {/* What We Do Section */}
       <section className="mx-auto max-w-7xl px-6">
-        <div className="max-w-3xl mb-16">
-          <div className="text-sm font-bold uppercase tracking-widest text-primary mb-3">Core Pillars</div>
+        <div className="max-w-3xl mb-6">
+          <div className="text-sm font-bold uppercase tracking-widest text-primary mb-2">Core Pillars</div>
           <h2 className="font-display text-3xl font-semibold tracking-tight md:text-5xl">
             What we do
           </h2>
-          <p className="mt-4 text-base text-muted-foreground">
+          <p className="mt-3 text-base text-muted-foreground">
             We combine savings, education, and social impact into one unified, structured platform.
           </p>
         </div>
 
         <div className="grid gap-8 lg:grid-cols-3">
           {/* Smarter Saving */}
-          <div className="group rounded-3xl border border-border bg-card p-8 flex flex-col justify-between hover:border-primary/30 hover:shadow-soft transition-all duration-300">
+          <div className="group rounded-3xl border border-border/50 bg-background/60 backdrop-blur-xl p-6 lg:p-8 flex flex-col justify-between hover:border-primary/40 hover:shadow-glow-teal transition-all duration-300">
             <div>
               <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 text-primary mb-6">
                 <Wallet className="h-6 w-6" />
@@ -39,7 +39,7 @@ export function AboutStory() {
           </div>
 
           {/* Financial Literacy */}
-          <div className="group rounded-3xl border border-border bg-card p-8 flex flex-col justify-between hover:border-gold/30 hover:shadow-soft transition-all duration-300">
+          <div className="group rounded-3xl border border-border/50 bg-background/60 backdrop-blur-xl p-6 lg:p-8 flex flex-col justify-between hover:border-gold/40 hover:shadow-glow-teal transition-all duration-300">
             <div>
               <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gold/10 text-gold mb-6">
                 <BookOpen className="h-6 w-6" />
@@ -62,7 +62,7 @@ export function AboutStory() {
           </div>
 
           {/* Impact Initiatives */}
-          <div className="group rounded-3xl border border-border bg-card p-8 flex flex-col justify-between hover:border-rose-500/30 hover:shadow-soft transition-all duration-300">
+          <div className="group rounded-3xl border border-border/50 bg-background/60 backdrop-blur-xl p-6 lg:p-8 flex flex-col justify-between hover:border-rose-500/40 hover:shadow-glow-teal transition-all duration-300">
             <div>
               <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-rose-500/10 text-rose-500 mb-6">
                 <Heart className="h-6 w-6" />
@@ -84,19 +84,19 @@ export function AboutStory() {
       </section>
 
       {/* Why Choose Wealthconomy Section */}
-      <section className="bg-surface-soft/40 py-24 border-y border-border relative">
+      <section className="bg-surface-soft/30 py-8 border-y border-border/50 relative backdrop-blur-sm">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(21,93,95,0.03),transparent_70%)] pointer-events-none" />
         <div className="mx-auto max-w-7xl px-6 relative z-10">
-          <div className="mx-auto max-w-2xl text-center mb-16">
+          <div className="mx-auto max-w-2xl text-center mb-6">
             <h2 className="font-display text-3xl font-semibold tracking-tight md:text-5xl">
               Why Choose Wealthconomy?
             </h2>
-            <p className="mt-4 text-base text-muted-foreground">
+            <p className="mt-3 text-base text-muted-foreground">
               We engineer security, transparency, and impact directly into the platform core.
             </p>
           </div>
 
-          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {[
               {
                 icon: ShieldCheck,
@@ -119,7 +119,7 @@ export function AboutStory() {
                 body: "Access to financial literacy tools and resources."
               }
             ].map((f, i) => (
-              <div key={i} className="group relative rounded-2xl border border-border bg-background p-6 hover:shadow-soft transition-all duration-300">
+              <div key={i} className="group relative rounded-2xl border border-border/50 bg-background/40 backdrop-blur-md p-5 hover:shadow-soft hover:bg-background/80 hover:border-primary/30 transition-all duration-300">
                 <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-xl bg-primary/10 text-primary group-hover:scale-105 transition-transform">
                   <f.icon className="h-5 w-5" />
                 </div>
@@ -133,9 +133,9 @@ export function AboutStory() {
 
       {/* Join Us Section */}
       <section className="mx-auto max-w-5xl px-6">
-        <div className="relative overflow-hidden rounded-[2.5rem] bg-gradient-to-br from-primary to-[#0e4143] px-8 py-16 text-center text-primary-foreground md:px-16 md:py-20 shadow-2xl">
+        <div className="relative overflow-hidden rounded-[2.5rem] bg-gradient-to-br from-primary to-[#0e4143] px-6 py-8 text-center text-primary-foreground md:px-12 md:py-10 shadow-2xl">
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(255,207,101,0.25),transparent_60%)] pointer-events-none" />
-          <div className="relative space-y-8">
+          <div className="relative space-y-6">
             <div className="mx-auto inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.2em] text-white/90 backdrop-blur-xl">
               <Sparkles className="h-4 w-4 text-gold" />
               Join us

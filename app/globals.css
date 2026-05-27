@@ -226,6 +226,14 @@
 .animate-phone-c { animation: phone-rise 1s cubic-bezier(0.22,1,0.36,1) 0.3s both, phone-float-c 7.5s ease-in-out 1.3s infinite; }
 .animate-card-drift { animation: card-drift 6s ease-in-out infinite; }
 
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+.animate-spin-slow {
+  animation: spin-slow 25s linear infinite;
+}
+
 @keyframes marquee-left {
   0% { transform: translateX(0); }
   100% { transform: translateX(-50%); }

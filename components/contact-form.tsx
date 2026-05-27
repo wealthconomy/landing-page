@@ -7,21 +7,21 @@ import { Button } from "@/components/ui/button";
 export function ContactForm() {
   const [done, setDone] = useState(false);
   return (
-    <section className="bg-background py-24 lg:py-32">
+    <section className="bg-background py-14 lg:py-20">
       <div className="mx-auto max-w-7xl px-6">
         <div className="mx-auto max-w-2xl text-center">
           <div className="inline-flex items-center gap-2 rounded-full border border-border bg-background/60 px-3 py-1 text-xs font-medium uppercase tracking-widest text-primary">
             Contact
           </div>
-          <h1 className="mt-5 font-display text-4xl font-semibold tracking-tight md:text-5xl">
+          <h1 className="mt-3 font-display text-4xl font-semibold tracking-tight md:text-5xl">
             We'd love to <span className="bg-gradient-to-r from-primary to-primary-glow bg-clip-text text-transparent">hear from you</span>.
           </h1>
-          <p className="mt-5 text-lg text-muted-foreground">
-            Questions, partnerships, press — pick a channel and we'll be in touch within 24 hours.
+          <p className="mt-3 text-lg text-muted-foreground">
+            Questions, partnerships, or press: pick a channel and we'll be in touch within 24 hours.
           </p>
         </div>
 
-        <div className="mt-14 grid gap-10 lg:grid-cols-[1fr_1.4fr]">
+        <div className="mt-8 grid gap-10 lg:grid-cols-[1fr_1.4fr]">
           <div className="space-y-5">
             {[
               { icon: Mail, title: "Email", body: "hello@wealthconomy.com" },

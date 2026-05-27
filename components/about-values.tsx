@@ -25,9 +25,9 @@ const values = [
 
 export function AboutValues() {
   return (
-    <section className="bg-background py-24 lg:py-32">
+    <section className="bg-background py-14 lg:py-20">
       <div className="mx-auto max-w-7xl px-6 lg:px-12">
-        <div className="mb-16 max-w-2xl">
+        <div className="mb-10 max-w-2xl">
           <h2 className="font-display text-3xl font-bold tracking-tight md:text-5xl">
             The principles that <br />
             <span className="text-primary">guide our code.</span>

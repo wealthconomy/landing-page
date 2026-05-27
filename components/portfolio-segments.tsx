@@ -2,8 +2,8 @@ import Link from "next/link";
 import { Wallet, Lock, Target, Users, Heart, ShieldAlert, ArrowUpRight, Repeat } from "lucide-react";
 
 const segments = [
-  { id: "flex", icon: Wallet, name: "WealthFlex", line: "Flexible savings you can top up or withdraw any time.", rate: "Up to 10% p.a." },
-  { id: "fix", icon: Lock, name: "WealthFix", line: "Lock funds for a fixed term and earn the highest yield.", rate: "Up to 18% p.a." },
+  { id: "flex", icon: Wallet, name: "WealthFlex", line: "Flexible savings you can top up or withdraw any time.", rate: "Flexible Savings" },
+  { id: "fix", icon: Lock, name: "WealthFix", line: "Lock funds for a fixed term and earn the highest yield.", rate: "Locked Vault" },
   { id: "goal", icon: Target, name: "WealthGoal", line: "Target-based savings tied to a milestone or date.", rate: "Goal-tracked" },
   { id: "group", icon: Users, name: "WealthGroup", line: "Digitised Ajo with automated, fair rotation.", rate: "Group-based" },
   { id: "fam", icon: Heart, name: "WealthFam", line: "Family pots for school fees, rent, or shared dreams.", rate: "Shared access" },

@@ -26,7 +26,7 @@ export function PillarsLearnInvest() {
               </div>
               <h3 className="mt-6 font-display text-2xl font-semibold">WiseUp</h3>
               <p className="mt-3 text-muted-foreground">
-                Bite-sized financial literacy — bookkeeping, budgeting, debt, taxes — taught by people who've actually built wealth.
+                Bite-sized financial literacy covering bookkeeping, budgeting, debt, and taxes, taught by people who've actually built wealth.
               </p>
               <div className="mt-6 inline-flex items-center gap-1 text-sm font-semibold text-primary">
                 Explore lessons <ArrowUpRight className="h-4 w-4" />
@@ -45,7 +45,7 @@ export function PillarsLearnInvest() {
               </div>
               <h3 className="mt-6 font-display text-2xl font-semibold">WealthUp</h3>
               <p className="mt-3 text-white/75">
-                Curated investment opportunities — fixed income, real-estate notes, agri-funds — vetted and structured for everyday savers.
+                Curated investment opportunities like fixed income, real-estate notes, and agri-funds, vetted and structured for everyday savers.
               </p>
               <div className="mt-6 inline-flex items-center gap-1 text-sm font-semibold text-gold">
                 See opportunities <ArrowUpRight className="h-4 w-4" />

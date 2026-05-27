@@ -82,7 +82,7 @@ export function BlogIndex() {
           </h1>
 
           <p className="mx-auto mt-6 max-w-xl text-base text-muted-foreground md:text-lg">
-            Get smarter about money — Straight to your inbox. Actionable guides on automated compound savings, inflation hedging, and financial discipline.
+            Get smarter about money straight to your inbox. Actionable guides on automated compound savings, inflation hedging, and financial discipline.
           </p>
 
           {/* Newsletter Input Form */}
