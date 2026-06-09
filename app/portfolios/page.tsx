@@ -19,7 +19,7 @@ export default function PortfoliosPage() {
               Six rhythms of <span className="bg-gradient-to-r from-primary to-primary-glow bg-clip-text text-transparent">discipline</span>.
             </h1>
             <p className="mt-4 text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
-              Pick one. Combine all. Each portfolio enforces a different way of putting your money to work towards your goals.
+              Pick one or more or combine all. Each portfolio enforces a different way of putting your money to work towards your goals.
             </p>
             
             {/* Trust / Security Strip */}

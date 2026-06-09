@@ -14,20 +14,29 @@ export function AboutHero() {
           <Sparkles className="h-4 w-4 text-gold" />
           Our Mission
         </div>
-        
+
         <h1 className="font-display text-4xl font-semibold leading-[1.1] tracking-tight md:text-5xl lg:text-6xl max-w-4xl mx-auto">
-          To empower everyone to better manage and multiply their money for{" "}
+          To help everyone build lasting wealth by making smart saving,
+          investing, and financial growth opportunities{" "}
           <span className="bg-gradient-to-r from-primary via-primary-glow to-primary bg-clip-text text-transparent">
-            impactful wealth building
+            accessible to all
           </span>
         </h1>
-        
-        <div className="mx-auto mt-5 max-w-3xl space-y-4 text-base md:text-lg text-muted-foreground leading-relaxed">
+
+        <div className="mx-auto mt-5 max-w-7xl space-y-4 text-base md:text-lg text-muted-foreground leading-relaxed">
           <p>
-            Wealthconomy is a people-first financial platform building the simplest and safest path for Africans to save, invest, learn and use their wealth to create positive change. We combine competitive savings, practical financial education, high-yielding investment opportunities and purpose-driven impact products so that every Africans can reach life goals, grow lasting wealth, and uplift others.
+            Wealthconomy is a people-first financial platform building the
+            simplest and safest path for Africans to save, invest, learn and use
+            their wealth to create positive change. We combine competitive
+            savings, practical financial education, high-yielding investment
+            opportunities and purpose-driven impact products so that every
+            Africans can reach life goals, grow lasting wealth, and uplift
+            others.
           </p>
           <p>
-            We empower Africans to build financial resilience and generational wealth through secure, intelligent, and inclusive products that create measurable impact.
+            We empower Africans to build financial resilience and generational
+            wealth through secure, intelligent, and inclusive products that
+            create measurable impact.
           </p>
         </div>
       </div>

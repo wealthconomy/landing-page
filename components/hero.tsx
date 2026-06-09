@@ -264,7 +264,7 @@ export function Hero() {
           {/* Left Column: Text */}
           <div className="flex flex-col items-center text-center lg:items-start lg:text-left">
             <div className="animate-in fade-in slide-in-from-bottom-8 duration-1000 fill-mode-both inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 backdrop-blur-sm px-4 py-1.5 text-xs font-medium text-white shadow-soft hover:shadow-[0_0_30px_rgba(255,255,255,0.1)] transition-all duration-500 cursor-default hover:bg-white/10 w-fit">
-              Trusted by 50K+ Satisfied Users
+              Trusted by 1k + wealth builders
               <span className="flex -space-x-1">
                 <span className="h-4 w-4 rounded-full border border-primary bg-white" />
                 <span className="h-4 w-4 rounded-full border border-primary bg-gold" />

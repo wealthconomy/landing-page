@@ -16,12 +16,12 @@ type Product = {
 };
 
 const products: Product[] = [
-  { id: "wealthflex", icon: Wallet, name: "WealthFlex", tagline: "Smart Flexible Savings", bestFor: "The Cautious Saver", short: "Prepare for emergencies through flexible savings you can withdraw anytime.", accent: "flex" },
-  { id: "wealthfix", icon: Lock, name: "WealthFix", tagline: "The Discipline Vault", bestFor: "The Impulsive Saver", short: "Stay disciplined and lock your savings for guaranteed high returns.", accent: "fix" },
-  { id: "wealthgoal", icon: Target, name: "WealthGoal", tagline: "Purpose-Driven Savings", bestFor: "The Big-Ticket Planner", short: "Create targeted savings plans and save manually or trigger auto-debits.", accent: "goal" },
-  { id: "wealthfam", icon: Heart, name: "WealthFam", tagline: "Legacy Foundation", bestFor: "The Legacy Builder", short: "Build collective savings plans with family and friends for shared dreams.", accent: "fam" },
-  { id: "wealthflow", icon: Repeat, name: "WealthFlow", tagline: "Automated Cycle", bestFor: "The Busy Professional", short: "Set your custom savings schedule, automate transfers, and watch it grow.", accent: "flow" },
-  { id: "wealthgroup", icon: Users, name: "WealthGroup", tagline: "Digital Ajo / Esusu", bestFor: "The Social Saver", short: "Save together with groups, cooperatives, or friends with automated cycles.", accent: "group" },
+  { id: "wealthflex", icon: Wallet, name: "WealthFlex", tagline: "Smart Flexible Savings", bestFor: "The Cautious Saver", short: "Prepare for emergencies through flexible savings", accent: "flex" },
+  { id: "wealthfix", icon: Lock, name: "WealthFix", tagline: "The Discipline Vault", bestFor: "The Impulsive Saver", short: "Stay disciplined and fix your money or savings for guaranteed returns.", accent: "fix" },
+  { id: "wealthgoal", icon: Target, name: "WealthGoal", tagline: "Purpose-Driven Savings", bestFor: "The Big-Ticket Planner", short: "Got a goal? Create a targeted savings plan and save manually or trigger auto-debit for it.", accent: "goal" },
+  { id: "wealthfam", icon: Heart, name: "WealthFam", tagline: "Legacy Foundation", bestFor: "The Legacy Builder", short: "create savings plans for family and friends, including spouses and kids.", accent: "fam" },
+  { id: "wealthflow", icon: Repeat, name: "WealthFlow", tagline: "Automated Cycle", bestFor: "The Busy Professional", short: "Set your savings schedule, automate the flow, accumulate your savings.", accent: "flow" },
+  { id: "wealthgroup", icon: Users, name: "WealthGroup", tagline: "Digital Ajo / Esusu", bestFor: "The Social Saver", short: "Save together as a group. Friends, staff, cooperatives use this for secure and transparent group savings.", accent: "group" },
 ];
 
 const accentMap: Record<string, { iconBg: string; badgeBg: string; glow: string }> = {
@@ -74,12 +74,12 @@ export function PortfolioGrid() {
 
       <div className="mx-auto max-w-7xl px-6 relative z-10">
         <div className="mx-auto max-w-2xl text-center">
-          <div className="text-xs font-bold uppercase tracking-widest text-primary mb-2">A Menu of Financial Habits</div>
+          <div className="text-xs font-bold uppercase tracking-widest text-primary mb-2">A Menu of Financial Portfolios</div>
           <h2 className="font-display text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
             How would you want to Save?
           </h2>
           <p className="mt-2 text-sm text-muted-foreground">
-            Explore diverse, structured savings options tailored to enforce discipline and automate your wealth.
+            Explore diverse savings options to meet your needs
           </p>
         </div>
 
@@ -141,7 +141,7 @@ export function PortfolioGrid() {
                 {/* Bottom row: Link */}
                 <div className="mt-4 pt-2.5 border-t border-border/40 flex items-center justify-between">
                   <span className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground group-hover:text-primary transition-colors">
-                    Explore Habit
+                    Explore Portfolio
                   </span>
                   <Link
                     href={`/portfolios#${anchorId}`}
@@ -158,9 +158,9 @@ export function PortfolioGrid() {
         {/* Global CTA */}
         <div className="mt-8 text-center">
           <Button asChild className="rounded-full bg-primary hover:bg-primary/90 px-7 py-5 text-xs font-bold text-white shadow-glow-teal transition-all duration-300 hover:scale-102">
-            <Link href="/portfolios">
-              View All Savings Portfolios <ArrowUpRight className="h-3.5 w-3.5 ml-1" />
-            </Link>
+            <a href="https://forms.gle/M4NrF9w9HSny4YR49" target="_blank" rel="noopener noreferrer">
+              Explore a Wealth Portfolio <ArrowUpRight className="h-3.5 w-3.5 ml-1" />
+            </a>
           </Button>
         </div>
       </div>

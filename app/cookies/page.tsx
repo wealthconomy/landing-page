@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { LegalLayout } from "@/components/legal-layout";
-import { Cookie, Info, Settings, ShieldCheck } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Cookie Policy — Wealthconomy",
@@ -12,10 +11,8 @@ export default function CookiesPage() {
     <LegalLayout title="Cookie Policy" lastUpdated="May 14, 2026">
       <section>
         <h2>
-          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10 text-primary">
-            <Cookie className="h-5 w-5" />
-          </div>
-          1. What are Cookies?
+          <span className="text-primary mr-3 font-mono text-xl font-bold">01.</span>
+          What are Cookies?
         </h2>
         <p>
           Cookies are small text files that enhance your experience. They help us remember your 
@@ -25,10 +22,8 @@ export default function CookiesPage() {
 
       <section>
         <h2>
-          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10 text-primary">
-            <Info className="h-5 w-5" />
-          </div>
-          2. How We Use Them
+          <span className="text-primary mr-3 font-mono text-xl font-bold">02.</span>
+          How We Use Them
         </h2>
         <p>
           We use cookies to maintain your session security, analyze platform performance, and 
@@ -50,10 +45,8 @@ export default function CookiesPage() {
 
       <section>
         <h2>
-          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10 text-primary">
-            <Settings className="h-5 w-5" />
-          </div>
-          3. Control
+          <span className="text-primary mr-3 font-mono text-xl font-bold">03.</span>
+          Control
         </h2>
         <p>
           You have full control. You can manage or block cookies through your browser settings, 
@@ -63,10 +56,8 @@ export default function CookiesPage() {
 
       <section>
         <h2>
-          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10 text-primary">
-            <ShieldCheck className="h-5 w-5" />
-          </div>
-          4. Privacy First
+          <span className="text-primary mr-3 font-mono text-xl font-bold">04.</span>
+          Privacy First
         </h2>
         <p>
           Our cookies do not store sensitive financial data. Your security is our primary 

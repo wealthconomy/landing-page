@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 
 export function WaitlistCta() {
   return (
-    <section id="waitlist" className="bg-background py-14 lg:py-20">
+    <section id="portfolio" className="bg-background py-14 lg:py-20">
       <div className="mx-auto max-w-5xl px-6">
         <div className="relative overflow-hidden rounded-[2rem] bg-gradient-to-br from-primary to-[#0e4143] px-8 py-12 text-center text-primary-foreground md:px-16 md:py-14">
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(255,207,101,0.2),transparent_60%)]" />
@@ -17,7 +17,7 @@ export function WaitlistCta() {
               Start building <span className="text-gold">wealth that lasts.</span>
             </h2>
             <p className="mx-auto mt-3 max-w-xl text-white/75">
-              Join the waitlist and be among the first to experience structured, disciplined, impact-aligned wealth building.
+              Explore our Portfolios and be among the first to experience structured, disciplined, impact-aligned wealth building.
             </p>
 
             <div className="mx-auto mt-6 flex flex-wrap justify-center gap-4">

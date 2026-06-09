@@ -1,88 +1,231 @@
 import type { Metadata } from "next";
 import { LegalLayout } from "@/components/legal-layout";
-import { FileText, UserCheck, ShieldAlert, Scale, Globe } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Terms of Use — Wealthconomy",
-  description: "Terms and conditions for using the Wealthconomy platform.",
+  title: "Terms and Conditions — Wealthconomy",
+  description: "Terms and conditions governing the use of the Wealthconomy platform.",
 };
 
 export default function TermsPage() {
   return (
-    <LegalLayout title="Terms of Use" lastUpdated="May 14, 2026">
+    <LegalLayout title="Terms & Conditions" lastUpdated="June 1, 2026">
       <section>
         <h2>
-          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10 text-primary">
-            <FileText className="h-5 w-5" />
-          </div>
-          1. Agreement
+          <span className="text-primary mr-3 font-mono text-xl font-bold">01.</span>
+          Acceptance of Terms
         </h2>
         <p>
-          By accessing Wealthconomy, you agree to be bound by these Terms of Use. This is a legally 
-          binding agreement between you and **Wealthconomy Technologies Limited**.
+          By accessing or using Wealthconomy, you agree to be bound by these Terms and Conditions. These terms form a legally binding agreement between you and Wealthconomy. If you do not agree, please discontinue use of the platform.
         </p>
       </section>
 
       <section>
         <h2>
-          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10 text-primary">
-            <UserCheck className="h-5 w-5" />
-          </div>
-          2. Eligibility
+          <span className="text-primary mr-3 font-mono text-xl font-bold">02.</span>
+          Eligibility
         </h2>
         <p>
-          To use our platform, you must be at least 18 years old and have the legal capacity to enter into 
-          binding contracts. You are responsible for ensuring all data provided during registration is 
-          accurate and current.
+          To access our services, you must satisfy the following criteria:
         </p>
+        <ul className="mt-4 space-y-2.5">
+          <li>Be at least 18 years old or possess lawful parental/guardian authorization.</li>
+          <li>Provide accurate, current, and truthful information during account registration.</li>
+          <li>Comply with all local and international laws and financial regulations.</li>
+        </ul>
       </section>
 
       <section>
         <h2>
-          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10 text-primary">
-            <ShieldAlert className="h-5 w-5" />
-          </div>
-          3. Prohibited Conduct
+          <span className="text-primary mr-3 font-mono text-xl font-bold">03.</span>
+          Account Registration
         </h2>
-        <div className="grid gap-4 md:grid-cols-3 mt-8 not-prose">
-          {[
-            { title: "Fraud", desc: "No identity theft or misrepresentation." },
-            { title: "Abuse", desc: "No reverse engineering or hacking." },
-            { title: "Misuse", desc: "No money laundering or illegal acts." },
-          ].map((item) => (
-            <div key={item.title} className="rounded-2xl border border-destructive/20 bg-destructive/5 p-5">
-              <div className="text-[10px] font-black uppercase tracking-widest text-destructive mb-1">{item.title}</div>
-              <div className="text-sm text-muted-foreground">{item.desc}</div>
-            </div>
-          ))}
+        <p>
+          When you create an account with us, you acknowledge and agree that you are solely responsible for:
+        </p>
+        <ul className="mt-4 space-y-2.5">
+          <li>Maintaining the absolute confidentiality of your login credentials and security PINs.</li>
+          <li>Ensuring all information provided is accurate and promptly updated.</li>
+          <li>Notifying Wealthconomy support immediately of any suspected unauthorized access.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>
+          <span className="text-primary mr-3 font-mono text-xl font-bold">04.</span>
+          Wealthconomy Services
+        </h2>
+        <p>
+          Wealthconomy provides technological tools for financial growth, including savings products, investment opportunities, financial literacy resources, and social impact initiatives.
+        </p>
+        <div className="mt-4 p-4 rounded-xl border border-amber-500/20 bg-amber-500/5 text-xs text-amber-700 font-semibold leading-relaxed">
+          WARNING: Wealthconomy is a financial technology platform, not a licensed commercial bank. We custody user funds through licensed and regulated partner banks. We do not guarantee investment performance unless explicitly stated.
         </div>
       </section>
 
       <section>
         <h2>
-          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10 text-primary">
-            <Scale className="h-5 w-5" />
-          </div>
-          4. Liability
+          <span className="text-primary mr-3 font-mono text-xl font-bold">05.</span>
+          Investments and Risk Disclosure
         </h2>
         <p>
-          Wealthconomy is a technology platform. While we provide tools for structured savings, all 
-          financial decisions remain yours. We are not liable for any market-driven fluctuations or 
-          user-directed actions.
+          All investments carry risk. By using our services, you acknowledge that:
+        </p>
+        <ul className="mt-4 space-y-2.5">
+          <li>Investments carry inherent market and liquidity risks.</li>
+          <li>Past performance is not a reliable indicator or guarantee of future returns.</li>
+          <li>Market conditions can affect asset prices and yield outcomes.</li>
+          <li>Wealthconomy does not guarantee investment profits or yield rates.</li>
+        </ul>
+        <p className="mt-4">
+          We strongly encourage users to seek independent financial advice where appropriate before allocating funds.
         </p>
       </section>
 
       <section>
         <h2>
-          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10 text-primary">
-            <Globe className="h-5 w-5" />
-          </div>
-          5. Jurisdiction
+          <span className="text-primary mr-3 font-mono text-xl font-bold">06.</span>
+          User Responsibilities
         </h2>
         <p>
-          These terms are governed by the laws of the **Federal Republic of Nigeria**. Any disputes 
-          will be resolved exclusively within the Nigerian court system.
+          You agree not to engage in prohibited platform activities, including:
         </p>
+        <ul className="mt-4 space-y-2.5">
+          <li>Providing false, misleading, or fraudulent information during verification.</li>
+          <li>Engaging in fraudulent activities, money laundering, or coordinate platform manipulation.</li>
+          <li>Attempting unauthorized access to system databases or executing security exploits.</li>
+          <li>Using the platform for any illegal purpose or violating financial sanctions.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>
+          <span className="text-primary mr-3 font-mono text-xl font-bold">07.</span>
+          KYC and Compliance
+        </h2>
+        <p>
+          To maintain security and comply with anti-money laundering regulations, Wealthconomy reserves the right to:
+        </p>
+        <ul className="mt-4 space-y-2.5">
+          <li>Verify user identities utilizing official governmental databases.</li>
+          <li>Request additional identification documents, utility bills, or proof of income source.</li>
+          <li>Suspend or restrict access to accounts undergoing regulatory and compliance reviews.</li>
+          <li>Report suspicious transactions to relevant law enforcement and financial authorities.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>
+          <span className="text-primary mr-3 font-mono text-xl font-bold">08.</span>
+          Fees and Charges
+        </h2>
+        <p>
+          Applicable transactional and management fees will be disclosed to you prior to the execution of any transaction. Wealthconomy reserves the right to modify fees at any time, subject to reasonable advance notice as required by law.
+        </p>
+      </section>
+
+      <section>
+        <h2>
+          <span className="text-primary mr-3 font-mono text-xl font-bold">09.</span>
+          Intel Property
+        </h2>
+        <p>
+          All platform content, codebases, software designs, user interfaces, branding, logos, trademarks, and educational resources are the exclusive property of Wealthconomy and its licensors, protected by intellectual property laws.
+        </p>
+      </section>
+
+      <section>
+        <h2>
+          <span className="text-primary mr-3 font-mono text-xl font-bold">10.</span>
+          Limitation of Liability
+        </h2>
+        <p>
+          To the maximum extent permitted by applicable law, Wealthconomy shall not be held liable for:
+        </p>
+        <ul className="mt-4 space-y-2.5">
+          <li>Indirect, incidental, punitive, or consequential damages.</li>
+          <li>Loss of profits, revenue, or investment capital resulting from market fluctuations.</li>
+          <li>Platform service interruptions beyond our reasonable control (network failures, force majeure).</li>
+          <li>Losses resulting from user negligence in securing account credentials.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>
+          <span className="text-primary mr-3 font-mono text-xl font-bold">11.</span>
+          Suspension and Termination
+        </h2>
+        <p>
+          We reserve the right to suspend, freeze, or terminate your account and platform access if:
+        </p>
+        <ul className="mt-4 space-y-2.5">
+          <li>You violate these Terms and Conditions or our security policies.</li>
+          <li>We suspect fraudulent, unauthorized, or illegal activities on your account.</li>
+          <li>We are required to do so by court order or regulatory directive.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>
+          <span className="text-primary mr-3 font-mono text-xl font-bold">12.</span>
+          Force Majeure
+        </h2>
+        <p>
+          Wealthconomy shall not be liable for any delays, performance failures, or service interruptions resulting from acts of God, civil unrest, grid blackouts, telecommunication failures, government restrictions, or other occurrences beyond our reasonable control.
+        </p>
+      </section>
+
+      <section>
+        <h2>
+          <span className="text-primary mr-3 font-mono text-xl font-bold">13.</span>
+          Dispute Resolution
+        </h2>
+        <p>
+          Parties shall first attempt to resolve all disputes amicably through consultation and mediation. Where an amicable settlement cannot be reached, the dispute shall be referred to and resolved by arbitration in accordance with applicable arbitration laws.
+        </p>
+      </section>
+
+      <section>
+        <h2>
+          <span className="text-primary mr-3 font-mono text-xl font-bold">14.</span>
+          Governing Law
+        </h2>
+        <p>
+          These Terms and Conditions shall be governed by, construed, and enforced in accordance with the laws of the Federal Republic of Nigeria.
+        </p>
+      </section>
+
+      <section>
+        <h2>
+          <span className="text-primary mr-3 font-mono text-xl font-bold">15.</span>
+          Amendments
+        </h2>
+        <p>
+          We reserve the right to amend these Terms and Conditions at any time. Continued use of our platform and website following any updates constitutes your explicit acceptance of the revised Terms and Conditions.
+        </p>
+      </section>
+
+      <section>
+        <h2>
+          <span className="text-primary mr-3 font-mono text-xl font-bold">16.</span>
+          Contact Information
+        </h2>
+        <p>
+          For any questions, legal queries, or technical support regarding these Terms and Conditions, please contact us:
+        </p>
+        <div className="mt-6 grid gap-4 sm:grid-cols-2 not-prose">
+          <div className="p-4 rounded-xl border border-border bg-surface-soft/40">
+            <span className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest block mb-1">Email Support</span>
+            <a href="mailto:support@wealthconomy.org" className="text-sm font-semibold text-primary hover:underline">
+              support@wealthconomy.org
+            </a>
+          </div>
+          <div className="p-4 rounded-xl border border-border bg-surface-soft/40">
+            <span className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest block mb-1">Official Website</span>
+            <a href="https://www.wealthconomy.org" target="_blank" rel="noopener noreferrer" className="text-sm font-semibold text-primary hover:underline">
+              www.wealthconomy.org
+            </a>
+          </div>
+        </div>
       </section>
     </LegalLayout>
   );

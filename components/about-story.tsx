@@ -13,7 +13,7 @@ export function AboutStory() {
             What we do
           </h2>
           <p className="mt-3 text-base text-muted-foreground">
-            We combine savings, education, and social impact into one unified, structured platform.
+            We seamlessly integrate savings, investments, financial literacy, and social impact into one powerful platform that helps individuals build wealth while creating positive change.
           </p>
         </div>
 

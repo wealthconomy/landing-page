@@ -360,3 +360,67 @@
   font-display: swap;
   src: url('https://fonts.gstatic.com/s/inter/v18/UcCO3FwrK3iLTeHuS_nVMrMxCp50ojIa1ZL7.woff2') format('woff2');
 }
+
+/* Legal Layout Typography (Prose) */
+.prose section {
+  margin-bottom: 5rem;
+}
+
+.prose section:last-child {
+  margin-bottom: 0;
+}
+
+.prose section > h2 {
+  font-family: var(--font-display);
+  font-size: 1.875rem; /* text-3xl */
+  font-weight: 700;
+  color: var(--foreground);
+  margin-top: 0;
+  margin-bottom: 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.prose section > p {
+  font-size: 1.125rem; /* text-lg */
+  line-height: 1.75;
+  color: var(--muted-foreground);
+  margin-top: 0;
+  margin-bottom: 1.25rem;
+}
+
+.prose section > p:last-child {
+  margin-bottom: 0;
+}
+
+.prose section > ul {
+  margin-top: 1rem;
+  margin-bottom: 1.5rem;
+  padding-left: 0;
+  list-style: none;
+}
+
+.prose section > ul > li {
+  font-size: 1.125rem; /* text-lg */
+  color: var(--muted-foreground);
+  margin-bottom: 0.75rem;
+  position: relative;
+  padding-left: 1.75rem;
+  line-height: 1.6;
+}
+
+.prose section > ul > li::before {
+  content: "•";
+  color: var(--primary);
+  font-weight: bold;
+  font-size: 1.25rem;
+  position: absolute;
+  left: 0.5rem;
+  top: -0.1rem;
+}
+
+.prose section strong {
+  color: var(--foreground);
+  font-weight: 700;
+}

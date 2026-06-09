@@ -82,7 +82,7 @@ export function ComingSoonModal() {
             onClick={() => setIsOpen(false)}
           >
             <a href="https://forms.gle/M4NrF9w9HSny4YR49" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-1">
-              Join the Priority Waitlist
+              Access Portfolios
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
             </a>
           </Button>
