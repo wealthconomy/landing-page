@@ -24,9 +24,9 @@ export function ContactForm() {
         <div className="mt-8 grid gap-10 lg:grid-cols-[1fr_1.4fr]">
           <div className="space-y-5">
             {[
-              { icon: Mail, title: "Email", body: "hello@wealthconomy.com" },
+              { icon: Mail, title: "Email", body: "hello@wealthconomy.org" },
               { icon: MessageCircle, title: "Live chat", body: "In-app, 24/7 with humans" },
-              { icon: MapPin, title: "Office", body: "Lekki, Lagos · Nigeria" },
+              { icon: MapPin, title: "Office", body: "Wuye, Abuja · The Growth Hub, Alagbaka, Akure" },
             ].map((c) => (
               <div key={c.title} className="flex items-start gap-4 rounded-2xl border border-border bg-surface-soft/60 p-5">
                 <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-primary/10 text-primary">

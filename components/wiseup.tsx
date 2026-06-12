@@ -106,46 +106,103 @@ export function WiseUp() {
         </div>
 
         {/* Section: Financial Position Tests */}
-        <div className="mb-14">
-          <div className="max-w-3xl mb-8">
-            <h2 className="text-2xl md:text-3xl font-semibold tracking-tight text-foreground uppercase">
-              Financial Position Tests
-            </h2>
-            <p className="text-sm text-muted-foreground mt-2">
-              Test your savings readiness and financial position. Please note that after taking the test, full results can only be unlocked via the Wealthconomy app.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-6">
-            <div className="group rounded-3xl border border-border bg-card p-6 shadow-sm hover:border-gold/30 hover:shadow-soft transition-all duration-300 flex flex-col justify-between">
-              <div>
-                <span className="text-[10px] font-bold text-gold uppercase tracking-wider bg-gold/10 px-2 py-1 rounded">Assessment 01</span>
-                <h3 className="text-xl font-semibold mt-4">Financial Position Test 1</h3>
-                <p className="text-sm text-muted-foreground mt-2 leading-relaxed">
-                  Evaluate your current asset-to-liability ratio and understand your immediate net worth distribution category.
-                </p>
+        <div className="mb-20 relative">
+          <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-primary/5 to-transparent rounded-[3rem] -mx-6 px-6 pointer-events-none" />
+          
+          <div className="relative pt-12 pb-8 px-6 lg:px-12 rounded-[3rem] border border-primary/10 bg-card/50 backdrop-blur-sm shadow-sm">
+            <div className="max-w-3xl mb-10 text-center mx-auto">
+              <div className="inline-flex items-center gap-2 rounded-full bg-gold/10 px-3 py-1 text-xs font-bold uppercase tracking-widest text-gold mb-4">
+                <FileText className="w-4 h-4" /> Try Our Assessments
               </div>
-              <div className="mt-6 pt-4 border-t border-border flex items-center justify-between">
-                <span className="text-xs font-semibold text-primary">Unlocks via Mobile App</span>
-                <Button variant="outline" size="sm" onClick={() => window.dispatchEvent(new CustomEvent("open-coming-soon-modal"))} className="rounded-full gap-1 text-xs">
-                  Take test <ArrowUpRight className="w-3.5 h-3.5" />
-                </Button>
-              </div>
+              <h2 className="text-3xl md:text-4xl font-display font-semibold tracking-tight text-foreground uppercase">
+                Financial Position Tests
+              </h2>
+              <p className="text-base text-muted-foreground mt-4 leading-relaxed">
+                Test your savings readiness and evaluate your true financial health. Discover blind spots and get actionable insights to improve your net worth. Please note that full results are unlocked via the Wealthconomy app.
+              </p>
             </div>
 
-            <div className="group rounded-3xl border border-border bg-card p-6 shadow-sm hover:border-gold/30 hover:shadow-soft transition-all duration-300 flex flex-col justify-between">
-              <div>
-                <span className="text-[10px] font-bold text-gold uppercase tracking-wider bg-gold/10 px-2 py-1 rounded">Assessment 02</span>
-                <h3 className="text-xl font-semibold mt-4">Financial Position Test 2</h3>
-                <p className="text-sm text-muted-foreground mt-2 leading-relaxed">
-                  Analyze your savings capacity and emergency buffer readiness score to verify your risk defense category.
-                </p>
+            <div className="grid lg:grid-cols-2 gap-8">
+              {/* Test 1 */}
+              <div className="group relative rounded-3xl border border-border bg-card p-8 shadow-md hover:border-primary/50 hover:shadow-glow-teal transition-all duration-300 flex flex-col justify-between overflow-hidden">
+                <div className="absolute top-0 right-0 p-6 opacity-10 transition-opacity group-hover:opacity-20 pointer-events-none">
+                  <Calculator className="w-24 h-24 text-primary" />
+                </div>
+                <div className="relative z-10">
+                  <div className="flex items-center justify-between mb-6">
+                    <span className="text-[10px] font-bold text-gold uppercase tracking-wider bg-gold/10 px-3 py-1.5 rounded-full">Assessment 01</span>
+                    <span className="text-xs font-medium text-muted-foreground flex items-center gap-1">
+                      <Star className="w-3.5 h-3.5 text-gold" /> 3 Min Read
+                    </span>
+                  </div>
+                  <h3 className="text-2xl font-display font-semibold mb-3 group-hover:text-primary transition-colors">Net Worth & Asset Check</h3>
+                  <p className="text-sm text-muted-foreground mb-6 leading-relaxed">
+                    Evaluate your current asset-to-liability ratio and understand your immediate net worth distribution category. Learn exactly where your money is tied up.
+                  </p>
+                  
+                  <div className="space-y-3 mb-8">
+                    <div className="flex items-start gap-2.5">
+                      <div className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary mt-0.5">
+                        <svg className="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="3"><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
+                      </div>
+                      <span className="text-sm text-foreground/80">Asset distribution analysis</span>
+                    </div>
+                    <div className="flex items-start gap-2.5">
+                      <div className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary mt-0.5">
+                        <svg className="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="3"><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
+                      </div>
+                      <span className="text-sm text-foreground/80">Liability risk evaluation</span>
+                    </div>
+                  </div>
+                </div>
+                
+                <div className="relative z-10 pt-5 border-t border-border flex items-center justify-between">
+                  <span className="text-xs font-bold uppercase tracking-wider text-primary bg-primary/10 px-2.5 py-1 rounded">App Exclusive</span>
+                  <Button variant="default" onClick={() => window.dispatchEvent(new CustomEvent("open-coming-soon-modal"))} className="rounded-full shadow-md gap-2 font-semibold">
+                    Take test <ArrowUpRight className="w-4 h-4" />
+                  </Button>
+                </div>
               </div>
-              <div className="mt-6 pt-4 border-t border-border flex items-center justify-between">
-                <span className="text-xs font-semibold text-primary">Unlocks via Mobile App</span>
-                <Button variant="outline" size="sm" onClick={() => window.dispatchEvent(new CustomEvent("open-coming-soon-modal"))} className="rounded-full gap-1 text-xs">
-                  Take test <ArrowUpRight className="w-3.5 h-3.5" />
-                </Button>
+
+              {/* Test 2 */}
+              <div className="group relative rounded-3xl border border-border bg-card p-8 shadow-md hover:border-gold/50 hover:shadow-[0_0_30px_rgba(255,207,101,0.15)] transition-all duration-300 flex flex-col justify-between overflow-hidden">
+                <div className="absolute top-0 right-0 p-6 opacity-10 transition-opacity group-hover:opacity-20 pointer-events-none">
+                  <ShieldCheck className="w-24 h-24 text-gold" />
+                </div>
+                <div className="relative z-10">
+                  <div className="flex items-center justify-between mb-6">
+                    <span className="text-[10px] font-bold text-gold uppercase tracking-wider bg-gold/10 px-3 py-1.5 rounded-full">Assessment 02</span>
+                    <span className="text-xs font-medium text-muted-foreground flex items-center gap-1">
+                      <Star className="w-3.5 h-3.5 text-gold" /> 5 Min Read
+                    </span>
+                  </div>
+                  <h3 className="text-2xl font-display font-semibold mb-3 group-hover:text-gold transition-colors">Risk & Buffer Defense</h3>
+                  <p className="text-sm text-muted-foreground mb-6 leading-relaxed">
+                    Analyze your savings capacity and emergency buffer readiness score to verify your risk defense category against sudden economic shifts.
+                  </p>
+                  
+                  <div className="space-y-3 mb-8">
+                    <div className="flex items-start gap-2.5">
+                      <div className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-gold/10 text-gold mt-0.5">
+                        <svg className="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="3"><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
+                      </div>
+                      <span className="text-sm text-foreground/80">Emergency fund capacity</span>
+                    </div>
+                    <div className="flex items-start gap-2.5">
+                      <div className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-gold/10 text-gold mt-0.5">
+                        <svg className="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="3"><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
+                      </div>
+                      <span className="text-sm text-foreground/80">Inflation protection score</span>
+                    </div>
+                  </div>
+                </div>
+                
+                <div className="relative z-10 pt-5 border-t border-border flex items-center justify-between">
+                  <span className="text-xs font-bold uppercase tracking-wider text-primary bg-primary/10 px-2.5 py-1 rounded">App Exclusive</span>
+                  <Button variant="default" onClick={() => window.dispatchEvent(new CustomEvent("open-coming-soon-modal"))} className="rounded-full shadow-md gap-2 font-semibold bg-gold text-black hover:bg-gold/90">
+                    Take test <ArrowUpRight className="w-4 h-4" />
+                  </Button>
+                </div>
               </div>
             </div>
           </div>

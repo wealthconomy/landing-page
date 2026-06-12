@@ -1,10 +1,18 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip as RechartsTooltip, ResponsiveContainer, PieChart, Pie, Cell } from "recharts";
 import { Delete, RefreshCw, TrendingUp, Target, Wallet, Calendar, Settings2, HelpCircle, FileText, Divide, X, Minus, Plus, Equal, History } from "lucide-react";
 import { Slider } from "@/components/ui/slider";
 import { Button } from "@/components/ui/button";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 import Decimal from "decimal.js";
 
 // Formatter Helpers
@@ -327,21 +335,96 @@ export default function HybridCalculatorPage() {
   // Reset page if data length changes
   useMemo(() => setTablePage(1), [data.length]);
 
+  // Keyboard Support
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (document.activeElement?.tagName === "INPUT" || document.activeElement?.tagName === "TEXTAREA") {
+        return;
+      }
+      
+      const key = e.key;
+      
+      if (appMode === "wealth") {
+        if (/^[0-9]$/.test(key)) handleWealthKeyPress(key);
+        else if (key === ".") handleWealthKeyPress(".");
+        else if (key === "Backspace" || key === "Delete") handleWealthKeyPress("delete");
+      } else {
+        if (/^[0-9]$/.test(key)) handleStdNum(key);
+        else if (key === ".") handleStdDot();
+        else if (key === "Backspace" || key === "Delete") handleStdDelete();
+        else if (key === "+" || key === "-") handleStdOp(key as Operator);
+        else if (key === "*" || key === "x") handleStdOp("×");
+        else if (key === "/") { e.preventDefault(); handleStdOp("÷"); }
+        else if (key === "Enter" || key === "=") { e.preventDefault(); handleStdEqual(); }
+        else if (key === "Escape") handleStdClear();
+      }
+    };
+    
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  });
+
   return (
     <main className="min-h-screen bg-background pt-24 pb-32">
       <div className="mx-auto max-w-[1400px] px-4 sm:px-6">
         
         {/* Header */}
-        <div className="mb-12 text-center md:text-left max-w-3xl">
-          <div className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/10 px-3 py-1 text-xs font-medium uppercase tracking-widest text-primary mb-6">
-            Pro Tools
+        <div className="mb-12 flex flex-col md:flex-row md:items-end justify-between gap-6">
+          <div className="text-center md:text-left max-w-3xl">
+            <div className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/10 px-3 py-1 text-xs font-medium uppercase tracking-widest text-primary mb-6">
+              Pro Tools
+            </div>
+            <h1 className="font-display text-4xl font-semibold tracking-tight md:text-5xl text-foreground">
+              Financial <span className="bg-gradient-to-r from-primary to-primary-glow bg-clip-text text-transparent">Simulator</span>.
+            </h1>
+            <p className="mt-4 text-lg text-muted-foreground">
+              Switch between the institutional wealth simulator and the standard arithmetic calculator using the tabs on the phone. You can also use your keyboard.
+            </p>
           </div>
-          <h1 className="font-display text-4xl font-semibold tracking-tight md:text-5xl text-foreground">
-            Financial <span className="bg-gradient-to-r from-primary to-primary-glow bg-clip-text text-transparent">Simulator</span>.
-          </h1>
-          <p className="mt-4 text-lg text-muted-foreground">
-            Switch between the institutional wealth simulator and the standard arithmetic calculator using the tabs on the phone.
-          </p>
+          
+          {/* User Manual Trigger */}
+          <Dialog>
+            <DialogTrigger asChild>
+              <Button variant="outline" className="gap-2 rounded-full border-primary/20 shadow-sm self-center md:self-auto">
+                <HelpCircle className="w-4 h-4 text-primary" />
+                User Manual
+              </Button>
+            </DialogTrigger>
+            <DialogContent className="sm:max-w-[500px] border-border bg-card">
+              <DialogHeader>
+                <DialogTitle className="text-xl font-display text-primary">Simulator Guide</DialogTitle>
+                <DialogDescription>
+                  How to get the most out of your financial simulator.
+                </DialogDescription>
+              </DialogHeader>
+              <div className="space-y-4 py-4 text-sm text-foreground/80">
+                <div>
+                  <h4 className="font-bold text-foreground mb-1">Keyboard Shortcuts ⌨️</h4>
+                  <ul className="list-disc pl-5 space-y-1 text-muted-foreground">
+                    <li>Use your numeric keypad to enter numbers quickly.</li>
+                    <li>Press <kbd className="bg-muted px-1 py-0.5 rounded text-xs font-mono border border-border">Enter</kbd> or <kbd className="bg-muted px-1 py-0.5 rounded text-xs font-mono border border-border">=</kbd> for equals in Standard mode.</li>
+                    <li>Press <kbd className="bg-muted px-1 py-0.5 rounded text-xs font-mono border border-border">Backspace</kbd> or <kbd className="bg-muted px-1 py-0.5 rounded text-xs font-mono border border-border">Delete</kbd> to remove digits.</li>
+                    <li>Press <kbd className="bg-muted px-1 py-0.5 rounded text-xs font-mono border border-border">Esc</kbd> to clear all inputs (AC).</li>
+                  </ul>
+                </div>
+                
+                <div className="pt-2 border-t border-border/50">
+                  <h4 className="font-bold text-foreground mb-1">Wealth Mode 📈</h4>
+                  <p className="text-muted-foreground mb-2">Simulate long-term wealth building with compounding interest.</p>
+                  <ul className="list-disc pl-5 space-y-1 text-muted-foreground">
+                    <li><strong>Growth:</strong> Calculate future value based on fixed monthly deposits.</li>
+                    <li><strong>Target Goal:</strong> Find out exactly how much you need to save monthly to hit a specific financial target.</li>
+                    <li><strong>Breakdown Data:</strong> View your growth by year, month, week, or day below the chart.</li>
+                  </ul>
+                </div>
+
+                <div className="pt-2 border-t border-border/50">
+                  <h4 className="font-bold text-foreground mb-1">Standard Mode 🧮</h4>
+                  <p className="text-muted-foreground">A fast arithmetic calculator for everyday use. Your history is recorded automatically on the right panel as a receipt tape.</p>
+                </div>
+              </div>
+            </DialogContent>
+          </Dialog>
         </div>
 
         <div className="grid gap-10 lg:grid-cols-12 items-start">

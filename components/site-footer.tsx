@@ -152,6 +152,7 @@ export function SiteFooter() {
                     { label: "Features", to: "/#how-it-works" },
                     { label: "Savings Plans", to: "/portfolios" },
                     { label: "Financial Education", to: "/learn" },
+                    { label: "Impact", to: "/impact" },
                     { label: "FAQs", to: "/#faq" },
                     { label: "Contact Us", to: "/contact" },
                   ].map((item) => (

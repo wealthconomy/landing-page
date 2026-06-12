@@ -28,8 +28,8 @@ const navItems = [
   { label: "Save", to: "/portfolios" as const },
   { label: "Learn", to: "/learn" as const },
   { label: "Invest", to: "/wealthup" as const },
-  { label: "Impact", to: "/#impact" as const },
-  { label: "FAQ", to: "/#faq" as const },
+  { label: "Impact", to: "/impact" as const },
+  { label: "FAQ", to: "/faq" as const },
 ];
 
 const resourcesItems = [
