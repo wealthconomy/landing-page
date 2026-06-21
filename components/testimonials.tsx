@@ -44,14 +44,14 @@ export function Testimonials() {
     <section className="overflow-hidden bg-surface-soft py-14 lg:py-20">
       <div className="mx-auto max-w-7xl px-6">
         <div className="max-w-3xl">
-          <div className="text-sm font-medium uppercase tracking-widest text-primary">Wealth Builders</div>
+          <div className="text-sm font-medium uppercase tracking-widest text-primary">Wealth Movement</div>
           <h2 className="mt-2 font-display text-4xl font-semibold leading-[1.1] tracking-tight md:text-6xl">
-            Institutional-grade growth.
+            Building Wealth,
             <br />
-            Designed for everyday people.
+            Changing Lives.
           </h2>
           <p className="mt-3 max-w-xl text-base text-muted-foreground md:text-lg">
-            We care deeply about our customers' experience, and we work hard to make every interaction feel smooth, supportive, and worthwhile.
+            Discover how Wealthconomy is helping people take control of their finances, achieve their goals, and create lasting impact in their communities.
           </p>
         </div>
       </div>

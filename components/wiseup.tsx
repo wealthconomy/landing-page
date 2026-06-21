@@ -1,12 +1,48 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { ChevronRight, TrendingUp, ShieldCheck, Target, LineChart, Star, Calculator, Mail, BookOpen, FileText, ArrowUpRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export function WiseUp() {
   const [email, setEmail] = useState("");
   const [subscribed, setSubsubscribed] = useState(false);
+  const [lessons, setLessons] = useState([
+    { title: "Saving Discipline: The first step", desc: "Why willpower fails and automated habits win the long-term wealth game.", cat: "Basics" },
+    { title: "Common Financial Mistakes", desc: "Top portfolio pitfalls that keep Africans working for money instead of money working for them.", cat: "Strategy" },
+    { title: "Investment Basics 101", desc: "Demystifying returns, risks, and compounding horizons for modern professionals.", cat: "Invest" }
+  ]);
+
+  const [assessments, setAssessments] = useState([
+    {
+      id: "assessment-01",
+      badge: "Assessment 01",
+      title: "Net Worth & Asset Check",
+      description: "Evaluate your current asset-to-liability ratio and understand your immediate net worth distribution category. Learn exactly where your money is tied up.",
+      readTime: "3 Min Read",
+      features: ["Asset distribution analysis", "Liability risk evaluation"],
+    },
+    {
+      id: "assessment-02",
+      badge: "Assessment 02",
+      title: "Risk & Buffer Defense",
+      description: "Analyze your savings capacity and emergency buffer readiness score to verify your risk defense category against sudden economic shifts.",
+      readTime: "5 Min Read",
+      features: ["Emergency fund capacity", "Inflation protection score"],
+    },
+  ]);
+
+  useEffect(() => {
+    fetch("/api/learn")
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.success) {
+          if (data.lessons) setLessons(data.lessons);
+          if (data.assessments) setAssessments(data.assessments);
+        }
+      })
+      .catch((err) => console.error("Error loading learning hub backend data:", err));
+  }, []);
 
   const handleScrollToModules = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -123,87 +159,50 @@ export function WiseUp() {
             </div>
 
             <div className="grid lg:grid-cols-2 gap-8">
-              {/* Test 1 */}
-              <div className="group relative rounded-3xl border border-border bg-card p-8 shadow-md hover:border-primary/50 hover:shadow-glow-teal transition-all duration-300 flex flex-col justify-between overflow-hidden">
-                <div className="absolute top-0 right-0 p-6 opacity-10 transition-opacity group-hover:opacity-20 pointer-events-none">
-                  <Calculator className="w-24 h-24 text-primary" />
-                </div>
-                <div className="relative z-10">
-                  <div className="flex items-center justify-between mb-6">
-                    <span className="text-[10px] font-bold text-gold uppercase tracking-wider bg-gold/10 px-3 py-1.5 rounded-full">Assessment 01</span>
-                    <span className="text-xs font-medium text-muted-foreground flex items-center gap-1">
-                      <Star className="w-3.5 h-3.5 text-gold" /> 3 Min Read
-                    </span>
-                  </div>
-                  <h3 className="text-2xl font-display font-semibold mb-3 group-hover:text-primary transition-colors">Net Worth & Asset Check</h3>
-                  <p className="text-sm text-muted-foreground mb-6 leading-relaxed">
-                    Evaluate your current asset-to-liability ratio and understand your immediate net worth distribution category. Learn exactly where your money is tied up.
-                  </p>
-                  
-                  <div className="space-y-3 mb-8">
-                    <div className="flex items-start gap-2.5">
-                      <div className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary mt-0.5">
-                        <svg className="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="3"><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
-                      </div>
-                      <span className="text-sm text-foreground/80">Asset distribution analysis</span>
-                    </div>
-                    <div className="flex items-start gap-2.5">
-                      <div className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary mt-0.5">
-                        <svg className="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="3"><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
-                      </div>
-                      <span className="text-sm text-foreground/80">Liability risk evaluation</span>
-                    </div>
-                  </div>
-                </div>
+              {assessments.map((ast, idx) => {
+                const isEven = idx % 2 === 0;
+                const Icon = isEven ? Calculator : ShieldCheck;
+                const colorClass = isEven ? "hover:border-primary/50 hover:shadow-glow-teal" : "hover:border-gold/50 hover:shadow-[0_0_30px_rgba(255,207,101,0.15)]";
+                const btnClass = isEven ? "rounded-full shadow-md gap-2 font-semibold" : "rounded-full shadow-md gap-2 font-semibold bg-gold text-black hover:bg-gold/90";
                 
-                <div className="relative z-10 pt-5 border-t border-border flex items-center justify-between">
-                  <span className="text-xs font-bold uppercase tracking-wider text-primary bg-primary/10 px-2.5 py-1 rounded">App Exclusive</span>
-                  <Button variant="default" onClick={() => window.dispatchEvent(new CustomEvent("open-coming-soon-modal"))} className="rounded-full shadow-md gap-2 font-semibold">
-                    Take test <ArrowUpRight className="w-4 h-4" />
-                  </Button>
-                </div>
-              </div>
-
-              {/* Test 2 */}
-              <div className="group relative rounded-3xl border border-border bg-card p-8 shadow-md hover:border-gold/50 hover:shadow-[0_0_30px_rgba(255,207,101,0.15)] transition-all duration-300 flex flex-col justify-between overflow-hidden">
-                <div className="absolute top-0 right-0 p-6 opacity-10 transition-opacity group-hover:opacity-20 pointer-events-none">
-                  <ShieldCheck className="w-24 h-24 text-gold" />
-                </div>
-                <div className="relative z-10">
-                  <div className="flex items-center justify-between mb-6">
-                    <span className="text-[10px] font-bold text-gold uppercase tracking-wider bg-gold/10 px-3 py-1.5 rounded-full">Assessment 02</span>
-                    <span className="text-xs font-medium text-muted-foreground flex items-center gap-1">
-                      <Star className="w-3.5 h-3.5 text-gold" /> 5 Min Read
-                    </span>
-                  </div>
-                  <h3 className="text-2xl font-display font-semibold mb-3 group-hover:text-gold transition-colors">Risk & Buffer Defense</h3>
-                  <p className="text-sm text-muted-foreground mb-6 leading-relaxed">
-                    Analyze your savings capacity and emergency buffer readiness score to verify your risk defense category against sudden economic shifts.
-                  </p>
-                  
-                  <div className="space-y-3 mb-8">
-                    <div className="flex items-start gap-2.5">
-                      <div className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-gold/10 text-gold mt-0.5">
-                        <svg className="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="3"><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
-                      </div>
-                      <span className="text-sm text-foreground/80">Emergency fund capacity</span>
+                return (
+                  <div key={ast.id || idx} className={`group relative rounded-3xl border border-border bg-card p-8 shadow-md transition-all duration-300 flex flex-col justify-between overflow-hidden ${colorClass}`}>
+                    <div className="absolute top-0 right-0 p-6 opacity-10 transition-opacity group-hover:opacity-20 pointer-events-none">
+                      <Icon className="w-24 h-24 text-primary" />
                     </div>
-                    <div className="flex items-start gap-2.5">
-                      <div className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-gold/10 text-gold mt-0.5">
-                        <svg className="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="3"><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
+                    <div className="relative z-10">
+                      <div className="flex items-center justify-between mb-6">
+                        <span className="text-[10px] font-bold text-gold uppercase tracking-wider bg-gold/10 px-3 py-1.5 rounded-full">{ast.badge}</span>
+                        <span className="text-xs font-medium text-muted-foreground flex items-center gap-1">
+                          <Star className="w-3.5 h-3.5 text-gold" /> {ast.readTime}
+                        </span>
                       </div>
-                      <span className="text-sm text-foreground/80">Inflation protection score</span>
+                      <h3 className={`text-2xl font-display font-semibold mb-3 transition-colors ${isEven ? "group-hover:text-primary" : "group-hover:text-gold"}`}>{ast.title}</h3>
+                      <p className="text-sm text-muted-foreground mb-6 leading-relaxed">
+                        {ast.description}
+                      </p>
+                      
+                      <div className="space-y-3 mb-8">
+                        {ast.features.map((feat, fIdx) => (
+                          <div key={fIdx} className="flex items-start gap-2.5">
+                            <div className={`flex h-5 w-5 shrink-0 items-center justify-center rounded-full mt-0.5 ${isEven ? "bg-primary/10 text-primary" : "bg-gold/10 text-gold"}`}>
+                              <svg className="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="3"><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
+                            </div>
+                            <span className="text-sm text-foreground/80">{feat}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                    
+                    <div className="relative z-10 pt-5 border-t border-border flex items-center justify-between">
+                      <span className="text-xs font-bold uppercase tracking-wider text-primary bg-primary/10 px-2.5 py-1 rounded">App Exclusive</span>
+                      <Button variant="default" onClick={() => window.dispatchEvent(new CustomEvent("open-coming-soon-modal"))} className={btnClass}>
+                        Take test <ArrowUpRight className="w-4 h-4" />
+                      </Button>
                     </div>
                   </div>
-                </div>
-                
-                <div className="relative z-10 pt-5 border-t border-border flex items-center justify-between">
-                  <span className="text-xs font-bold uppercase tracking-wider text-primary bg-primary/10 px-2.5 py-1 rounded">App Exclusive</span>
-                  <Button variant="default" onClick={() => window.dispatchEvent(new CustomEvent("open-coming-soon-modal"))} className="rounded-full shadow-md gap-2 font-semibold bg-gold text-black hover:bg-gold/90">
-                    Take test <ArrowUpRight className="w-4 h-4" />
-                  </Button>
-                </div>
-              </div>
+                );
+              })}
             </div>
           </div>
         </div>
@@ -220,11 +219,7 @@ export function WiseUp() {
           </div>
 
           <div className="grid md:grid-cols-3 gap-6">
-            {[
-              { title: "Saving Discipline: The first step", desc: "Why willpower fails and automated habits win the long-term wealth game.", cat: "Basics" },
-              { title: "Common Financial Mistakes", desc: "Top portfolio pitfalls that keep Africans working for money instead of money working for them.", cat: "Strategy" },
-              { title: "Investment Basics 101", desc: "Demystifying returns, risks, and compounding horizons for modern professionals.", cat: "Invest" }
-            ].map((b, i) => (
+            {lessons.map((b, i) => (
               <div key={i} className="group rounded-2xl border border-border bg-surface-soft/40 p-6 hover:bg-card hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between">
                 <div>
                   <span className="text-[9px] uppercase tracking-widest text-primary font-bold">{b.cat}</span>
@@ -233,7 +228,7 @@ export function WiseUp() {
                 </div>
                 <div className="mt-6 pt-4 border-t border-border/60">
                   <Button variant="ghost" onClick={() => window.dispatchEvent(new CustomEvent("open-coming-soon-modal"))} className="p-0 hover:bg-transparent text-xs text-primary font-bold group-hover:text-primary-glow flex items-center gap-1">
-                    Read on App <ArrowUpRight className="w-3 h-3" />
+                    Read on App <ArrowUpRight className="w-3.5 h-3.5" />
                   </Button>
                 </div>
               </div>
@@ -378,7 +373,7 @@ export function WiseUp() {
                 </div>
                 <div className="flex justify-between text-xs font-medium mb-6">
                    <span className="text-foreground">₦1,700,000 saved</span>
-                   <span className="text-gold">85%</span>
+                   <span className="text-gold">On Track</span>
                 </div>
                 
                 <div className="rounded-xl bg-background/50 border border-border p-3 flex items-start gap-3">

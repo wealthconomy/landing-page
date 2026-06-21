@@ -4,9 +4,9 @@ import { useEffect, useRef, useState } from "react";
 import { Users, Building2, Rocket } from "lucide-react";
 
 const stats = [
-  { label: "People Trained", value: 500, suffix: "+", icon: Users },
-  { label: "Businesses Funded", value: 35, suffix: "+", icon: Building2 },
-  { label: "Impact Projects", value: 12, suffix: "+", icon: Rocket },
+  { label: "Women Trained", value: 300, suffix: "+", icon: Users },
+  { label: "Grants Awarded", value: 15, suffix: "+", icon: Building2 },
+  { label: "New Impact Projects", value: 5, suffix: "+", icon: Rocket },
 ];
 
 export function ImpactStats() {

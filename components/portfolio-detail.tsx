@@ -1,7 +1,14 @@
 "use client";
 
 import {
-  Wallet, Lock, Target, Users, Heart, Repeat, Check, ChevronRight,
+  Wallet,
+  Lock,
+  Target,
+  Users,
+  Heart,
+  Repeat,
+  Check,
+  ChevronRight,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -36,7 +43,8 @@ const portfolios = [
     tagline: "Consistency without stress",
     bestFor: "Automate and grow",
     body: "Automate your savings and go to sleep while your wealth accumulate",
-    howItWorks: "Set a schedule (daily, weekly, monthly), link a funding source, and automate transfers so your savings grow without thinking about it. Review progress, pause or adjust anytime.",
+    howItWorks:
+      "Set a schedule (daily, weekly, monthly), link a funding source, and automate transfers so your savings grow without thinking about it. Review progress, pause or adjust anytime.",
     rate: "Automated",
     steps: [
       "Set a schedule (daily, weekly, monthly)",
@@ -59,7 +67,8 @@ const portfolios = [
     tagline: "Save with discipline and smash your goals with targeted savings",
     bestFor: "Goal-oriented savings",
     body: "Keeps you motivated until you hit the goal.",
-    howItWorks: "Create a goal (trip, tuition, down payment), choose a target amount and deadline, save manually or enable auto-debit to stay on track. Receive visual progress and reminders.",
+    howItWorks:
+      "Create a goal (trip, tuition, down payment), choose a target amount and deadline, save manually or enable auto-debit to stay on track. Receive visual progress and reminders.",
     rate: "Goal-tracked",
     steps: [
       "Create a goal (trip, tuition, down payment)",
@@ -82,7 +91,8 @@ const portfolios = [
     tagline: "Locked savings for guaranteed returns",
     bestFor: "Disciplined locked savings",
     body: "Stay disciplined and fix your money or savings for guaranteed returns.",
-    howItWorks: "Lock in your savings for a fixed term that matches your plan. No withdrawals until maturity. Reward for discipline and penalty for default keeps you disciplined and rewarded.",
+    howItWorks:
+      "Lock in your savings for a fixed term that matches your plan. No withdrawals until maturity. Reward for discipline and penalty for default keeps you disciplined and rewarded.",
     rate: "Locked Vault",
     steps: [
       "Lock in your savings for a fixed term matching your plan",
@@ -105,7 +115,8 @@ const portfolios = [
     tagline: "Build financial security for those you love",
     bestFor: "Family & loved ones",
     body: "Create savings plans for family and friends, including spouses and kids.",
-    howItWorks: "Create plans for spouses, children, or relatives. Manage contributions individually or collectively, and set custom goals for school fees, welfare, or household projects.",
+    howItWorks:
+      "Create plans for spouses, children, or relatives. Manage contributions individually or collectively, and set custom goals for school fees, welfare, or household projects.",
     rate: "Shared Pool",
     steps: [
       "Create plans for spouses, children, or relatives",
@@ -128,7 +139,8 @@ const portfolios = [
     tagline: "Collective saving made easy",
     bestFor: "Friends, staff & cooperatives",
     body: "Save together as a group. Friends, staff, cooperatives use this for secure and transparent group savings.",
-    howItWorks: "Create or join a group with friends, colleagues or community members. Set contribution rules, timelines and shared goals, and track group progress in a transparent, digitized ledger.",
+    howItWorks:
+      "Create or join a group with friends, colleagues or community members. Set contribution rules, timelines and shared goals, and track group progress in a transparent, digitized ledger.",
     rate: "Rotational / Group",
     steps: [
       "Create or join a group with friends, colleagues, or cooperatives",
@@ -155,7 +167,15 @@ const portfolioScreenshots: Record<string, string> = {
   group: "/images/wealthgroup-screen.png",
 };
 
-function PhoneFrame({ id, name, glowColor }: { id: string; name: string; glowColor: string }) {
+function PhoneFrame({
+  id,
+  name,
+  glowColor,
+}: {
+  id: string;
+  name: string;
+  glowColor: string;
+}) {
   const src = portfolioScreenshots[id];
   return (
     <div className="relative mx-auto w-full max-w-[240px] sm:max-w-[280px] lg:max-w-[300px] select-none">
@@ -165,9 +185,7 @@ function PhoneFrame({ id, name, glowColor }: { id: string; name: string; glowCol
       />
 
       {/* Phone shell — exact same as how-it-works */}
-      <div
-        className="relative w-full aspect-[1/2.16] bg-gray-950 rounded-[2rem] lg:rounded-[3rem] border-[6px] border-gray-900 shadow-2xl overflow-hidden ring-4 ring-gray-900/10"
-      >
+      <div className="relative w-full aspect-[1/2.16] bg-gray-950 rounded-[2rem] lg:rounded-[3rem] border-[6px] border-gray-900 shadow-2xl overflow-hidden ring-4 ring-gray-900/10">
         {/* Dynamic Island / Notch */}
         <div className="absolute top-1.5 left-1/2 -translate-x-1/2 w-[60px] h-[16px] bg-black rounded-full z-40 flex items-center justify-between px-2 shadow-sm">
           <div className="w-1.5 h-1.5 rounded-full bg-gray-800/80" />

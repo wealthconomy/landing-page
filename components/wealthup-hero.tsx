@@ -1,9 +1,9 @@
 import { TrendingUp, Building2, Wheat, Banknote, ArrowUpRight } from "lucide-react";
 
 const opportunities = [
-  { icon: Building2, name: "Lagos Real Estate Notes", yield: "16.5% p.a.", term: "12 months", risk: "Low–Med", filled: 78 },
-  { icon: Wheat, name: "Northern Agri Co-op", yield: "21% p.a.", term: "9 months", risk: "Medium", filled: 54 },
-  { icon: Banknote, name: "Government T-Bills", yield: "12% p.a.", term: "3 months", risk: "Low", filled: 92 },
+  { icon: Building2, name: "Lagos Real Estate Notes", yield: "Fixed Returns", term: "12 months", risk: "Low–Med", status: "Almost Full", filled: 78 },
+  { icon: Wheat, name: "Northern Agri Co-op", yield: "Premium Returns", term: "9 months", risk: "Medium", status: "Filling Fast", filled: 54 },
+  { icon: Banknote, name: "Government T-Bills", yield: "Secure Returns", term: "3 months", risk: "Low", status: "Closing Soon", filled: 92 },
 ];
 
 export function WealthUpHero() {
@@ -49,8 +49,8 @@ export function WealthUpHero() {
                 </div>
                 <div className="mt-5">
                   <div className="flex items-center justify-between text-xs text-muted-foreground">
-                    <span>Filled</span>
-                    <span>{o.filled}%</span>
+                    <span>Funding Status</span>
+                    <span>{o.status}</span>
                   </div>
                   <div className="mt-2 h-1.5 overflow-hidden rounded-full bg-background">
                     <div className="h-full rounded-full bg-gradient-to-r from-primary to-primary-glow" style={{ width: `${o.filled}%` }} />

@@ -5,7 +5,7 @@ import { Heart, Scale, ShieldCheck } from "lucide-react";
 const initiatives = [
   {
     title: "Donate for Impact",
-    description: "Make direct contributions to our ongoing community projects. 100% of your donations go directly to funding women entrepreneurs, youth education, and community development.",
+    description: "Make direct contributions to our ongoing community projects. All of your donations go directly to funding women entrepreneurs, youth education, and community development.",
     icon: Heart,
     color: "from-rose-500/20 to-rose-500/0",
     iconColor: "text-rose-500",
