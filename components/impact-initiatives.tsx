@@ -7,8 +7,8 @@ const initiatives = [
     title: "Donate for Impact",
     description: "Make direct contributions to our ongoing community projects. All of your donations go directly to funding women entrepreneurs, youth education, and community development.",
     icon: Heart,
-    color: "from-rose-500/20 to-rose-500/0",
-    iconColor: "text-rose-500",
+    color: "from-gold/20 to-gold/0",
+    iconColor: "text-gold",
   },
   {
     title: "Halal Savings",

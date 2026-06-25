@@ -34,7 +34,7 @@ export function WealthUpHero() {
                   <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-primary/10 text-primary">
                     <o.icon className="h-5 w-5" />
                   </div>
-                  <span className="rounded-full bg-emerald-500/10 px-2.5 py-1 text-[11px] font-semibold text-emerald-600">{o.yield}</span>
+                  <span className="rounded-full bg-primary/10 px-2.5 py-1 text-[11px] font-semibold text-primary">{o.yield}</span>
                 </div>
                 <h3 className="mt-6 font-display text-lg font-semibold">{o.name}</h3>
                 <div className="mt-4 grid grid-cols-2 gap-3 text-xs">

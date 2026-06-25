@@ -53,13 +53,20 @@ export function ExploreWealthOptions() {
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
               <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
             </span>
-            Wealth Ecosystem
+            Your Wealth. Your Community. Your Future
           </div>
-          <h2 className="font-display text-4xl font-bold tracking-tight md:text-5xl lg:text-6xl text-foreground">
-            Explore Your Wealth Options
+          <h2 className="font-display text-4xl font-bold tracking-tight md:text-5xl lg:text-6xl text-foreground leading-[1.1]">
+            Every Naira you save{" "}
+            <span className="bg-gradient-to-r from-primary to-primary-glow bg-clip-text text-transparent">
+              works harder here
+            </span>
           </h2>
-          <p className="mt-6 text-lg text-muted-foreground leading-relaxed max-w-2xl mx-auto">
-            Wealthconomy helps Africans save smarter, grow wealth consistently, and achieve life goals. It’s Secure, Intelligent, and Inclusive.
+          <p className="mt-4 text-lg text-muted-foreground leading-relaxed max-w-2xl mx-auto">
+            Wealthconomy isn’t just a savings app, its where your money
+            appreciates with purpose and your financial education never stops.
+          </p>
+          <p className="mt-4 text-base font-bold text-primary">
+            Choose the path that fits your life today
           </p>
         </div>
 
@@ -122,7 +129,8 @@ export function ExploreWealthOptions() {
                 Smart Savings Made Easy
               </h3>
               <p className="text-base text-muted-foreground leading-relaxed">
-                Maximize your savings with competitive interest rates and impact drive tailored to help you achieve your financial goals.
+                Maximize your savings with competitive interest rates and impact
+                drive tailored to help you achieve your financial goals.
               </p>
 
               <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -197,18 +205,17 @@ export function ExploreWealthOptions() {
             {/* Visual Element Right */}
             <div className="relative z-10 hidden lg:flex w-80 h-80 items-center justify-center shrink-0">
               <div className="absolute inset-0 bg-primary/10 rounded-full blur-3xl pointer-events-none animate-pulse-slow" />
-              
+
               {/* Outer Orbiting Ring */}
               <div className="absolute w-72 h-72 rounded-full border border-dashed border-primary/20 animate-[spin_30s_linear_infinite]" />
-              
+
               {/* Main Circular Card (No overflow-hidden on this wrapper so the badge can float outside!) */}
               <div className="relative w-56 h-56 rounded-full border border-border/50 bg-background/60 backdrop-blur-xl shadow-2xl flex items-center justify-center group-hover:border-primary/45 hover:shadow-[0_0_35px_rgba(45,212,191,0.25)] transition-all duration-700">
-                
                 {/* Inner container with overflow-hidden for the bar chart only */}
                 <div className="absolute inset-0 rounded-full overflow-hidden flex items-center justify-center">
                   {/* Subtle inner grid lines */}
                   <div className="absolute inset-0 bg-[radial-gradient(rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:16px_16px] [mask-image:radial-gradient(circle_at_center,white_80%,transparent_100%)]" />
-                  
+
                   {/* Animated Chart */}
                   <div className="flex items-end gap-3.5 h-28 z-10 mt-6">
                     <div className="w-11 bg-primary/20 border border-primary/10 rounded-t-xl h-[35%] group-hover:h-[55%] transition-all duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)]" />
@@ -331,7 +338,10 @@ export function ExploreWealthOptions() {
                 Your Financial Literacy Hub
               </h3>
               <p className="mt-4 text-base text-muted-foreground leading-relaxed">
-                Equip yourself with the knowledge to make informed financial decisions through our money school. WiseUp delivers programs, courses, expert insights, interactive assessments, and regular market reports to help you make confident money decisions.
+                Equip yourself with the knowledge to make informed financial
+                decisions through our money school. WiseUp delivers programs,
+                courses, expert insights, interactive assessments, and regular
+                market reports to help you make confident money decisions.
               </p>
 
               {/* Extra details to fill up space and make it look premium */}
@@ -350,11 +360,20 @@ export function ExploreWealthOptions() {
                     desc: "Data-driven strategy sheets and newsletters explaining macroeconomic moves.",
                   },
                 ].map((item, idx) => (
-                  <div key={idx} className="flex gap-3 items-start p-3 bg-background/40 border border-border/50 rounded-xl hover:bg-background/80 transition-colors">
-                    <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-amber-500/10 text-amber-500 font-bold text-[10px] mt-0.5">✓</span>
+                  <div
+                    key={idx}
+                    className="flex gap-3 items-start p-3 bg-background/40 border border-border/50 rounded-xl hover:bg-background/80 transition-colors"
+                  >
+                    <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-amber-500/10 text-amber-500 font-bold text-[10px] mt-0.5">
+                      ✓
+                    </span>
                     <div>
-                      <h4 className="text-xs font-bold text-foreground">{item.title}</h4>
-                      <p className="text-[11px] text-muted-foreground leading-tight mt-0.5">{item.desc}</p>
+                      <h4 className="text-xs font-bold text-foreground">
+                        {item.title}
+                      </h4>
+                      <p className="text-[11px] text-muted-foreground leading-tight mt-0.5">
+                        {item.desc}
+                      </p>
                     </div>
                   </div>
                 ))}
@@ -428,12 +447,15 @@ export function ExploreWealthOptions() {
                               Financial Position Test 1
                             </span>
                             <span className="block text-xs text-muted-foreground mt-1 leading-snug pr-4">
-                              Asset-to-liability ratio & net worth distribution check
+                              Asset-to-liability ratio & net worth distribution
+                              check
                             </span>
                           </div>
                         </div>
                         <div className="shrink-0 flex flex-col items-end gap-2">
-                          <span className="text-[9px] font-bold uppercase tracking-wider text-amber-500 bg-amber-500/10 px-2 py-0.5 rounded">3 Min</span>
+                          <span className="text-[9px] font-bold uppercase tracking-wider text-amber-500 bg-amber-500/10 px-2 py-0.5 rounded">
+                            3 Min
+                          </span>
                           <ChevronRight className="w-4 h-4 text-muted-foreground group-hover/test:text-amber-500 group-hover/test:translate-x-1 transition-all" />
                         </div>
                       </div>
@@ -457,12 +479,15 @@ export function ExploreWealthOptions() {
                               Financial Position Test 2
                             </span>
                             <span className="block text-xs text-muted-foreground mt-1 leading-snug pr-4">
-                              Savings capacity & emergency buffer readiness score
+                              Savings capacity & emergency buffer readiness
+                              score
                             </span>
                           </div>
                         </div>
                         <div className="shrink-0 flex flex-col items-end gap-2">
-                          <span className="text-[9px] font-bold uppercase tracking-wider text-amber-500 bg-amber-500/10 px-2 py-0.5 rounded">5 Min</span>
+                          <span className="text-[9px] font-bold uppercase tracking-wider text-amber-500 bg-amber-500/10 px-2 py-0.5 rounded">
+                            5 Min
+                          </span>
                           <ChevronRight className="w-4 h-4 text-muted-foreground group-hover/test:text-amber-500 group-hover/test:translate-x-1 transition-all" />
                         </div>
                       </div>
@@ -531,36 +556,36 @@ export function ExploreWealthOptions() {
           </div>
 
           {/* WealthPact - 1x1 */}
-          <div className="group relative overflow-hidden rounded-[2.5rem] border border-border/50 bg-surface-soft/40 backdrop-blur-xl p-8 transition-all duration-700 hover:border-rose-500/30 hover:bg-surface-soft/80 shadow-[inset_0_1px_1px_rgba(255,255,255,0.05)] hover:shadow-[0_8px_40px_-12px_rgba(244,63,94,0.2)] flex flex-col justify-between">
-            <div className="absolute -top-24 -left-24 w-64 h-64 bg-rose-500/10 rounded-full blur-[60px] group-hover:bg-rose-500/20 transition-colors duration-700 pointer-events-none" />
+          <div className="group relative overflow-hidden rounded-[2.5rem] border border-border/50 bg-surface-soft/40 backdrop-blur-xl p-8 transition-all duration-700 hover:border-gold/30 hover:bg-surface-soft/80 shadow-[inset_0_1px_1px_rgba(255,255,255,0.05)] hover:shadow-[0_8px_40px_-12px_rgba(255,207,101,0.2)] flex flex-col justify-between">
+            <div className="absolute -top-24 -left-24 w-64 h-64 bg-gold/10 rounded-full blur-[60px] group-hover:bg-gold/20 transition-colors duration-700 pointer-events-none" />
 
             {/* Visual Header */}
             <div className="relative h-64 mb-8 w-full rounded-[2rem] bg-gradient-to-br from-background/80 to-background/20 border border-border/50 flex items-center justify-center overflow-visible shadow-inner group/header">
               {/* Ripple Rings */}
               <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                <div className="absolute w-36 h-36 rounded-full border-2 border-rose-500/10 animate-[ping_4s_cubic-bezier(0,0,0.2,1)_infinite]" />
-                <div className="absolute w-52 h-52 rounded-full border border-rose-500/5 animate-[ping_4s_cubic-bezier(0,0,0.2,1)_infinite_1.5s]" />
-                <div className="absolute w-64 h-64 rounded-full border border-rose-500/[0.02] animate-[ping_4s_cubic-bezier(0,0,0.2,1)_infinite_3s]" />
+                <div className="absolute w-36 h-36 rounded-full border-2 border-gold/10 animate-[ping_4s_cubic-bezier(0,0,0.2,1)_infinite]" />
+                <div className="absolute w-52 h-52 rounded-full border border-gold/5 animate-[ping_4s_cubic-bezier(0,0,0.2,1)_infinite_1.5s]" />
+                <div className="absolute w-64 h-64 rounded-full border border-gold/[0.02] animate-[ping_4s_cubic-bezier(0,0,0.2,1)_infinite_3s]" />
               </div>
 
               {/* Interactive Core */}
               <div className="relative flex items-center justify-center z-10">
-                <div className="w-20 h-20 bg-gradient-to-br from-rose-500 via-rose-600 to-rose-700 rounded-3xl rotate-12 flex items-center justify-center shadow-[0_12px_40px_-6px_rgba(244,63,94,0.4)] group-hover/header:rotate-0 group-hover/header:scale-110 transition-all duration-700">
+                <div className="w-20 h-20 bg-gradient-to-br from-gold via-amber-500 to-amber-600 rounded-3xl rotate-12 flex items-center justify-center shadow-[0_12px_40px_-6px_rgba(255,207,101,0.4)] group-hover/header:rotate-0 group-hover/header:scale-110 transition-all duration-700">
                   <HeartHandshake className="w-10 h-10 text-white animate-pulse" />
                 </div>
 
                 {/* Orbital nodes (Uplifting nodes that bounce outwards on hover) */}
                 <div className="absolute -top-10 -left-12 w-12 h-12 rounded-2xl bg-background border border-border flex flex-col items-center justify-center shadow-2xl transform group-hover/header:-translate-y-4 group-hover/header:-translate-x-4 transition-all duration-700 ease-out">
-                  <Users className="w-5 h-5 text-rose-500" />
+                  <Users className="w-5 h-5 text-gold" />
                 </div>
                 <div className="absolute -bottom-10 -right-10 w-12 h-12 rounded-2xl bg-background border border-border flex flex-col items-center justify-center shadow-2xl transform group-hover/header:translate-y-4 group-hover/header:translate-x-4 transition-all duration-700 ease-out delay-75">
-                  <Sprout className="w-5 h-5 text-rose-500" />
+                  <Sprout className="w-5 h-5 text-gold" />
                 </div>
               </div>
 
               {/* Floating Badge */}
-              <div className="absolute -top-3 left-4 bg-background/95 border border-rose-500/35 px-4 py-2 rounded-full flex items-center gap-2 shadow-2xl transform group-hover/header:-translate-y-1.5 transition-transform duration-700 z-20">
-                <Sparkles className="w-4 h-4 text-rose-500 animate-spin-slow" />
+              <div className="absolute -top-3 left-4 bg-background/95 border border-gold/35 px-4 py-2 rounded-full flex items-center gap-2 shadow-2xl transform group-hover/header:-translate-y-1.5 transition-transform duration-700 z-20">
+                <Sparkles className="w-4 h-4 text-gold animate-spin-slow" />
                 <span className="text-[11px] font-black text-foreground uppercase tracking-wider">
                   Community Impact
                 </span>
@@ -568,7 +593,7 @@ export function ExploreWealthOptions() {
             </div>
 
             <div className="relative z-10">
-              <div className="inline-flex items-center gap-2.5 mb-3.5 text-rose-500">
+              <div className="inline-flex items-center gap-2.5 mb-3.5 text-gold">
                 <HeartHandshake className="w-8 h-8" />
                 <span className="text-2xl font-black uppercase tracking-widest">
                   WealthPact
@@ -578,29 +603,38 @@ export function ExploreWealthOptions() {
                 Use Wealth to make Impact
               </h3>
               <p className="mt-3 text-base text-muted-foreground leading-relaxed">
-                WealthPact is our vehicle for making a difference. Here, you contribute to meaningful community initiatives for women, the less privileged, youths, businesses and more. You can be an impact saver or just donate.
+                WealthPact is our vehicle for making a difference. Here, you
+                contribute to meaningful community initiatives for women, the
+                less privileged, youths, businesses and more. You can be an
+                impact saver or just donate.
               </p>
 
               {/* Vetted Stats */}
               <div className="mt-6 grid grid-cols-3 gap-2 border-y border-border/40 py-4">
                 <div className="text-center">
-                  <div className="text-lg font-black text-rose-500">300+</div>
-                  <div className="text-[9px] uppercase font-bold tracking-wider text-muted-foreground leading-none">Women Trained</div>
+                  <div className="text-lg font-black text-gold">300+</div>
+                  <div className="text-[9px] uppercase font-bold tracking-wider text-muted-foreground leading-none">
+                    Women Trained
+                  </div>
                 </div>
                 <div className="text-center border-x border-border/40">
-                  <div className="text-lg font-black text-rose-500">15+</div>
-                  <div className="text-[9px] uppercase font-bold tracking-wider text-muted-foreground leading-none">Grants Given</div>
+                  <div className="text-lg font-black text-gold">15+</div>
+                  <div className="text-[9px] uppercase font-bold tracking-wider text-muted-foreground leading-none">
+                    Grants Given
+                  </div>
                 </div>
                 <div className="text-center">
-                  <div className="text-lg font-black text-rose-500">5+</div>
-                  <div className="text-[9px] uppercase font-bold tracking-wider text-muted-foreground leading-none">New Projects</div>
+                  <div className="text-lg font-black text-gold">5+</div>
+                  <div className="text-[9px] uppercase font-bold tracking-wider text-muted-foreground leading-none">
+                    New Projects
+                  </div>
                 </div>
               </div>
 
               <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div className="bg-background/60 backdrop-blur-sm border border-border/50 p-3.5 rounded-2xl flex items-center gap-3">
-                  <div className="w-10 h-10 shrink-0 rounded-full bg-rose-500/10 flex items-center justify-center">
-                    <Users className="w-5 h-5 text-rose-500" />
+                  <div className="w-10 h-10 shrink-0 rounded-full bg-gold/10 flex items-center justify-center">
+                    <Users className="w-5 h-5 text-gold" />
                   </div>
                   <div>
                     <div className="text-xs font-bold text-foreground">
@@ -612,8 +646,8 @@ export function ExploreWealthOptions() {
                   </div>
                 </div>
                 <div className="bg-background/60 backdrop-blur-sm border border-border/50 p-3.5 rounded-2xl flex items-center gap-3">
-                  <div className="w-10 h-10 shrink-0 rounded-full bg-rose-500/10 flex items-center justify-center">
-                    <Sprout className="w-5 h-5 text-rose-500" />
+                  <div className="w-10 h-10 shrink-0 rounded-full bg-gold/10 flex items-center justify-center">
+                    <Sprout className="w-5 h-5 text-gold" />
                   </div>
                   <div>
                     <div className="text-xs font-bold text-foreground">
@@ -625,8 +659,8 @@ export function ExploreWealthOptions() {
                   </div>
                 </div>
                 <div className="bg-background/60 backdrop-blur-sm border border-border/50 p-3.5 rounded-2xl flex items-center gap-3 sm:col-span-2">
-                  <div className="w-10 h-10 shrink-0 rounded-full bg-rose-500/10 flex items-center justify-center">
-                    <HeartHandshake className="w-5 h-5 text-rose-500" />
+                  <div className="w-10 h-10 shrink-0 rounded-full bg-gold/10 flex items-center justify-center">
+                    <HeartHandshake className="w-5 h-5 text-gold" />
                   </div>
                   <div>
                     <div className="text-xs font-bold text-foreground">
@@ -644,7 +678,7 @@ export function ExploreWealthOptions() {
             <div className="relative z-10 mt-8 flex flex-col sm:flex-row gap-3">
               <Button
                 asChild
-                className="flex-1 h-12 rounded-xl bg-rose-500 hover:bg-rose-600 text-white shadow-lg shadow-rose-500/20 transition-all duration-300 border-none group/btn"
+                className="flex-1 h-12 rounded-xl bg-gold hover:bg-amber-500 text-amber-950 font-bold shadow-lg shadow-gold/20 transition-all duration-300 border-none group/btn"
               >
                 <a
                   href="https://forms.gle/M4NrF9w9HSny4YR49"
@@ -658,7 +692,7 @@ export function ExploreWealthOptions() {
               <Button
                 asChild
                 variant="outline"
-                className="flex-1 h-12 rounded-xl border-rose-500/30 text-rose-500 hover:bg-rose-500/10 hover:text-rose-600 transition-all duration-300 group/btn2"
+                className="flex-1 h-12 rounded-xl border-gold/30 text-gold hover:bg-gold/10 hover:text-gold transition-all duration-300 group/btn2"
               >
                 <a
                   href="https://forms.gle/M4NrF9w9HSny4YR49"
@@ -673,18 +707,15 @@ export function ExploreWealthOptions() {
           </div>
 
           {/* WealthUp - 1x1 */}
-          <div className="group relative overflow-hidden rounded-[2.5rem] border border-border/50 bg-surface-soft/40 backdrop-blur-xl p-8 transition-all duration-700 hover:border-emerald-400/40 hover:bg-surface-soft/80 shadow-[inset_0_1px_1px_rgba(255,255,255,0.05)] hover:shadow-[0_8px_40px_-12px_rgba(45,212,191,0.2)] flex flex-col justify-between">
+          <div className="group relative overflow-hidden rounded-[2.5rem] border border-border/50 bg-surface-soft/40 backdrop-blur-xl p-8 transition-all duration-700 hover:border-primary/40 hover:bg-surface-soft/80 shadow-[inset_0_1px_1px_rgba(255,255,255,0.05)] hover:shadow-[0_8px_40px_-12px_rgba(21,93,95,0.2)] flex flex-col justify-between">
             {/* Glowing Orb */}
-            <div className="absolute -top-24 -right-24 w-64 h-64 bg-emerald-400/10 rounded-full blur-[60px] group-hover:bg-emerald-400/20 transition-colors duration-700 pointer-events-none" />
+            <div className="absolute -top-24 -right-24 w-64 h-64 bg-primary/10 rounded-full blur-[60px] group-hover:bg-primary/20 transition-colors duration-700 pointer-events-none" />
 
             {/* Visual Header */}
             <div className="relative h-44 mb-8 w-full rounded-2xl bg-gradient-to-br from-background/80 to-background/20 border border-border/50 flex items-center justify-center overflow-hidden shadow-inner">
               {/* Mock Portfolio Ring */}
               <div className="relative w-36 h-36 flex items-center justify-center">
-                <svg
-                  viewBox="0 0 100 100"
-                  className="w-full h-full -rotate-90"
-                >
+                <svg viewBox="0 0 100 100" className="w-full h-full -rotate-90">
                   <circle
                     cx="50"
                     cy="50"
@@ -703,7 +734,7 @@ export function ExploreWealthOptions() {
                     strokeWidth="8"
                     strokeDasharray="251.2"
                     strokeDashoffset="100"
-                    className="text-primary drop-shadow-[0_0_5px_rgba(45,212,191,0.5)] group-hover:strokeDashoffset-[50] transition-all duration-1000 ease-out"
+                    className="text-primary-glow drop-shadow-[0_0_5px_rgba(21,93,95,0.5)] group-hover:strokeDashoffset-[50] transition-all duration-1000 ease-out"
                     strokeLinecap="round"
                   />
                   <circle
@@ -715,7 +746,7 @@ export function ExploreWealthOptions() {
                     strokeWidth="8"
                     strokeDasharray="251.2"
                     strokeDashoffset="210"
-                    className="text-emerald-400 group-hover:strokeDashoffset-[180] transition-all duration-1000 ease-out delay-100"
+                    className="text-primary group-hover:strokeDashoffset-[180] transition-all duration-1000 ease-out delay-100"
                     strokeLinecap="round"
                   />
                 </svg>
@@ -730,7 +761,7 @@ export function ExploreWealthOptions() {
             </div>
 
             <div className="relative z-10">
-              <div className="inline-flex items-center gap-2.5 mb-3.5 text-emerald-400">
+              <div className="inline-flex items-center gap-2.5 mb-3.5 text-primary">
                 <PieChart className="w-8 h-8" />
                 <span className="text-2xl font-black uppercase tracking-widest">
                   WealthUp
@@ -740,14 +771,19 @@ export function ExploreWealthOptions() {
                 Future Investment Opportunities
               </h3>
               <p className="mt-4 text-base text-muted-foreground leading-relaxed">
-                Stay tuned for our upcoming investment products designed to grow your wealth sustainably. Access premium portfolios curated for long-term compounding.
+                Stay tuned for our upcoming investment products designed to grow
+                your wealth sustainably. Access premium portfolios curated for
+                long-term compounding.
               </p>
 
               <div className="mt-6 space-y-4">
                 <div className="p-4 rounded-2xl border border-border/60 bg-background/50 backdrop-blur-sm">
-                  <span className="text-xs font-bold text-primary block uppercase tracking-wider mb-2">Key Portfolio Design</span>
+                  <span className="text-xs font-bold text-primary block uppercase tracking-wider mb-2">
+                    Key Portfolio Design
+                  </span>
                   <p className="text-xs text-muted-foreground leading-relaxed">
-                    Tailored investment portfolios designed to meet your specific risk appetite and long-term financial goals.
+                    Tailored investment portfolios designed to meet your
+                    specific risk appetite and long-term financial goals.
                   </p>
                 </div>
 
@@ -757,11 +793,21 @@ export function ExploreWealthOptions() {
                     { name: "Fractional Real Estate", tag: "Property Backed" },
                     { name: "Alternative Agri-Debt", tag: "Impact Returns" },
                     { name: "Shariah Compliant Assets", tag: "Ethical Funds" },
-                    { name: "High-Yield Sovereign Bonds", tag: "Low-Risk Reserves" },
+                    {
+                      name: "High-Yield Sovereign Bonds",
+                      tag: "Low-Risk Reserves",
+                    },
                   ].map((item, i) => (
-                    <div key={i} className="bg-background/60 backdrop-blur-sm border border-border/50 p-3 rounded-xl text-left hover:border-emerald-400/30 transition-colors">
-                      <span className="block text-[11px] font-bold text-foreground leading-tight">{item.name}</span>
-                      <span className="block text-[9px] text-emerald-400 font-bold uppercase tracking-wider mt-1">{item.tag}</span>
+                    <div
+                      key={i}
+                      className="bg-background/60 backdrop-blur-sm border border-border/50 p-3 rounded-xl text-left hover:border-primary/30 transition-colors"
+                    >
+                      <span className="block text-[11px] font-bold text-foreground leading-tight">
+                        {item.name}
+                      </span>
+                      <span className="block text-[9px] text-primary font-bold uppercase tracking-wider mt-1">
+                        {item.tag}
+                      </span>
                     </div>
                   ))}
                 </div>
@@ -771,7 +817,7 @@ export function ExploreWealthOptions() {
             <div className="relative z-10 mt-8">
               <Button
                 asChild
-                className="w-full h-12 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white shadow-lg shadow-emerald-500/10 group/btn transition-all duration-300 border-none"
+                className="w-full h-12 rounded-xl bg-primary hover:bg-primary-glow text-white shadow-lg shadow-primary/10 group/btn transition-all duration-300 border-none"
               >
                 <Link
                   href="/wealthup"

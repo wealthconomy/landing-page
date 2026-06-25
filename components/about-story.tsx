@@ -62,9 +62,9 @@ export function AboutStory() {
           </div>
 
           {/* Impact Initiatives */}
-          <div className="group rounded-3xl border border-border/50 bg-background/60 backdrop-blur-xl p-6 lg:p-8 flex flex-col justify-between hover:border-rose-500/40 hover:shadow-glow-teal transition-all duration-300">
+          <div className="group rounded-3xl border border-border/50 bg-background/60 backdrop-blur-xl p-6 lg:p-8 flex flex-col justify-between hover:border-gold/40 hover:shadow-glow-teal transition-all duration-300">
             <div>
-              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-rose-500/10 text-rose-500 mb-6">
+              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gold/10 text-gold mb-6">
                 <Heart className="h-6 w-6" />
               </div>
               <h3 className="font-display text-xl font-semibold mb-3">Impact Initiatives</h3>
@@ -73,7 +73,7 @@ export function AboutStory() {
               </p>
             </div>
             <div className="mt-8 pt-6 border-t border-border/60">
-              <Button asChild className="rounded-full bg-rose-500 hover:bg-rose-600 text-white gap-1.5 w-full">
+              <Button asChild className="rounded-full bg-gold hover:bg-amber-500 text-amber-950 font-bold gap-1.5 w-full">
                 <a href="https://forms.gle/M4NrF9w9HSny4YR49" target="_blank" rel="noopener noreferrer">
                   Start Impact Saving <ChevronRight className="h-4 w-4" />
                 </a>
