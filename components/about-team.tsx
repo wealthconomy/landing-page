@@ -1,4 +1,5 @@
 import { Linkedin, Twitter } from "lucide-react";
+import Image from "next/image";
 
 const team = [
   {
@@ -41,12 +42,13 @@ export function AboutTeam() {
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {team.map((member) => (
             <div key={member.name} className="group relative overflow-hidden rounded-3xl border border-border bg-background p-6 transition-all duration-500 hover:shadow-soft">
-              <div className="aspect-square w-full overflow-hidden rounded-2xl bg-muted">
-                <img 
+              <div className="aspect-square w-full overflow-hidden rounded-2xl bg-muted relative">
+                <Image 
                   src={member.image} 
                   alt={member.name} 
-                  className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-                  loading="lazy"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                  className="object-cover transition-transform duration-700 group-hover:scale-105"
                 />
               </div>
               <div className="mt-6">

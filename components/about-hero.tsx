@@ -10,7 +10,7 @@ export function AboutHero() {
         <div className="absolute top-0 right-0 h-[400px] w-[400px] rounded-full bg-gold/10 blur-[100px]" />
       </div>
 
-      <div className="relative z-10 mx-auto max-w-7xl px-6 animate-in fade-in slide-in-from-bottom-8 duration-1000">
+      <div className="relative z-10 mx-auto max-w-7xl px-6 animate-in fade-in slide-in-from-bottom-8 duration-1000 fill-mode-both">
         <div className="flex flex-col items-center text-center mb-16 md:mb-24">
           <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.2em] text-foreground backdrop-blur-xl">
             <Sparkles className="h-4 w-4 text-gold" />
@@ -60,6 +60,8 @@ export function AboutHero() {
                   src="/images/about_people_app.png" 
                   alt="People working together"
                   fill
+                  sizes="(max-width: 768px) 50vw, 35vw"
+                  priority
                   className="object-cover transition-transform duration-700 group-hover:scale-105"
                 />
               </div>
@@ -70,6 +72,7 @@ export function AboutHero() {
                   src="/images/about_financial_app.png" 
                   alt="Financial growth concept"
                   fill
+                  sizes="(max-width: 768px) 50vw, 35vw"
                   className="object-cover transition-transform duration-700 group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent opacity-80" />

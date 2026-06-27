@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Image, { type StaticImageData } from "next/image";
 import { Users, ShieldCheck, Sparkles, Bell, ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -16,7 +17,7 @@ type Slide = {
   label: string;
   title: string;
   body: string;
-  image: string;
+  image: StaticImageData;
   alignment: "left" | "right";
 };
 
@@ -26,7 +27,7 @@ const slides: Slide[] = [
     label: "Built on Culture",
     title: "Traditional saving culture, redesigned.",
     body: "We've digitized the heart of communal saving, bringing transparency and accountability to the traditions we've always trusted.",
-    image: scene1.src,
+    image: scene1,
     alignment: "right",
   },
   {
@@ -34,7 +35,7 @@ const slides: Slide[] = [
     label: "Flexible Contribution",
     title: "The freedom to grow at your own pace.",
     body: "Join groups that move with your rhythm. No rigid schedules, just consistent progress toward a shared vision.",
-    image: scene2.src,
+    image: scene2,
     alignment: "left",
   },
   {
@@ -42,7 +43,7 @@ const slides: Slide[] = [
     label: "Transparent Payouts",
     title: "Total clarity. Structured trust.",
     body: "Everyone sees the cycle. Everyone knows their turn. A perfectly balanced system where accountability is built-in.",
-    image: scene3.src,
+    image: scene3,
     alignment: "left",
   },
   {
@@ -50,7 +51,7 @@ const slides: Slide[] = [
     label: "Automated Accountability",
     title: "Stability, powered by quiet intelligence.",
     body: "Our system monitors every contribution, protecting the group's health so you can focus on the goal.",
-    image: scene4.src,
+    image: scene4,
     alignment: "right",
   },
   {
@@ -58,7 +59,7 @@ const slides: Slide[] = [
     label: "Real Wealth Outcomes",
     title: "This is what disciplined saving unlocks.",
     body: "From business launches to home ownership, transform small contributions into life-changing milestones.",
-    image: scene5.src,
+    image: scene5,
     alignment: "right",
   },
 ];
@@ -126,10 +127,14 @@ export function WealthGroupSection() {
                   i === activeIdx ? "opacity-100 z-10" : "opacity-0 z-0",
                 )}
               >
-                <img
+                <Image
                   src={slide.image}
                   alt={slide.label}
-                  className="h-full w-full object-cover object-center"
+                  fill
+                  priority={i === 0}
+                  placeholder="blur"
+                  sizes="100vw"
+                  className="object-cover object-center"
                 />
                 <div className="absolute inset-0 bg-black/50 md:bg-black/40" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-black/40" />

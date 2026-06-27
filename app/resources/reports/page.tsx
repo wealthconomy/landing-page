@@ -1,6 +1,7 @@
 "use client";
 
 import { FileText, Download, ArrowRight, TrendingUp, Search, BookOpen } from "lucide-react";
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
 
 const reports = [
@@ -87,10 +88,12 @@ export default function ReportsPage() {
               <div key={i} className="group flex flex-col rounded-3xl border border-border bg-background overflow-hidden hover:shadow-soft hover:-translate-y-1 transition-all duration-300">
                 <div className="aspect-[16/9] overflow-hidden relative">
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent z-10" />
-                  <img 
+                  <Image 
                     src={report.image} 
                     alt={report.title} 
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    fill
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                    className="object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                   <div className="absolute bottom-4 left-4 z-20 flex items-center gap-2">
                     <span className="bg-primary/90 backdrop-blur-sm text-white text-[10px] font-bold uppercase tracking-wider px-2 py-1 rounded">

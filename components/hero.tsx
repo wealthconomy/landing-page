@@ -2,6 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import Image, { type StaticImageData } from "next/image";
 import {
   ArrowUpRight,
   ShieldCheck,
@@ -23,7 +24,7 @@ function PhoneFrame({
   alt,
   className = "",
 }: {
-  src: string;
+  src: string | StaticImageData;
   alt: string;
   className?: string;
 }) {
@@ -34,10 +35,13 @@ function PhoneFrame({
         <div className="relative h-full w-full overflow-hidden rounded-[1.2rem] lg:rounded-[2.1rem] bg-white">
           {/* Notch */}
           <div className="absolute left-1/2 top-1.5 z-10 h-3 w-10 -translate-x-1/2 rounded-full bg-neutral-900" />
-          <img
+          <Image
             src={src}
             alt={alt}
-            className="h-full w-full object-cover object-top"
+            fill
+            sizes="(max-width: 768px) 150px, 220px"
+            priority
+            className="object-cover object-top"
           />
         </div>
       </div>
@@ -327,15 +331,19 @@ export function Hero() {
           </div>
 
           {/* Right Column: Visual Showcase */}
-          <div className="relative flex justify-center lg:justify-end animate-in fade-in zoom-in-95 duration-1000 delay-300 -mt-2 lg:mt-0 lg:translate-x-8 xl:translate-x-12">
+          <div className="relative flex justify-center lg:justify-end animate-in fade-in zoom-in-95 duration-1000 delay-300 fill-mode-both -mt-2 lg:mt-0 lg:translate-x-8 xl:translate-x-12">
             {/* Container for premium overlapping visuals */}
-            <div className="relative w-full max-w-[520px] lg:max-w-[580px] xl:max-w-[620px] aspect-[4/4.5] lg:aspect-[4/5] rounded-2xl lg:rounded-3xl bg-white/5 border border-white/10 shadow-2xl backdrop-blur-md p-3 lg:p-4 mt-0 lg:mt-0">
+            <div className="relative w-full max-w-[520px] lg:max-w-[580px] xl:max-w-[620px] aspect-[4/4.5] lg:aspect-[4/5] rounded-2xl lg:rounded-3xl bg-white/5 border border-white/10 shadow-2xl backdrop-blur-md transform-gpu p-3 lg:p-4 mt-0 lg:mt-0">
               {/* Main People Image */}
               <div className="relative w-full h-full rounded-xl lg:rounded-2xl overflow-hidden group">
-                <img
-                  src={heroPeople.src}
+                <Image
+                  src={heroPeople}
                   alt="African young persons building wealth"
-                  className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  fill
+                  priority
+                  placeholder="blur"
+                  sizes="(max-width: 768px) 100vw, 600px"
+                  className="object-cover transition-transform duration-700 group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/20 to-transparent opacity-80" />
               </div>
@@ -343,7 +351,7 @@ export function Hero() {
               {/* Floating App Mockup over the corner */}
               <div className="absolute -bottom-10 -left-2 sm:-bottom-16 sm:-left-12 lg:-bottom-20 lg:-left-28 w-[115px] sm:w-[170px] lg:w-[220px] animate-phone-b z-30">
                 <PhoneFrame
-                  src={phoneHome.src}
+                  src={phoneHome}
                   alt="Wealthconomy home dashboard"
                   className="w-full"
                 />

@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowUpRight, ArrowUp, Send, CheckCircle2, Search, Calendar, Clock, BookOpen } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { blogPosts, BlogPost } from "@/lib/blog";
@@ -163,10 +164,13 @@ export function BlogIndex() {
                 {/* Image Side */}
                 <div className="lg:col-span-7 overflow-hidden rounded-[24px] md:rounded-[36px] aspect-[16/10] bg-surface-soft border border-border relative">
                   <Link href={`/blog/${featuredPost.slug}`}>
-                    <img
-                      src={featuredPost.image.src}
+                    <Image
+                      src={featuredPost.image}
                       alt={featuredPost.title}
-                      className="h-full w-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
+                      fill
+                      placeholder="blur"
+                      sizes="(max-width: 768px) 100vw, 60vw"
+                      className="object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
                     />
                   </Link>
                 </div>
@@ -221,10 +225,13 @@ export function BlogIndex() {
                   {/* Card Image */}
                   <div className="overflow-hidden rounded-[32px] aspect-[16/10] bg-surface-soft border border-border relative mb-6">
                     <Link href={`/blog/${post.slug}`}>
-                      <img
-                        src={post.image.src}
+                      <Image
+                        src={post.image}
                         alt={post.title}
-                        className="h-full w-full object-cover object-center group-hover:scale-105 transition-transform duration-500 ease-out"
+                        fill
+                        placeholder="blur"
+                        sizes="(max-width: 768px) 100vw, 33vw"
+                        className="object-cover object-center group-hover:scale-105 transition-transform duration-500 ease-out"
                       />
                     </Link>
                   </div>

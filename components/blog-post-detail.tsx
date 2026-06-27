@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowLeft, ArrowUpRight, Clock, Calendar, Lightbulb, Share2, Twitter, Linkedin, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { BlogPost, blogPosts } from "@/lib/blog";
@@ -118,11 +119,15 @@ export function BlogPostDetail({ post }: { post: BlogPost }) {
 
       {/* Big Banner Image */}
       <section className="relative z-10 max-w-5xl mx-auto px-6 mb-16 md:mb-24">
-        <div className="overflow-hidden rounded-[32px] md:rounded-[48px] aspect-[21/9] border border-border shadow-soft bg-surface-soft">
-          <img
-            src={post.image.src}
+        <div className="overflow-hidden rounded-[32px] md:rounded-[48px] aspect-[21/9] border border-border shadow-soft bg-surface-soft relative">
+          <Image
+            src={post.image}
             alt={post.title}
-            className="w-full h-full object-cover object-center"
+            fill
+            priority
+            placeholder="blur"
+            sizes="(max-width: 768px) 100vw, 1000px"
+            className="object-cover object-center"
           />
         </div>
       </section>
@@ -258,10 +263,13 @@ export function BlogPostDetail({ post }: { post: BlogPost }) {
               <Reveal key={rPost.slug} animation="up" delay={idx * 100} className="group flex flex-col h-full bg-background rounded-[24px] border border-border/80 p-4 hover:border-primary/20 hover:shadow-glow-teal transition-all duration-300">
                 <div className="overflow-hidden rounded-2xl aspect-[16/10] bg-surface-soft border border-border/60 relative mb-4">
                   <Link href={`/blog/${rPost.slug}`}>
-                    <img
-                      src={rPost.image.src}
+                    <Image
+                      src={rPost.image}
                       alt={rPost.title}
-                      className="h-full w-full object-cover object-center group-hover:scale-105 transition-transform duration-500 ease-out"
+                      fill
+                      placeholder="blur"
+                      sizes="(max-width: 768px) 100vw, 33vw"
+                      className="object-cover object-center group-hover:scale-105 transition-transform duration-500 ease-out"
                     />
                   </Link>
                 </div>
