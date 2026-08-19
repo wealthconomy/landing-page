@@ -17,7 +17,7 @@ export async function GET() {
       desc: post.description || post.content.slice(0, 100) + "...",
       cat: post.category,
       slug: post.slug || post.id,
-      readTime: post.readingTimeMinutes ? `${post.readingTimeMinutes} min` : "4 min",
+      readTime: post.readingDuration || "4 min",
     }));
 
     const assessments = liveAssessments.map((ast, idx) => ({

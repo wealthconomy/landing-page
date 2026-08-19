@@ -22,6 +22,7 @@ export interface BlogItem {
   publishToWeb?: boolean;
   description?: string;
   readingDuration?: string;
+  readingTimeMinutes?: number;
   sharesCount?: number;
   createdAt: string;
   updatedAt?: string;
@@ -72,7 +73,10 @@ export function transformApiBlog(item: any): BlogItem {
     publishToApp: item.publishToApp ?? true,
     publishToWeb: item.publishToWeb ?? true,
     description: item.description || "",
-    readingDuration: item.readingDuration || "4 min read",
+    readingDuration:
+      item.readingDuration ||
+      (item.readingTimeMinutes ? `${item.readingTimeMinutes} min read` : "4 min read"),
+    readingTimeMinutes: item.readingTimeMinutes,
     sharesCount: item.sharesCount || 0,
     createdAt: item.createdAt || new Date().toISOString(),
     updatedAt: item.updatedAt,
