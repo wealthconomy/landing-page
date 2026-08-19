@@ -1,43 +1,25 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { ChevronRight, TrendingUp, ShieldCheck, Target, LineChart, Star, Calculator, Mail, BookOpen, FileText, ArrowUpRight } from "lucide-react";
+import { ChevronRight, TrendingUp, ShieldCheck, Target, LineChart, Star, Calculator, Mail, BookOpen, FileText, ArrowUpRight, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { AssessmentQuizModal } from "@/components/assessment-quiz-modal";
 
 export function WiseUp() {
   const [email, setEmail] = useState("");
   const [subscribed, setSubsubscribed] = useState(false);
-  const [lessons, setLessons] = useState([
-    { title: "Saving Discipline: The first step", desc: "Why willpower fails and automated habits win the long-term wealth game.", cat: "Basics" },
-    { title: "Common Financial Mistakes", desc: "Top portfolio pitfalls that keep Africans working for money instead of money working for them.", cat: "Strategy" },
-    { title: "Investment Basics 101", desc: "Demystifying returns, risks, and compounding horizons for modern professionals.", cat: "Invest" }
-  ]);
-
-  const [assessments, setAssessments] = useState([
-    {
-      id: "assessment-01",
-      badge: "Assessment 01",
-      title: "Net Worth & Asset Check",
-      description: "Evaluate your current asset-to-liability ratio and understand your immediate net worth distribution category. Learn exactly where your money is tied up.",
-      readTime: "3 Min Read",
-      features: ["Asset distribution analysis", "Liability risk evaluation"],
-    },
-    {
-      id: "assessment-02",
-      badge: "Assessment 02",
-      title: "Risk & Buffer Defense",
-      description: "Analyze your savings capacity and emergency buffer readiness score to verify your risk defense category against sudden economic shifts.",
-      readTime: "5 Min Read",
-      features: ["Emergency fund capacity", "Inflation protection score"],
-    },
-  ]);
+  const [isNewsletterLoading, setIsNewsletterLoading] = useState(false);
+  const [blogs, setBlogs] = useState<any[]>([]);
+  const [activeQuizId, setActiveQuizId] = useState<string | null>(null);
+  const [assessments, setAssessments] = useState<any[]>([]);
 
   useEffect(() => {
     fetch("/api/learn")
       .then((res) => res.json())
       .then((data) => {
         if (data.success) {
-          if (data.lessons) setLessons(data.lessons);
+          const rawBlogs = data.blogs || data.lessons;
+          if (rawBlogs) setBlogs(rawBlogs);
           if (data.assessments) setAssessments(data.assessments);
         }
       })
@@ -183,7 +165,10 @@ export function WiseUp() {
                       </p>
                       
                       <div className="space-y-3 mb-8">
-                        {ast.features.map((feat, fIdx) => (
+                        {(ast.features || [
+                          `${ast.totalQuestions || 5} Questions Scorecard`,
+                          "Instant Personalized Readiness Report",
+                        ]).map((feat: string, fIdx: number) => (
                           <div key={fIdx} className="flex items-start gap-2.5">
                             <div className={`flex h-5 w-5 shrink-0 items-center justify-center rounded-full mt-0.5 ${isEven ? "bg-primary/10 text-primary" : "bg-gold/10 text-gold"}`}>
                               <svg className="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="3"><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
@@ -195,8 +180,8 @@ export function WiseUp() {
                     </div>
                     
                     <div className="relative z-10 pt-5 border-t border-border flex items-center justify-between">
-                      <span className="text-xs font-bold uppercase tracking-wider text-primary bg-primary/10 px-2.5 py-1 rounded">App Exclusive</span>
-                      <Button variant="default" onClick={() => window.dispatchEvent(new CustomEvent("open-coming-soon-modal"))} className={btnClass}>
+                      <span className="text-xs font-bold uppercase tracking-wider text-primary bg-primary/10 px-2.5 py-1 rounded">Interactive Test</span>
+                      <Button variant="default" onClick={() => setActiveQuizId(ast.id)} className={btnClass}>
                         Take test <ArrowUpRight className="w-4 h-4" />
                       </Button>
                     </div>
@@ -209,27 +194,34 @@ export function WiseUp() {
 
         {/* Section: Blog Line */}
         <div className="mb-14">
-          <div className="max-w-3xl mb-8">
-            <h2 className="text-2xl md:text-3xl font-semibold tracking-tight text-foreground uppercase">
-              Featured Money Lessons
-            </h2>
-            <p className="text-sm text-muted-foreground mt-2">
-              Browse our latest blogs linking directly to deeper deep-dives in the mobile app.
-            </p>
+          <div className="max-w-3xl mb-8 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+            <div>
+              <h2 className="text-2xl md:text-3xl font-semibold tracking-tight text-foreground uppercase">
+                Featured Blogs
+              </h2>
+              <p className="text-sm text-muted-foreground mt-2">
+                Browse our latest published articles on compound savings, inflation hedging, and wealth strategy.
+              </p>
+            </div>
+            <a href="/blog" className="inline-flex items-center text-sm font-bold text-primary hover:text-primary-glow transition-colors shrink-0">
+              View All Articles <ArrowUpRight className="ml-1 w-4 h-4" />
+            </a>
           </div>
 
           <div className="grid md:grid-cols-3 gap-6">
-            {lessons.map((b, i) => (
+            {blogs.map((b: any, i: number) => (
               <div key={i} className="group rounded-2xl border border-border bg-surface-soft/40 p-6 hover:bg-card hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between">
                 <div>
                   <span className="text-[9px] uppercase tracking-widest text-primary font-bold">{b.cat}</span>
-                  <h4 className="text-base font-semibold mt-3 group-hover:text-primary transition-colors">{b.title}</h4>
-                  <p className="text-xs text-muted-foreground mt-2 leading-relaxed">{b.desc}</p>
+                  <a href={`/blog/${b.slug || b.id || ""}`} className="block">
+                    <h4 className="text-base font-semibold mt-3 group-hover:text-primary transition-colors leading-snug">{b.title}</h4>
+                  </a>
+                  <p className="text-xs text-muted-foreground mt-2 leading-relaxed line-clamp-3">{b.desc}</p>
                 </div>
                 <div className="mt-6 pt-4 border-t border-border/60">
-                  <Button variant="ghost" onClick={() => window.dispatchEvent(new CustomEvent("open-coming-soon-modal"))} className="p-0 hover:bg-transparent text-xs text-primary font-bold group-hover:text-primary-glow flex items-center gap-1">
-                    Read on App <ArrowUpRight className="w-3.5 h-3.5" />
-                  </Button>
+                  <a href={`/blog/${b.slug || b.id || ""}`} className="p-0 hover:bg-transparent text-xs text-primary font-bold group-hover:text-primary-glow inline-flex items-center gap-1">
+                    Read Article <ArrowUpRight className="w-3.5 h-3.5" />
+                  </a>
                 </div>
               </div>
             ))}
@@ -247,11 +239,31 @@ export function WiseUp() {
               Subscribe to WiseUp newsletters and unlock full assessment results in the app.
             </p>
             {subscribed ? (
-              <div className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-xs font-semibold backdrop-blur-sm">
-                🎉 Thanks for subscribing!
+              <div className="inline-flex items-center gap-2 rounded-full bg-white/10 px-5 py-2.5 text-xs font-semibold backdrop-blur-sm text-white">
+                🎉 Thanks for subscribing! You will receive our next edition.
               </div>
             ) : (
-              <form onSubmit={(e) => { e.preventDefault(); setSubsubscribed(true); }} className="flex flex-col sm:flex-row gap-2 mt-4">
+              <form
+                onSubmit={async (e) => {
+                  e.preventDefault();
+                  if (!email.trim() || isNewsletterLoading) return;
+                  setIsNewsletterLoading(true);
+                  try {
+                    await fetch("/api/newsletter", {
+                      method: "POST",
+                      headers: { "Content-Type": "application/json" },
+                      body: JSON.stringify({ email: email.trim(), source: "wiseup_section" }),
+                    });
+                    setSubsubscribed(true);
+                  } catch (err) {
+                    console.error("Newsletter error:", err);
+                    setSubsubscribed(true);
+                  } finally {
+                    setIsNewsletterLoading(false);
+                  }
+                }}
+                className="flex flex-col sm:flex-row gap-2 mt-4"
+              >
                 <input 
                   type="email" 
                   required
@@ -260,8 +272,19 @@ export function WiseUp() {
                   placeholder="Enter your email" 
                   className="flex-1 rounded-full border border-white/15 bg-white/10 px-5 py-3 text-sm text-white placeholder:text-white/40 focus:outline-none focus:border-gold"
                 />
-                <Button type="submit" className="rounded-full bg-gold text-black hover:bg-gold/90 h-12 px-6 font-bold">
-                  Subscribe
+                <Button 
+                  type="submit" 
+                  disabled={isNewsletterLoading}
+                  className="rounded-full bg-gold text-black hover:bg-gold/90 h-12 px-6 font-bold disabled:opacity-75 flex items-center justify-center gap-2 cursor-pointer shrink-0"
+                >
+                  {isNewsletterLoading ? (
+                    <>
+                      <Loader2 className="w-4 h-4 animate-spin text-black" />
+                      <span>Subscribing...</span>
+                    </>
+                  ) : (
+                    "Subscribe"
+                  )}
                 </Button>
               </form>
             )}
@@ -428,6 +451,15 @@ export function WiseUp() {
           </div>
         </div>
       </div>
+
+      {/* Interactive Assessment Quiz Modal */}
+      {activeQuizId && (
+        <AssessmentQuizModal
+          assessmentId={activeQuizId}
+          initialData={assessments.find((a) => a.id === activeQuizId)}
+          onClose={() => setActiveQuizId(null)}
+        />
+      )}
     </section>
   );
 }

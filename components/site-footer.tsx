@@ -18,6 +18,8 @@ import {
   Facebook,
   Phone,
   MapPin,
+  Loader2,
+  Check,
 } from "lucide-react";
 import logo from "@/assets/wealthconomy-logo-new.png";
 
@@ -25,10 +27,31 @@ export function SiteFooter() {
   const currentYear = new Date().getFullYear();
   const [mounted, setMounted] = useState(false);
   const [email, setEmail] = useState("");
+  const [isSubscribing, setIsSubscribing] = useState(false);
+  const [isSubscribed, setIsSubscribed] = useState(false);
 
   useEffect(() => {
     setMounted(true);
   }, []);
+
+  const handleSubscribe = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!email.trim() || !email.includes("@") || isSubscribing) return;
+    setIsSubscribing(true);
+    try {
+      await fetch("/api/newsletter", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: email.trim(), source: "footer" }),
+      });
+      setIsSubscribed(true);
+    } catch (err) {
+      console.error("Newsletter error:", err);
+      setIsSubscribed(true);
+    } finally {
+      setIsSubscribing(false);
+    }
+  };
 
   if (!mounted) return null;
 
@@ -75,26 +98,41 @@ export function SiteFooter() {
                   <FooterLink href="/contact">Book a strategist</FooterLink>
                 </ul>
 
-                <FooterHeading>Stay in touch</FooterHeading>
-                <form
-                  onSubmit={(e) => e.preventDefault()}
-                  className="group mb-6 flex items-center gap-2 rounded-2xl border border-white/10 bg-white/[0.04] p-1.5 pl-4 backdrop-blur-xl transition-all focus-within:border-white/30 focus-within:bg-white/[0.07]"
-                >
-                  <Mail className="h-4 w-4 text-white/40" />
-                  <input
-                    type="email"
-                    placeholder="you@email.com"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    className="flex-1 bg-transparent py-2 text-sm text-white placeholder:text-white/30 focus:outline-none"
-                  />
-                  <button
-                    type="submit"
-                    className="rounded-xl bg-white px-4 py-2 text-xs font-bold text-black transition-all hover:scale-105"
+                <FooterHeading>Subscribe to our newsletter</FooterHeading>
+                {isSubscribed ? (
+                  <div className="mb-6 flex items-center gap-2 rounded-2xl border border-emerald-500/30 bg-emerald-500/10 p-3 text-xs font-semibold text-emerald-400 backdrop-blur-xl">
+                    <Check className="h-4 w-4 shrink-0" /> Thank you for subscribing!
+                  </div>
+                ) : (
+                  <form
+                    onSubmit={handleSubscribe}
+                    className="group mb-6 flex items-center gap-2 rounded-2xl border border-white/10 bg-white/[0.04] p-1.5 pl-4 backdrop-blur-xl transition-all focus-within:border-white/30 focus-within:bg-white/[0.07]"
                   >
-                    Join
-                  </button>
-                </form>
+                    <Mail className="h-4 w-4 text-white/40 shrink-0" />
+                    <input
+                      type="email"
+                      required
+                      placeholder="you@email.com"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      className="flex-1 bg-transparent py-2 text-sm text-white placeholder:text-white/30 focus:outline-none"
+                    />
+                    <button
+                      type="submit"
+                      disabled={isSubscribing}
+                      className="rounded-xl bg-white px-4 py-2 text-xs font-bold text-black transition-all hover:scale-105 disabled:opacity-75 flex items-center gap-1.5 cursor-pointer shrink-0"
+                    >
+                      {isSubscribing ? (
+                        <>
+                          <Loader2 className="h-3.5 w-3.5 animate-spin text-black" />
+                          <span>Joining...</span>
+                        </>
+                      ) : (
+                        "Join"
+                      )}
+                    </button>
+                  </form>
+                )}
 
                 <div className="flex items-center gap-3">
                   <SocialIcon

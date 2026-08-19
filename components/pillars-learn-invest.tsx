@@ -29,7 +29,7 @@ export function PillarsLearnInvest() {
                 Bite-sized financial literacy covering bookkeeping, budgeting, debt, and taxes, taught by people who've actually built wealth.
               </p>
               <div className="mt-6 inline-flex items-center gap-1 text-sm font-semibold text-primary">
-                Explore lessons <ArrowUpRight className="h-4 w-4" />
+                Explore WiseUp hub <ArrowUpRight className="h-4 w-4" />
               </div>
             </div>
           </Link>

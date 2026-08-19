@@ -21,18 +21,46 @@ import {
   PieChart,
   ChevronRight,
   ArrowRight,
+  Loader2,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
+import { AssessmentQuizModal } from "@/components/assessment-quiz-modal";
 
 export function ExploreWealthOptions() {
   const [email, setEmail] = useState("");
   const [subscribed, setSubscribed] = useState(false);
+  const [isNewsletterLoading, setIsNewsletterLoading] = useState(false);
   const [mounted, setMounted] = useState(false);
+  const [activeQuizId, setActiveQuizId] = useState<string | null>(null);
+
+  const [blogs, setBlogs] = useState<any[]>([]);
+  const [assessments, setAssessments] = useState<any[]>([]);
 
   useEffect(() => {
     setMounted(true);
+    fetch("/api/learn")
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.success) {
+          const rawBlogs = data.blogs || data.lessons;
+          if (rawBlogs?.length > 0) {
+            setBlogs(
+              rawBlogs.map((b: any) => ({
+                title: b.title,
+                time: b.readTime || "4 min",
+                id: b.slug || b.id,
+                slug: b.slug || b.id,
+              }))
+            );
+          }
+          if (data.assessments?.length > 0) {
+            setAssessments(data.assessments);
+          }
+        }
+      })
+      .catch(() => {});
   }, []);
 
   return (
@@ -381,39 +409,38 @@ export function ExploreWealthOptions() {
 
               {/* Featured Lessons & Assessments */}
               <div className="mt-8 flex flex-col gap-6">
-                {/* Featured Lessons (Horizontal Scroll) */}
+                {/* Featured Blogs (Horizontal Scroll) */}
                 <div>
                   <div className="flex items-center justify-between mb-3">
                     <div className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground flex items-center gap-2">
                       <BookOpen className="w-3.5 h-3.5 text-amber-500" />{" "}
-                      Featured Lessons
+                      Featured Blogs
                     </div>
+                    <Link
+                      href="/blog"
+                      className="text-[11px] font-semibold text-primary hover:text-primary-glow inline-flex items-center gap-1 transition-colors"
+                    >
+                      All Articles <ArrowRight className="w-3 h-3" />
+                    </Link>
                   </div>
                   <div
                     className="flex gap-3 overflow-x-auto pb-2 snap-x hide-scrollbar"
                     style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
                   >
-                    {[
-                      {
-                        title: "Saving Discipline: The first step",
-                        time: "3 min",
-                      },
-                      { title: "Common Financial Mistakes", time: "5 min" },
-                      { title: "Investment Basics 101", time: "4 min" },
-                    ].map((lesson, i) => (
+                    {blogs.map((blog, i) => (
                       <Link
-                        href="#"
+                        href={`/blog/${blog.slug || blog.id}`}
                         key={i}
-                        className="group/lesson flex flex-col justify-between min-w-[160px] bg-background/50 hover:bg-background border border-border hover:border-amber-500/30 rounded-xl p-4 transition-all shadow-sm hover:shadow-md snap-start"
+                        className="group/blog flex flex-col justify-between min-w-[160px] max-w-[220px] bg-background/50 hover:bg-background border border-border hover:border-amber-500/30 rounded-xl p-4 transition-all shadow-sm hover:shadow-md snap-start"
                       >
                         <div className="text-[10px] font-medium text-muted-foreground mb-3 flex items-center justify-between">
                           <span className="bg-surface-soft px-2 py-0.5 rounded-full border border-border">
-                            {lesson.time}
+                            {blog.time}
                           </span>
-                          <ArrowUpRight className="w-3.5 h-3.5 opacity-0 group-hover/lesson:opacity-100 group-hover/lesson:text-amber-500 group-hover/lesson:translate-x-0.5 group-hover/lesson:-translate-y-0.5 transition-all" />
+                          <ArrowUpRight className="w-3.5 h-3.5 opacity-0 group-hover/blog:opacity-100 group-hover/blog:text-amber-500 group-hover/blog:translate-x-0.5 group-hover/blog:-translate-y-0.5 transition-all" />
                         </div>
-                        <div className="text-sm font-semibold text-foreground line-clamp-2 leading-snug group-hover/lesson:text-amber-500 transition-colors">
-                          {lesson.title}
+                        <div className="text-sm font-semibold text-foreground line-clamp-2 leading-snug group-hover/blog:text-amber-500 transition-colors">
+                          {blog.title}
                         </div>
                       </Link>
                     ))}
@@ -429,69 +456,38 @@ export function ExploreWealthOptions() {
                     </div>
                   </div>
                   <div className="space-y-3">
-                    <button
-                      onClick={() =>
-                        window.dispatchEvent(
-                          new CustomEvent("open-coming-soon-modal"),
-                        )
-                      }
-                      className="w-full group/test relative overflow-hidden bg-gradient-to-r from-background/80 to-background/40 hover:from-amber-500/10 hover:to-background border border-border hover:border-amber-500/40 rounded-xl p-4 transition-all text-left shadow-sm hover:shadow-md"
-                    >
-                      <div className="flex items-start justify-between relative z-10">
-                        <div className="flex items-start gap-3">
-                          <div className="w-10 h-10 rounded-full bg-surface-soft border border-border flex items-center justify-center shrink-0 group-hover/test:bg-amber-500/20 group-hover/test:border-amber-500/30 transition-colors">
-                            <Activity className="w-4 h-4 text-muted-foreground group-hover/test:text-amber-500 transition-colors" />
+                    {assessments.slice(0, 2).map((test, idx) => {
+                      const Icon = idx % 2 === 0 ? Activity : ShieldCheck;
+                      return (
+                        <button
+                          key={test.id || idx}
+                          onClick={() => setActiveQuizId(test.id)}
+                          className="w-full group/test relative overflow-hidden bg-gradient-to-r from-background/80 to-background/40 hover:from-amber-500/10 hover:to-background border border-border hover:border-amber-500/40 rounded-xl p-4 transition-all text-left shadow-sm hover:shadow-md cursor-pointer"
+                        >
+                          <div className="flex items-start justify-between relative z-10">
+                            <div className="flex items-start gap-3">
+                              <div className="w-10 h-10 rounded-full bg-surface-soft border border-border flex items-center justify-center shrink-0 group-hover/test:bg-amber-500/20 group-hover/test:border-amber-500/30 transition-colors">
+                                <Icon className="w-4 h-4 text-muted-foreground group-hover/test:text-amber-500 transition-colors" />
+                              </div>
+                              <div>
+                                <span className="block text-sm font-bold text-foreground group-hover/test:text-amber-500 transition-colors">
+                                  {test.title}
+                                </span>
+                                <span className="block text-xs text-muted-foreground mt-1 leading-snug pr-4 line-clamp-2">
+                                  {test.description}
+                                </span>
+                              </div>
+                            </div>
+                            <div className="shrink-0 flex flex-col items-end gap-2">
+                              <span className="text-[9px] font-bold uppercase tracking-wider text-amber-500 bg-amber-500/10 px-2 py-0.5 rounded">
+                                {test.readTime || "3 Min"}
+                              </span>
+                              <ChevronRight className="w-4 h-4 text-muted-foreground group-hover/test:text-amber-500 group-hover/test:translate-x-1 transition-all" />
+                            </div>
                           </div>
-                          <div>
-                            <span className="block text-sm font-bold text-foreground group-hover/test:text-amber-500 transition-colors">
-                              Financial Position Test 1
-                            </span>
-                            <span className="block text-xs text-muted-foreground mt-1 leading-snug pr-4">
-                              Asset-to-liability ratio & net worth distribution
-                              check
-                            </span>
-                          </div>
-                        </div>
-                        <div className="shrink-0 flex flex-col items-end gap-2">
-                          <span className="text-[9px] font-bold uppercase tracking-wider text-amber-500 bg-amber-500/10 px-2 py-0.5 rounded">
-                            3 Min
-                          </span>
-                          <ChevronRight className="w-4 h-4 text-muted-foreground group-hover/test:text-amber-500 group-hover/test:translate-x-1 transition-all" />
-                        </div>
-                      </div>
-                    </button>
-
-                    <button
-                      onClick={() =>
-                        window.dispatchEvent(
-                          new CustomEvent("open-coming-soon-modal"),
-                        )
-                      }
-                      className="w-full group/test relative overflow-hidden bg-gradient-to-r from-background/80 to-background/40 hover:from-amber-500/10 hover:to-background border border-border hover:border-amber-500/40 rounded-xl p-4 transition-all text-left shadow-sm hover:shadow-md"
-                    >
-                      <div className="flex items-start justify-between relative z-10">
-                        <div className="flex items-start gap-3">
-                          <div className="w-10 h-10 rounded-full bg-surface-soft border border-border flex items-center justify-center shrink-0 group-hover/test:bg-amber-500/20 group-hover/test:border-amber-500/30 transition-colors">
-                            <ShieldCheck className="w-4 h-4 text-muted-foreground group-hover/test:text-amber-500 transition-colors" />
-                          </div>
-                          <div>
-                            <span className="block text-sm font-bold text-foreground group-hover/test:text-amber-500 transition-colors">
-                              Financial Position Test 2
-                            </span>
-                            <span className="block text-xs text-muted-foreground mt-1 leading-snug pr-4">
-                              Savings capacity & emergency buffer readiness
-                              score
-                            </span>
-                          </div>
-                        </div>
-                        <div className="shrink-0 flex flex-col items-end gap-2">
-                          <span className="text-[9px] font-bold uppercase tracking-wider text-amber-500 bg-amber-500/10 px-2 py-0.5 rounded">
-                            5 Min
-                          </span>
-                          <ChevronRight className="w-4 h-4 text-muted-foreground group-hover/test:text-amber-500 group-hover/test:translate-x-1 transition-all" />
-                        </div>
-                      </div>
-                    </button>
+                        </button>
+                      );
+                    })}
                   </div>
                 </div>
               </div>
@@ -516,9 +512,23 @@ export function ExploreWealthOptions() {
                     </div>
                   ) : (
                     <form
-                      onSubmit={(e) => {
+                      onSubmit={async (e) => {
                         e.preventDefault();
-                        setSubscribed(true);
+                        if (!email.trim() || isNewsletterLoading) return;
+                        setIsNewsletterLoading(true);
+                        try {
+                          await fetch("/api/newsletter", {
+                            method: "POST",
+                            headers: { "Content-Type": "application/json" },
+                            body: JSON.stringify({ email: email.trim(), source: "bento_wiseup" }),
+                          });
+                          setSubscribed(true);
+                        } catch (err) {
+                          console.error("Newsletter error:", err);
+                          setSubscribed(true);
+                        } finally {
+                          setIsNewsletterLoading(false);
+                        }
                       }}
                       className="flex flex-col gap-3"
                     >
@@ -532,9 +542,17 @@ export function ExploreWealthOptions() {
                       />
                       <Button
                         type="submit"
-                        className="w-full h-12 rounded-xl bg-amber-500 hover:bg-amber-600 text-amber-950 font-bold shadow-[0_4px_14px_0_rgba(245,158,11,0.39)] transition-all"
+                        disabled={isNewsletterLoading}
+                        className="w-full h-12 rounded-xl bg-amber-500 hover:bg-amber-600 text-amber-950 font-bold shadow-[0_4px_14px_0_rgba(245,158,11,0.39)] transition-all flex items-center justify-center gap-2 cursor-pointer disabled:opacity-75"
                       >
-                        Join Community
+                        {isNewsletterLoading ? (
+                          <>
+                            <Loader2 className="w-4 h-4 animate-spin text-amber-950" />
+                            <span>Joining Community...</span>
+                          </>
+                        ) : (
+                          "Join Community"
+                        )}
                       </Button>
                     </form>
                   )}
@@ -831,6 +849,14 @@ export function ExploreWealthOptions() {
           </div>
         </div>
       </div>
+
+      {/* Interactive Assessment Modal */}
+      {activeQuizId && (
+        <AssessmentQuizModal
+          assessmentId={activeQuizId}
+          onClose={() => setActiveQuizId(null)}
+        />
+      )}
     </section>
   );
 }
