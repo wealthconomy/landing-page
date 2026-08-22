@@ -47,12 +47,23 @@ function slugify(text: string): string {
     .replace(/^-+|-+$/g, "");
 }
 
+export function calculateReadingDuration(content: string, fallback?: string): string {
+  if (!content || !content.trim()) return fallback || "4 min read";
+  const words = content.trim().split(/\s+/).filter(Boolean).length;
+  const minutes = Math.max(1, Math.ceil(words / 200));
+  return `${minutes} min read`;
+}
+
 export function transformApiBlog(item: any): BlogItem {
   const title = item.title || "Untitled Blog";
   const slug = item.slug || `${slugify(title)}-${item.id?.slice(-6) || Math.random().toString(36).substring(2, 6)}`;
   
   const authorName = item.author?.name || (typeof item.author === "string" ? item.author : "Wealthconomy Editorial");
   const authorImage = item.author?.image || item.authorAvatar || `https://ui-avatars.com/api/?name=${encodeURIComponent(authorName)}&background=random`;
+  const content = item.content || item.description || "";
+  const readingDuration = calculateReadingDuration(content, item.readingDuration);
+  const wordCount = content ? content.trim().split(/\s+/).filter(Boolean).length : 0;
+  const readingTimeMinutes = Math.max(1, Math.ceil(wordCount / 200));
 
   return {
     id: item.id || item._id || slug,
@@ -63,7 +74,7 @@ export function transformApiBlog(item: any): BlogItem {
       name: authorName,
       image: authorImage,
     },
-    content: item.content || item.description || "",
+    content,
     category: item.category || "General",
     image: item.image || "",
     status: item.status || "published",
@@ -73,10 +84,8 @@ export function transformApiBlog(item: any): BlogItem {
     publishToApp: item.publishToApp ?? true,
     publishToWeb: item.publishToWeb ?? true,
     description: item.description || "",
-    readingDuration:
-      item.readingDuration ||
-      (item.readingTimeMinutes ? `${item.readingTimeMinutes} min read` : "4 min read"),
-    readingTimeMinutes: item.readingTimeMinutes,
+    readingDuration,
+    readingTimeMinutes,
     sharesCount: item.sharesCount || 0,
     createdAt: item.createdAt || new Date().toISOString(),
     updatedAt: item.updatedAt,

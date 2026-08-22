@@ -115,23 +115,23 @@ export function BlogIndex() {
       </div>
 
       {/* Hero Section */}
-      <section className="relative pt-20 sm:pt-28 pb-20 sm:pb-28 text-center z-10">
+      <section className="relative pt-16 sm:pt-20 md:pt-24 pb-8 sm:pb-12 text-center z-10">
         <div className="mx-auto max-w-4xl px-4 sm:px-6">
-          <div className="mx-auto inline-flex items-center gap-2 rounded-full border border-border bg-background/50 backdrop-blur-sm px-3.5 py-1 text-[11px] sm:text-xs font-medium text-primary shadow-soft mb-6 sm:mb-8">
+          <div className="mx-auto inline-flex items-center gap-2 rounded-full border border-border bg-background/50 backdrop-blur-sm px-3.5 py-1 text-[11px] sm:text-xs font-medium text-primary shadow-soft mb-3 sm:mb-5">
             <BookOpen className="h-3.5 w-3.5" />
             WiseUp Hub · Knowledge is Wealth
           </div>
 
-          <h1 className="font-display text-3xl sm:text-5xl md:text-7xl font-bold leading-[1.1] tracking-tight text-foreground">
+          <h1 className="font-display text-3xl sm:text-5xl md:text-6xl font-bold leading-[1.1] tracking-tight text-foreground">
             WISEUP BLOG
           </h1>
 
-          <p className="mx-auto mt-4 sm:mt-6 max-w-xl text-sm sm:text-base md:text-lg text-muted-foreground leading-relaxed px-2">
+          <p className="mx-auto mt-3 sm:mt-4 max-w-xl text-sm sm:text-base md:text-lg text-muted-foreground leading-relaxed px-2">
             Get smarter about money straight to your inbox. Actionable guides on automated compound savings, inflation hedging, and financial discipline.
           </p>
 
           {/* Newsletter Input Form */}
-          <div className="mt-8 sm:mt-10 max-w-md mx-auto relative z-20">
+          <div className="mt-6 sm:mt-8 max-w-md mx-auto relative z-20">
             {isSubscribed ? (
               <div className="flex items-center justify-center gap-2.5 rounded-full border border-emerald-500/20 bg-emerald-500/5 px-5 py-3 text-emerald-500 text-xs sm:text-sm animate-in fade-in zoom-in-95 duration-300">
                 <CheckCircle2 className="h-4 w-4 sm:h-5 sm:w-5 shrink-0" />
@@ -167,17 +167,17 @@ export function BlogIndex() {
       </section>
 
       {/* Main Overlapping Content Container */}
-      <section className="relative z-10 -mt-10 sm:-mt-16 bg-background rounded-t-[28px] sm:rounded-t-[40px] md:rounded-t-[80px] border-t border-border shadow-[0_-20px_50px_rgba(21,93,95,0.05)] pb-20 sm:pb-24">
+      <section className="relative z-10 -mt-4 sm:-mt-8 bg-background rounded-t-[28px] sm:rounded-t-[40px] md:rounded-t-[64px] border-t border-border shadow-[0_-20px_50px_rgba(21,93,95,0.05)] pb-16 sm:pb-20">
         <div className="absolute top-3 sm:top-4 left-1/2 -translate-x-1/2 w-12 sm:w-16 h-1 rounded-full bg-border" />
 
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 pt-10 sm:pt-16">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 pt-6 sm:pt-10">
           {/* Featured Post */}
           {!loading && featuredPost && searchQuery === "" && (
-            <Reveal animation="up" className="mb-14 sm:mb-20">
-              <div className="group relative grid gap-6 sm:gap-8 lg:grid-cols-12 items-center rounded-2xl sm:rounded-[32px] md:rounded-[48px] border border-border bg-surface-soft/40 p-4 sm:p-6 md:p-8 hover:border-primary/20 hover:shadow-glow-teal transition-all duration-500">
+            <Reveal animation="up" className="mb-8 sm:mb-12">
+              <div className="group relative grid gap-5 sm:gap-8 lg:grid-cols-12 items-center rounded-2xl sm:rounded-[32px] md:rounded-[40px] border border-border bg-surface-soft/40 p-3.5 sm:p-6 md:p-8 hover:border-primary/20 hover:shadow-glow-teal transition-all duration-500">
                 {/* Content Side */}
                 <div className="lg:col-span-5 flex flex-col justify-center order-2 lg:order-1">
-                  <div className="flex items-center gap-2.5 text-xs text-muted-foreground mb-3 sm:mb-4">
+                  <div className="flex items-center gap-2 text-xs text-muted-foreground mb-2.5 sm:mb-3">
                     <span className="font-semibold px-2.5 py-0.5 rounded-full bg-primary/10 text-primary uppercase tracking-widest text-[9px] sm:text-[10px]">
                       {featuredPost.category}
                     </span>
@@ -188,19 +188,19 @@ export function BlogIndex() {
                   </div>
 
                   <Link href={`/blog/${featuredPost.id}`}>
-                    <h2 className="font-display text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight text-foreground group-hover:text-primary transition-colors duration-300 leading-tight">
+                    <h2 className="font-display text-lg sm:text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight text-foreground group-hover:text-primary transition-colors duration-300 leading-tight">
                       {featuredPost.title}
                     </h2>
                   </Link>
 
-                  <p className="mt-3 sm:mt-4 text-muted-foreground leading-relaxed text-xs sm:text-sm md:text-base line-clamp-3">
+                  <p className="mt-2.5 sm:mt-3 text-muted-foreground leading-relaxed text-xs sm:text-sm md:text-base line-clamp-3">
                     {featuredPost.description || featuredPost.content.slice(0, 160) + "..."}
                   </p>
 
-                  <div className="mt-4 sm:mt-6 flex items-center gap-3 text-xs font-semibold text-muted-foreground">
+                  <div className="mt-3 sm:mt-5 flex items-center gap-3 text-xs font-semibold text-muted-foreground">
                     <span className="flex items-center gap-1 text-[11px] sm:text-xs">
                       <Clock className="h-3 w-3 sm:h-3.5 sm:w-3.5" />
-                      {featuredPost.readingDuration || "5 min read"}
+                      {featuredPost.readingDuration || "4 min read"}
                     </span>
                     {featuredPost.author?.name && (
                       <span className="text-foreground/80 font-medium text-[11px] sm:text-xs truncate">
@@ -209,8 +209,8 @@ export function BlogIndex() {
                     )}
                   </div>
 
-                  <div className="mt-6 sm:mt-8">
-                    <Button asChild className="rounded-full px-5 sm:px-6 h-10 sm:h-11 text-xs sm:text-sm font-semibold group/btn w-full sm:w-auto">
+                  <div className="mt-4 sm:mt-6">
+                    <Button asChild className="rounded-full px-5 sm:px-6 h-9 sm:h-11 text-xs sm:text-sm font-semibold group/btn w-full sm:w-auto">
                       <Link href={`/blog/${featuredPost.id}`}>
                         Read Article
                         <ArrowUpRight className="h-4 w-4 transition-transform group-hover/btn:-translate-y-0.5 group-hover/btn:translate-x-0.5" />
@@ -220,7 +220,7 @@ export function BlogIndex() {
                 </div>
 
                 {/* Image Side */}
-                <div className="lg:col-span-7 overflow-hidden rounded-xl sm:rounded-[24px] md:rounded-[36px] aspect-[16/10] bg-surface-soft border border-border relative order-1 lg:order-2">
+                <div className="lg:col-span-7 overflow-hidden rounded-xl sm:rounded-[22px] md:rounded-[32px] aspect-[16/10] bg-surface-soft border border-border relative order-1 lg:order-2">
                   <Link href={`/blog/${featuredPost.id}`}>
                     <Image
                       src={featuredPost.image}
@@ -235,8 +235,8 @@ export function BlogIndex() {
             </Reveal>
           )}
 
-          {/* Interactive Filters Bar (Mobile-first horizontal swipe + Search) */}
-          <div className="mb-8 sm:mb-12 flex flex-col md:flex-row gap-4 sm:gap-6 md:items-center md:justify-between border-b border-border pb-6 sm:pb-8">
+          {/* Interactive Filters Bar */}
+          <div className="mb-6 sm:mb-8 flex flex-col md:flex-row gap-3 sm:gap-6 md:items-center md:justify-between border-b border-border pb-4 sm:pb-6">
             {/* Category tabs: Swipeable on mobile without screen break */}
             <div className="flex overflow-x-auto gap-2 pb-2 sm:pb-0 -mx-4 px-4 sm:mx-0 sm:px-0 sm:flex-wrap" style={{ scrollbarWidth: "none" }}>
               {categories.map((cat) => (
@@ -293,49 +293,50 @@ export function BlogIndex() {
             </div>
           ) : (
             !loading && (
-              <div className="grid gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
+              <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6 md:gap-8">
                 {(featuredPost && searchQuery !== "" ? blogs : gridPosts).map((post, idx) => (
-                  <Reveal key={post.id} animation="up" delay={idx * 60} className="group flex flex-col h-full bg-card/40 rounded-2xl sm:rounded-[32px] border border-border/70 p-3.5 sm:p-4 hover:border-primary/30 hover:shadow-soft transition-all duration-300">
-                    <div className="overflow-hidden rounded-xl sm:rounded-[24px] aspect-[16/10] bg-surface-soft border border-border relative mb-4">
+                  <Reveal key={post.id} animation="up" delay={idx * 50} className="group flex flex-col h-full bg-card/40 rounded-xl sm:rounded-2xl md:rounded-[32px] border border-border/70 p-2.5 sm:p-4 hover:border-primary/30 hover:shadow-soft transition-all duration-300">
+                    <div className="overflow-hidden rounded-lg sm:rounded-xl md:rounded-[22px] aspect-[16/10] bg-surface-soft border border-border relative mb-2.5 sm:mb-4">
                       <Link href={`/blog/${post.id}`}>
                         <Image
                           src={post.image}
                           alt={post.title}
                           fill
-                          sizes="(max-width: 768px) 100vw, 33vw"
+                          sizes="(max-width: 768px) 50vw, 33vw"
                           className="object-cover object-center group-hover:scale-105 transition-transform duration-500 ease-out"
                         />
                       </Link>
                     </div>
 
-                    <div className="flex-1 flex flex-col px-1">
-                      <div className="flex items-center gap-2 text-[10px] sm:text-[11px] text-muted-foreground mb-2 sm:mb-3">
-                        <span className="font-semibold px-2 py-0.5 rounded-md bg-secondary text-primary uppercase tracking-widest text-[8.5px] sm:text-[9px]">
+                    <div className="flex-1 flex flex-col px-0.5 sm:px-1">
+                      <div className="flex items-center gap-1.5 sm:gap-2 text-[9px] sm:text-[11px] text-muted-foreground mb-1.5 sm:mb-3">
+                        <span className="font-semibold px-1.5 sm:px-2 py-0.5 rounded-md bg-secondary text-primary uppercase tracking-widest text-[7.5px] sm:text-[9px] truncate">
                           {post.category}
                         </span>
-                        <span className="flex items-center gap-1">
+                        <span className="hidden sm:flex items-center gap-1">
                           <Calendar className="h-3 w-3" />
                           {new Date(post.createdAt).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}
                         </span>
                       </div>
 
                       <Link href={`/blog/${post.id}`} className="block group-hover:text-primary transition-colors duration-300">
-                        <h3 className="font-display text-base sm:text-lg font-bold tracking-tight text-foreground leading-snug">
+                        <h3 className="font-display text-xs sm:text-base md:text-lg font-bold tracking-tight text-foreground leading-snug line-clamp-2">
                           {post.title}
                         </h3>
                       </Link>
 
-                      <p className="mt-2 text-xs sm:text-sm text-muted-foreground leading-relaxed flex-1 line-clamp-3">
-                        {post.description || post.content.slice(0, 130) + "..."}
+                      <p className="hidden md:block mt-2 text-xs sm:text-sm text-muted-foreground leading-relaxed flex-1 line-clamp-2 lg:line-clamp-3">
+                        {post.description || post.content.slice(0, 120) + "..."}
                       </p>
 
-                      <div className="mt-4 pt-3 border-t border-border/50 flex items-center justify-between text-[11px] sm:text-xs text-muted-foreground">
+                      <div className="mt-auto pt-2.5 sm:pt-3 border-t border-border/50 flex items-center justify-between text-[9.5px] sm:text-xs text-muted-foreground">
                         <span className="flex items-center gap-1 font-semibold">
-                          <Clock className="h-3 w-3" />
-                          {post.readingDuration || "5 min read"}
+                          <Clock className="h-2.5 w-2.5 sm:h-3 sm:w-3" />
+                          {post.readingDuration || "4 min read"}
                         </span>
                         <Link href={`/blog/${post.id}`} className="inline-flex items-center font-bold text-primary hover:text-primary-glow transition-colors">
-                          Read More <ArrowUpRight className="h-3.5 w-3.5 ml-0.5" />
+                          <span className="hidden xs:inline">Read</span>
+                          <ArrowUpRight className="h-3 w-3 sm:h-3.5 sm:w-3.5 ml-0.5" />
                         </Link>
                       </div>
                     </div>
