@@ -90,12 +90,12 @@ export function SiteFooter() {
             <div className="grid grid-cols-2 gap-x-8 gap-y-14 pt-14 md:grid-cols-3 lg:grid-cols-5">
               {/* Get started + social + newsletter */}
               <div className="col-span-2 lg:col-span-2">
-                <FooterHeading>Connect</FooterHeading>
+                <FooterHeading>Get Started</FooterHeading>
                 <ul className="space-y-3.5 mb-10">
-                  <FooterLink href="/#portfolio" primary>
+                  <FooterLink href="/waitlist" primary>
                     Create an account
                   </FooterLink>
-                  <FooterLink href="/contact">Book a strategist</FooterLink>
+                  <FooterLink href="/contact">Book a consultation</FooterLink>
                 </ul>
 
                 <FooterHeading>Subscribe to our newsletter</FooterHeading>
@@ -187,11 +187,11 @@ export function SiteFooter() {
                 <ul className="space-y-3.5">
                   {[
                     { label: "About Us", to: "/about" },
-                    { label: "Features", to: "/#how-it-works" },
+                    { label: "How It Works", to: "/how-it-works" },
                     { label: "Savings Plans", to: "/portfolios" },
-                    { label: "Financial Education", to: "/learn" },
-                    { label: "Impact", to: "/impact" },
-                    { label: "FAQs", to: "/#faq" },
+                    { label: "WealthUp Invest", to: "/wealthup" },
+                    { label: "Impact Initiatives", to: "/impact" },
+                    { label: "FAQs", to: "/faq" },
                     { label: "Contact Us", to: "/contact" },
                   ].map((item) => (
                     <FooterLink key={item.label} href={item.to}>
@@ -239,9 +239,10 @@ export function SiteFooter() {
                 <FooterHeading>Legal</FooterHeading>
                 <ul className="space-y-3.5">
                   {[
-                    { label: "Privacy & Terms", to: "/terms" },
-                    { label: "Security", to: "/security" },
-                    { label: "Cookies", to: "/cookies" },
+                    { label: "Terms of Service", to: "/terms" },
+                    { label: "Privacy Policy", to: "/privacy" },
+                    { label: "Security & Trust", to: "/security" },
+                    { label: "Cookie Policy", to: "/cookies" },
                   ].map((item) => (
                     <FooterLink key={item.label} href={item.to}>
                       {item.label}
@@ -251,21 +252,46 @@ export function SiteFooter() {
               </div>
 
               <div>
-                <FooterHeading>Insights</FooterHeading>
-                <ul className="space-y-3.5">
+                <FooterHeading>Insights & Resources</FooterHeading>
+                <ul className="space-y-3.5 mb-8">
                   {[
                     { label: "WiseUp Hub", to: "/learn" },
                     { label: "WiseUp Blog", to: "/blog" },
-                    { label: "Market Insights", to: "/learn#insights" },
-                    { label: "Wealth Score", to: "/learn#score" },
-                    { label: "Tax Efficiency", to: "/learn#tax" },
-                    { label: "Success Stories", to: "/company" },
+                    { label: "Wealth Calculator", to: "/resources/calculator" },
+                    { label: "Financial Reports", to: "/resources/reports" },
+                    { label: "Newsletters", to: "/resources/newsletters" },
+                    { label: "Our Story", to: "/company" },
                   ].map((item) => (
                     <FooterLink key={item.label} href={item.to}>
                       {item.label}
                     </FooterLink>
                   ))}
                 </ul>
+
+                <FooterHeading>Download App</FooterHeading>
+                <div className="flex flex-col gap-2.5">
+                  <Link
+                    href="/invite"
+                    className="group flex items-center gap-3 rounded-xl bg-white/[0.04] border border-white/10 hover:border-white/30 hover:bg-white/[0.08] px-3.5 py-2.5 transition-all text-white"
+                  >
+                    <AppleLogo className="h-5 w-5 text-white shrink-0" />
+                    <div className="leading-tight text-left">
+                      <div className="text-[9px] font-medium text-white/60">Download on the</div>
+                      <div className="text-xs font-bold text-white tracking-tight">App Store</div>
+                    </div>
+                  </Link>
+
+                  <Link
+                    href="/invite"
+                    className="group flex items-center gap-3 rounded-xl bg-white/[0.04] border border-white/10 hover:border-white/30 hover:bg-white/[0.08] px-3.5 py-2.5 transition-all text-white"
+                  >
+                    <GooglePlayLogo className="h-5 w-5 shrink-0" />
+                    <div className="leading-tight text-left">
+                      <div className="text-[9px] font-medium text-white/60">GET IT ON</div>
+                      <div className="text-xs font-bold text-white tracking-tight">Google Play</div>
+                    </div>
+                  </Link>
+                </div>
               </div>
             </div>
           </div>
@@ -305,7 +331,7 @@ function FooterLink({
 }) {
   return (
     <li>
-      <a
+      <Link
         href={href}
         className={[
           "group relative inline-flex items-center text-[14px] transition-all duration-300",
@@ -319,7 +345,7 @@ function FooterLink({
         {primary && (
           <Zap className="ml-2 h-3.5 w-3.5 animate-pulse text-gold" />
         )}
-      </a>
+      </Link>
     </li>
   );
 }
@@ -369,6 +395,37 @@ function ComplianceBadge({ icon: Icon, label }: { icon: any; label: string }) {
         {label}
       </span>
     </div>
+  );
+}
+
+function AppleLogo(props: React.SVGProps<SVGSVGElement>) {
+  return (
+    <svg viewBox="0 0 170 170" fill="currentColor" aria-hidden="true" {...props}>
+      <path d="M150.37 130.25c-2.45 5.66-5.35 10.87-8.71 15.66-4.58 6.53-8.33 11.05-11.22 13.56-4.48 4.12-9.28 6.23-14.42 6.35-3.69 0-8.14-1.05-13.32-3.18-5.19-2.12-9.97-3.17-14.34-3.17-4.58 0-9.49 1.05-14.75 3.17-5.26 2.13-9.5 3.24-12.74 3.35-4.35.13-9.16-1.9-14.42-6.08-3.7-3.04-7.58-7.7-11.64-13.98-5.77-8.91-10.37-18.96-13.8-30.15-3.43-11.19-5.15-22.19-5.15-32.99 0-14.36 3.69-26.44 11.07-36.23 7.38-9.79 16.73-14.77 28.05-14.94 4.58 0 9.87 1.25 15.86 3.75 5.99 2.5 9.77 3.75 11.34 3.75 1.57 0 5.61-1.35 12.12-4.05 6.51-2.7 12.06-3.89 16.65-3.56 12.7.99 22.84 5.75 30.42 14.28-11.07 6.74-16.49 16.03-16.26 27.87.23 9.38 3.76 17.29 10.59 23.73 6.83 6.44 14.88 10.15 24.15 11.13-2.22 6.74-4.99 13.38-8.31 19.92zM119.22 31.84c0-7.18 2.6-13.88 7.8-20.1 5.2-6.22 11.69-10.13 19.47-11.74.88 8.04-1.47 15.35-7.05 21.93-5.58 6.58-12.32 10.45-20.22 11.61-.22-.57-.33-1.14-.33-1.7z" />
+    </svg>
+  );
+}
+
+function GooglePlayLogo(props: React.SVGProps<SVGSVGElement>) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" {...props}>
+      <path
+        d="M3.609 1.814C3.23 2.222 3 2.84 3 3.649v16.702c0 .809.23 1.427.609 1.835l.096.096L13.06 12.927v-.254L3.705 1.718l-.096.096z"
+        fill="#00D7FF"
+      />
+      <path
+        d="M16.177 16.044l-3.117-3.117v-.254l3.117-3.117.07.04 3.693 2.098c1.055.599 1.055 1.58 0 2.18l-3.693 2.098-.07.072z"
+        fill="#FFC800"
+      />
+      <path
+        d="M16.247 15.972L13.06 12.785 3.609 22.236c.435.46 1.157.518 1.977.052l10.661-6.316z"
+        fill="#FF3A44"
+      />
+      <path
+        d="M16.247 8.828L5.586 2.512C4.766 2.046 4.044 2.104 3.609 2.564L13.06 12.015l3.187-3.187z"
+        fill="#00E676"
+      />
+    </svg>
   );
 }
 

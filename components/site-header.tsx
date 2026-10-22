@@ -22,7 +22,7 @@ import {
 import { Button } from "@/components/ui/button";
 import logo from "@/assets/wealthconomy-logo-new.png";
 
-import { Calculator, FileText, Rss, Mail, Menu, X } from "lucide-react";
+import { Calculator, FileText, Rss, Mail, Menu, X, Download } from "lucide-react";
 
 const navItems = [
   { label: "Save", to: "/portfolios" as const },
@@ -40,10 +40,10 @@ const resourcesItems = [
     desc: "Calculate your wealth projection.",
   },
   {
-    label: "Reports",
+    label: "Library materials",
     to: "/resources/reports",
     icon: FileText,
-    desc: "Market trends and financial reports.",
+    desc: "Market trends, guides, and financial reports.",
   },
   {
     label: "Blogs",
@@ -59,11 +59,25 @@ const resourcesItems = [
   },
 ];
 
-const aboutItem = { label: "About Us", to: "/about" as const };
+const aboutItems = [
+  {
+    label: "About Us",
+    to: "/about",
+    icon: Users,
+    desc: "Our mission, vision, and leadership.",
+  },
+  {
+    label: "Contact Us",
+    to: "/contact",
+    icon: Mail,
+    desc: "Get in touch with our team directly.",
+  },
+];
 
 export function SiteHeader() {
   const pathname = usePathname();
-  const [open, setOpen] = useState(false);
+  const [resourcesOpen, setResourcesOpen] = useState(false);
+  const [aboutOpen, setAboutOpen] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
@@ -114,16 +128,16 @@ export function SiteHeader() {
           {/* Resources Dropdown */}
           <div
             className="relative"
-            onMouseEnter={() => setOpen(true)}
-            onMouseLeave={() => setOpen(false)}
+            onMouseEnter={() => setResourcesOpen(true)}
+            onMouseLeave={() => setResourcesOpen(false)}
           >
-            <button className="inline-flex items-center gap-1 text-sm text-muted-foreground transition-colors hover:text-foreground">
+            <button className="inline-flex items-center gap-1 text-sm text-muted-foreground transition-colors hover:text-foreground cursor-pointer">
               Resources{" "}
               <ChevronDown
-                className={`h-3.5 w-3.5 transition-transform ${open ? "rotate-180" : ""}`}
+                className={`h-3.5 w-3.5 transition-transform ${resourcesOpen ? "rotate-180" : ""}`}
               />
             </button>
-            {open && (
+            {resourcesOpen && (
               <div className="absolute left-1/2 top-full -translate-x-1/2 pt-3">
                 <div className="w-[320px] rounded-3xl border border-border bg-background/95 p-3 shadow-glow-teal backdrop-blur-xl">
                   <div className="space-y-1 p-2">
@@ -131,7 +145,7 @@ export function SiteHeader() {
                       <Link
                         key={p.label}
                         href={p.to}
-                        onClick={() => setOpen(false)}
+                        onClick={() => setResourcesOpen(false)}
                         className="flex items-start gap-3 rounded-xl p-3 transition-colors hover:bg-surface-soft"
                       >
                         <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
@@ -151,27 +165,54 @@ export function SiteHeader() {
             )}
           </div>
 
-          <Link
-            href={aboutItem.to}
-            className={`relative text-sm transition-colors hover:text-foreground ${pathname === aboutItem.to ? "text-foreground font-medium" : "text-muted-foreground"}`}
+          {/* About Us Dropdown with Contact Us */}
+          <div
+            className="relative"
+            onMouseEnter={() => setAboutOpen(true)}
+            onMouseLeave={() => setAboutOpen(false)}
           >
-            {aboutItem.label}
-            {pathname === aboutItem.to && (
-              <span className="absolute -bottom-2 left-1/2 h-0.5 w-5 -translate-x-1/2 rounded-full bg-primary" />
+            <button className="inline-flex items-center gap-1 text-sm text-muted-foreground transition-colors hover:text-foreground cursor-pointer">
+              About Us{" "}
+              <ChevronDown
+                className={`h-3.5 w-3.5 transition-transform ${aboutOpen ? "rotate-180" : ""}`}
+              />
+            </button>
+            {aboutOpen && (
+              <div className="absolute left-1/2 top-full -translate-x-1/2 pt-3">
+                <div className="w-[300px] rounded-3xl border border-border bg-background/95 p-3 shadow-glow-teal backdrop-blur-xl">
+                  <div className="space-y-1 p-2">
+                    {aboutItems.map((p) => (
+                      <Link
+                        key={p.label}
+                        href={p.to}
+                        onClick={() => setAboutOpen(false)}
+                        className="flex items-start gap-3 rounded-xl p-3 transition-colors hover:bg-surface-soft"
+                      >
+                        <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
+                          <p.icon className="h-4 w-4" />
+                        </div>
+                        <div>
+                          <div className="text-sm font-semibold">{p.label}</div>
+                          <div className="text-xs text-muted-foreground">
+                            {p.desc}
+                          </div>
+                        </div>
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              </div>
             )}
-          </Link>
+          </div>
         </nav>
 
         <div className="flex items-center gap-3">
           <Link
-            href="/contact"
-            className="hidden items-center gap-1.5 rounded-full border border-border bg-background/60 px-3 py-1.5 text-xs font-medium text-muted-foreground backdrop-blur-sm hover:bg-surface-soft hover:text-foreground transition-all sm:inline-flex"
+            href="/invite"
+            className="hidden items-center gap-2 rounded-full bg-gold hover:bg-gold/90 text-gold-foreground px-4 py-2 text-xs font-bold shadow-gold transition-all hover:scale-105 active:scale-95 sm:inline-flex"
           >
-            <span className="relative flex h-1.5 w-1.5">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-500 opacity-75" />
-              <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-emerald-500" />
-            </span>
-            Contact us
+            <Download className="h-3.5 w-3.5" />
+            Download App
           </Link>
           <Button
             size="sm"
@@ -270,14 +311,36 @@ export function SiteHeader() {
                     </div>
                   </div>
 
+                  <div className="pt-6 border-t border-border">
+                    <p className="text-xs text-muted-foreground mb-4 uppercase tracking-widest font-semibold">
+                      Company
+                    </p>
+                    <div className="flex flex-col gap-5">
+                      {aboutItems.map((p) => (
+                        <Link
+                          key={p.label}
+                          href={p.to}
+                          onClick={() => setMobileOpen(false)}
+                          className="group flex items-center gap-4 text-base font-medium text-foreground hover:text-primary transition-colors"
+                        >
+                          <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-surface-soft border border-border group-hover:bg-primary/10 group-hover:border-primary/20 transition-colors">
+                            <p.icon className="h-5 w-5 text-muted-foreground group-hover:text-primary transition-colors" />
+                          </div>
+                          {p.label}
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+
                   <div className="pt-6 border-t border-border mt-auto">
                     <div className="flex flex-col gap-3">
                       <Link
-                        href="/contact"
+                        href="/invite"
                         onClick={() => setMobileOpen(false)}
-                        className="rounded-full border border-border bg-surface-soft px-4 py-3 text-center text-sm font-medium text-foreground hover:bg-surface-soft/80 transition-colors"
+                        className="rounded-full bg-gold hover:bg-gold/90 text-gold-foreground font-bold px-4 py-3 text-center text-sm shadow-gold transition-all flex items-center justify-center gap-2"
                       >
-                        Contact us
+                        <Download className="h-4 w-4" />
+                        Download App
                       </Link>
                       <Button
                         asChild
