@@ -114,6 +114,10 @@ export function InviteClient({ code }: InviteClientProps) {
   );
   const [copiedCode, setCopiedCode] = useState(false);
 
+  const isIosActive = Boolean(appLinks.ios && appLinks.ios.trim() !== "");
+  const isAndroidActive = Boolean(appLinks.android && appLinks.android.trim() !== "");
+  const hasActiveStore = isIosActive || isAndroidActive;
+
   const handleCopyCode = async () => {
     if (!code) return;
     try {
@@ -130,20 +134,21 @@ export function InviteClient({ code }: InviteClientProps) {
   const handleGetApp = async (targetPlatform: "ios" | "android") => {
     if (code) {
       try {
-        await navigator.clipboard.writeText(`WEALTHCONOMY-REF:${code}`);
+        await navigator.clipboard.writeText(code);
+        setCopiedCode(true);
+        toast.success("Referral code copied to clipboard!");
+        setTimeout(() => setCopiedCode(false), 2000);
       } catch (err) {
         console.warn("Could not write referral code to clipboard:", err);
       }
     }
 
     const url = targetPlatform === "ios" ? appLinks.ios : appLinks.android;
-    if (url) {
+    if (url && url.trim() !== "") {
       window.location.href = url;
     } else {
-      if (code) {
-        toast.info("Referral code saved to clipboard! Wealthconomy mobile app is launching soon.");
-      } else {
-        toast.info("Wealthconomy mobile app is launching soon!");
+      if (!code) {
+        toast.info("Wealthconomy mobile app is coming soon!");
       }
     }
   };
@@ -192,12 +197,8 @@ export function InviteClient({ code }: InviteClientProps) {
             {/* Referral Code Pass Card (Only rendered when valid code exists) */}
             {code && (
               <div className="w-full max-w-xl rounded-2xl border-2 border-primary/20 bg-surface-soft/90 p-4 sm:p-5 backdrop-blur-md shadow-sm">
-                <div className="text-[11px] font-bold uppercase tracking-wider text-muted-foreground mb-2 flex items-center justify-between">
+                <div className="text-[11px] font-bold uppercase tracking-wider text-muted-foreground mb-2">
                   <span>Your Referral Code</span>
-                  <span className="text-emerald-600 dark:text-emerald-400 font-semibold flex items-center gap-1 text-[11px]">
-                    <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
-                    Auto-Applied
-                  </span>
                 </div>
 
                 <div className="flex flex-col sm:flex-row items-center justify-between gap-3 bg-background rounded-xl p-3 border border-border">
@@ -222,10 +223,17 @@ export function InviteClient({ code }: InviteClientProps) {
                     )}
                   </Button>
                 </div>
+
+                <p className="mt-3 text-xs sm:text-sm text-muted-foreground leading-relaxed text-center sm:text-left">
+                  Enter this code when you create your account.
+                  {hasActiveStore
+                    ? " We copy it when you tap Get the app, so you can paste it at signup."
+                    : ""}
+                </p>
               </div>
             )}
 
-            {/* Official Store Badges (Clean, No Coming Soon tag) */}
+            {/* Official Store Badges */}
             <div className="pt-2 w-full max-w-xl">
               <div className="flex flex-col sm:flex-row items-center gap-3 w-full">
                 {/* Apple App Store Badge */}
@@ -233,15 +241,21 @@ export function InviteClient({ code }: InviteClientProps) {
                   <button
                     type="button"
                     onClick={() => handleGetApp("ios")}
-                    className="w-full sm:w-auto flex items-center justify-center gap-3.5 rounded-xl bg-black hover:bg-neutral-900 border border-white/20 hover:border-white/40 px-6 py-3 text-white transition-all hover:scale-105 active:scale-95 shadow-lg cursor-pointer min-w-[190px]"
+                    aria-disabled={!isIosActive}
+                    aria-label={isIosActive ? "Download on the App Store" : "App Store - Coming soon"}
+                    className={`w-full sm:w-auto flex items-center justify-center gap-3.5 rounded-xl border px-6 py-3 text-white transition-all min-w-[190px] ${
+                      isIosActive
+                        ? "bg-black hover:bg-neutral-900 border-white/20 hover:border-white/40 hover:scale-105 active:scale-95 shadow-lg cursor-pointer"
+                        : "bg-neutral-900/90 border-white/10 opacity-70 cursor-not-allowed active:scale-95 shadow-sm"
+                    }`}
                   >
-                    <AppleLogo className="h-7 w-7 text-white shrink-0" />
+                    <AppleLogo className={`h-7 w-7 shrink-0 ${isIosActive ? "text-white" : "text-white/60"}`} />
                     <div className="text-left leading-tight">
-                      <div className="text-[10px] font-medium tracking-wide text-white/70">
-                        Download on the
+                      <div className={`text-[10px] font-medium tracking-wide ${isIosActive ? "text-white/70" : "text-white/50"}`}>
+                        {isIosActive ? "Download on the" : "App Store"}
                       </div>
                       <div className="text-base font-bold tracking-tight text-white font-sans">
-                        App Store
+                        {isIosActive ? "App Store" : "Coming soon"}
                       </div>
                     </div>
                   </button>
@@ -252,15 +266,21 @@ export function InviteClient({ code }: InviteClientProps) {
                   <button
                     type="button"
                     onClick={() => handleGetApp("android")}
-                    className="w-full sm:w-auto flex items-center justify-center gap-3.5 rounded-xl bg-black hover:bg-neutral-900 border border-white/20 hover:border-white/40 px-6 py-3 text-white transition-all hover:scale-105 active:scale-95 shadow-lg cursor-pointer min-w-[190px]"
+                    aria-disabled={!isAndroidActive}
+                    aria-label={isAndroidActive ? "Get it on Google Play" : "Google Play - Coming soon"}
+                    className={`w-full sm:w-auto flex items-center justify-center gap-3.5 rounded-xl border px-6 py-3 text-white transition-all min-w-[190px] ${
+                      isAndroidActive
+                        ? "bg-black hover:bg-neutral-900 border-white/20 hover:border-white/40 hover:scale-105 active:scale-95 shadow-lg cursor-pointer"
+                        : "bg-neutral-900/90 border-white/10 opacity-70 cursor-not-allowed active:scale-95 shadow-sm"
+                    }`}
                   >
-                    <GooglePlayLogo className="h-6 w-6 shrink-0" />
+                    <GooglePlayLogo className={`h-6 w-6 shrink-0 ${isAndroidActive ? "" : "opacity-60"}`} />
                     <div className="text-left leading-tight">
-                      <div className="text-[10px] font-medium tracking-wide text-white/70">
-                        GET IT ON
+                      <div className={`text-[10px] font-medium tracking-wide ${isAndroidActive ? "text-white/70" : "text-white/50"}`}>
+                        {isAndroidActive ? "GET IT ON" : "Google Play"}
                       </div>
                       <div className="text-base font-bold tracking-tight text-white font-sans">
-                        Google Play
+                        {isAndroidActive ? "Google Play" : "Coming soon"}
                       </div>
                     </div>
                   </button>
@@ -368,10 +388,10 @@ export function InviteClient({ code }: InviteClientProps) {
                 Step 3
               </div>
               <h3 className="font-display text-xl font-bold text-foreground">
-                Enter the referral code if it isn&apos;t filled in for you
+                Enter your referral code
               </h3>
               <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
-                Paste your unique code during onboarding if it wasn&apos;t automatically pre-populated.
+                Enter your unique referral code during account creation to connect with your inviter.
               </p>
             </div>
           </div>
