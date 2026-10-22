@@ -136,7 +136,6 @@ export function InviteClient({ code }: InviteClientProps) {
       try {
         await navigator.clipboard.writeText(code);
         setCopiedCode(true);
-        toast.success("Referral code copied to clipboard!");
         setTimeout(() => setCopiedCode(false), 2000);
       } catch (err) {
         console.warn("Could not write referral code to clipboard:", err);
@@ -147,8 +146,10 @@ export function InviteClient({ code }: InviteClientProps) {
     if (url && url.trim() !== "") {
       window.location.href = url;
     } else {
-      if (!code) {
-        toast.info("Wealthconomy mobile app is coming soon!");
+      if (code) {
+        toast.success("Referral code copied to clipboard! Wealthconomy mobile app is coming soon.");
+      } else {
+        toast.success("Wealthconomy mobile app is coming soon!");
       }
     }
   };
@@ -241,21 +242,15 @@ export function InviteClient({ code }: InviteClientProps) {
                   <button
                     type="button"
                     onClick={() => handleGetApp("ios")}
-                    aria-disabled={!isIosActive}
-                    aria-label={isIosActive ? "Download on the App Store" : "App Store - Coming soon"}
-                    className={`w-full sm:w-auto flex items-center justify-center gap-3.5 rounded-xl border px-6 py-3 text-white transition-all min-w-[190px] ${
-                      isIosActive
-                        ? "bg-black hover:bg-neutral-900 border-white/20 hover:border-white/40 hover:scale-105 active:scale-95 shadow-lg cursor-pointer"
-                        : "bg-neutral-900/90 border-white/10 opacity-70 cursor-not-allowed active:scale-95 shadow-sm"
-                    }`}
+                    className="w-full sm:w-auto flex items-center justify-center gap-3.5 rounded-xl bg-black hover:bg-neutral-900 border border-white/20 hover:border-white/40 px-6 py-3 text-white transition-all hover:scale-105 active:scale-95 shadow-lg cursor-pointer min-w-[190px]"
                   >
-                    <AppleLogo className={`h-7 w-7 shrink-0 ${isIosActive ? "text-white" : "text-white/60"}`} />
+                    <AppleLogo className="h-7 w-7 text-white shrink-0" />
                     <div className="text-left leading-tight">
-                      <div className={`text-[10px] font-medium tracking-wide ${isIosActive ? "text-white/70" : "text-white/50"}`}>
-                        {isIosActive ? "Download on the" : "App Store"}
+                      <div className="text-[10px] font-medium tracking-wide text-white/70">
+                        Download on the
                       </div>
                       <div className="text-base font-bold tracking-tight text-white font-sans">
-                        {isIosActive ? "App Store" : "Coming soon"}
+                        App Store
                       </div>
                     </div>
                   </button>
@@ -266,21 +261,15 @@ export function InviteClient({ code }: InviteClientProps) {
                   <button
                     type="button"
                     onClick={() => handleGetApp("android")}
-                    aria-disabled={!isAndroidActive}
-                    aria-label={isAndroidActive ? "Get it on Google Play" : "Google Play - Coming soon"}
-                    className={`w-full sm:w-auto flex items-center justify-center gap-3.5 rounded-xl border px-6 py-3 text-white transition-all min-w-[190px] ${
-                      isAndroidActive
-                        ? "bg-black hover:bg-neutral-900 border-white/20 hover:border-white/40 hover:scale-105 active:scale-95 shadow-lg cursor-pointer"
-                        : "bg-neutral-900/90 border-white/10 opacity-70 cursor-not-allowed active:scale-95 shadow-sm"
-                    }`}
+                    className="w-full sm:w-auto flex items-center justify-center gap-3.5 rounded-xl bg-black hover:bg-neutral-900 border border-white/20 hover:border-white/40 px-6 py-3 text-white transition-all hover:scale-105 active:scale-95 shadow-lg cursor-pointer min-w-[190px]"
                   >
-                    <GooglePlayLogo className={`h-6 w-6 shrink-0 ${isAndroidActive ? "" : "opacity-60"}`} />
+                    <GooglePlayLogo className="h-6 w-6 shrink-0" />
                     <div className="text-left leading-tight">
-                      <div className={`text-[10px] font-medium tracking-wide ${isAndroidActive ? "text-white/70" : "text-white/50"}`}>
-                        {isAndroidActive ? "GET IT ON" : "Google Play"}
+                      <div className="text-[10px] font-medium tracking-wide text-white/70">
+                        GET IT ON
                       </div>
                       <div className="text-base font-bold tracking-tight text-white font-sans">
-                        {isAndroidActive ? "Google Play" : "Coming soon"}
+                        Google Play
                       </div>
                     </div>
                   </button>
